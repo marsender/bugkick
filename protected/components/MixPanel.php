@@ -72,8 +72,8 @@ class MixPanel {
                 mixpanel.init("463782a5946f29d2daaa7b9cb5482f43");',
                 CClientScript::POS_HEAD);
 
-            Yii::app()->clientScript->registerScriptFile('/js/mixpanel/mixpanel.min.js');
-            //Yii::app()->clientScript->registerScriptFile('/js/mixpanel/mixpanel.js');
+            Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/mixpanel/mixpanel.min.js');
+            //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/mixpanel/mixpanel.js');
         }
     }
 

@@ -41,7 +41,7 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
           <div>
             <?php echo Yii::t('main', 'Created') ?>:
             <span class="desc"><?php echo Helper::formatDateLongWithTime($model->created_at) ?></span>
-          </div>        
+          </div>
         </div>
         <?php if($model->defaultCompany == $this->loadModel(Yii::app()->user->id)->defaultCompany):?>
         <div class="user-activity">
@@ -56,7 +56,7 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
                            $out .= '<li>
                              <div class="activity-date">' . Helper::formatDate12($value['created_at']) . '</div>
                              <div class="ticket-data">
-                               <div class="item-name">'.  Yii::t('main', 'Ticket') .': <a href="/'.$value->project->project_id.'/'.$value->number.'">' . strip_tags($value['title']) . '</a></div>
+                               <div class="item-name">'.  Yii::t('main', 'Ticket') .': <a href="' . Yii::app()->baseUrl . '/'.$value->project->project_id.'/'.$value->number.'">' . strip_tags($value['title']) . '</a></div>
                                <div class="activity-desc">' . Helper::neatTrim($value['description'], 120) . '</div>
                              </div>
                            </li>';
@@ -80,7 +80,7 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
                              <div class="activity-date">' . Helper::formatDate12($value['created']) . '</div>
                              <div class="ticket-data">
                                <div class="item-name">'.  Yii::t('main', 'Comment') .': ' . strip_tags(Helper::neatTrim($value['message'], 100)) . '</div>
-                               <div class="item-name">'.  Yii::t('main', 'On Ticket') .': <a href="/'.$value['project_id'].'/'.$value['number'].'">' . strip_tags($value['title']) . '</a></div>
+                               <div class="item-name">'.  Yii::t('main', 'On Ticket') .': <a href="' . Yii::app()->baseUrl . '/'.$value['project_id'].'/'.$value['number'].'">' . strip_tags($value['title']) . '</a></div>
                              </div>
                            </li>';
                        }

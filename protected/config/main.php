@@ -192,7 +192,7 @@ return array(
 					'prevPageLabel' => '<span class="pagination-left"></span>',
 				),
 				'CJuiDialog' => array(
-					'themeUrl' => Yii::app()->baseUrl . '/css/',
+					'themeUrl' => '/bugkick/css/',
 					'theme' => 'ui',
 					'options'=>array(
 						'resizable'=>false,
@@ -277,7 +277,7 @@ return array(
 
 		// leave empty to use php mail(), or 'ses' - to use Amazon SES
 		//'emailService' => 'ses','sqs'
-		'emailService' => 'ses',
+		'emailService' => '',
 
 		'amazon'=>require($paramsDir . 'amazon.php'),
 
@@ -361,7 +361,7 @@ return array(
 		'storageType'=>require($paramsDir . 'storage-type.php'),
 
 		//projects number available for free companies
-		'projects_number_for_free'=>3,
+		'projects_number_for_free'=>100500,
 
 		//MixPanel events tracking
 		'mixpanel'=>require($paramsDir . 'mixpanel.php'),

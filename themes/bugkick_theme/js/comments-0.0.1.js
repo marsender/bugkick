@@ -58,7 +58,8 @@ END of Collapsing/expanding comments
 		insertCodeDlg.dialog('close');
 	}
 	insertCodeDlg.dialog({
-		title: '<img alt="" src="/themes/bugkick_theme/images/icons/code.png" style="vertical-align:middle;" />&nbsp;Insert the code',
+		//title: '<img alt="" src="/images/icons/code.png" style="vertical-align:middle;" />&nbsp;Insert the code',
+		title: 'Insert the code',
 		autoOpen: false,
 		width: 450,
 		height: 450,

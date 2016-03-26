@@ -50,7 +50,7 @@ $(".task-item input[type=checkbox]").live("click", function(e) {
     var checkBox = $(this);
     var taskID = $(this).parent().attr("taskID");
     $.ajax({
-        url: '/task/complete',
+        url: '/bugkick/task/complete', /* Todo: Set base url */
         type: 'post',
         data: { YII_CSRF_TOKEN:YII_CSRF_TOKEN, taskID:taskID },
         success : function(data) {
@@ -80,7 +80,7 @@ function saveTask(li, successCallback) {
   $.jGrowl.defaults.life=2000;
   var taskID = li.attr("taskID");
   $.ajax({
-      url: '/task/edit',
+      url: '/bugkick/task/edit', /* Todo: Set base url */
       type: 'post',
       data: { YII_CSRF_TOKEN:YII_CSRF_TOKEN, taskID:taskID, description:$(textbox).val() },
       success : function(data) {

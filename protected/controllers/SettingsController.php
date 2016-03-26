@@ -19,9 +19,9 @@ class SettingsController extends Controller {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
-					'index', 'view', 'create', 'update', 'delete', 'filter', 
-					'EmailPreferences', 'LabelListing', 'StatusListing', 
-					'UserListing', 'InviteMembers', 'PendingMembers','Members', 
+					'index', 'view', 'create', 'update', 'delete', 'filter',
+					'EmailPreferences', 'LabelListing', 'StatusListing',
+					'UserListing', 'InviteMembers', 'PendingMembers','Members',
 					'PasswordChange', 'ExportTickets', 'UploadPhoto',
 					'ShortcutsState','Company', 'ResetCompanyTopBar', 'Groups',
                     'Projects', 'projectSettings', 'addOns'
@@ -45,7 +45,7 @@ class SettingsController extends Controller {
 /*		$userSettings = User::current()->user_settings;
 		if(empty($userSettings))
 			$userSettings=new SettingsByUser();*/
-	
+
         if (Yii::app()->request->isAjaxRequest) {
             $user = User::current();
             $user->attributes = $this->request->getPost('User');
@@ -66,16 +66,16 @@ class SettingsController extends Controller {
         }
         $model = new PasswordForm();
         $form = new CForm('application.views.settings.passwordChange', $model);
-		Yii::app()->clientScript->registerCssFile('/css/body/laf_settings.css');
-		//Yii::app()->clientScript->registerScriptFile('/js/settings/index/common.js');
-        Yii::app()->clientScript->registerScriptFile('/js/settings/index/common.min.js');
+		Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/body/laf_settings.css');
+		//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/settings/index/common.js');
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/settings/index/common.min.js');
 
         MixPanel::instance()->registerEvent(MixPanel::SETTINGS_PAGE_VIEW); // MixPanel events tracking
 
 		$this->render(
 			'index',
 			array(
-				'passwordForm' => $form, 
+				'passwordForm' => $form,
 				'userModel' => User::current(),
 //				'userSettings' => $userSettings,
 				'lafSet'=>LookAndFeel::model()->findAll("name!='Default'"),
@@ -208,7 +208,7 @@ class SettingsController extends Controller {
 //             $user->password = Hash::sha256($_POST['PasswordForm']['password_new'] . $user->salt());
 			$user->password = Bcrypt::hash($_POST['PasswordForm']['password_new'] . $user->salt(),
             		Yii::app()->params['bcryptWorkFactor']);
-            
+
             if ($user->validate() && $user->save())
                 $this->redirect(Yii::app()->createUrl('settings'));
         } else{
@@ -260,7 +260,7 @@ class SettingsController extends Controller {
 
         $this->render('labelListing', array('labelProvider' => $model, 'labelModel' => $labelModel));
     }
-    
+
     public function actionAddOns()
     {
         $project = Project::getCurrent();
@@ -271,9 +271,9 @@ class SettingsController extends Controller {
     	$iPosition = 3;
     	$iStyle    = 2;
     	$iColor    = 2;
-    	
+
     	MixPanel::instance()->registerEvent(MixPanel::FEEDBACK_SETTINGS_PAGE_VIEW); // MixPanel events tracking
-    	Yii::app()->clientScript->registerScriptFile('/js/settings/index/feedbackEdit.js');
+    	Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/settings/index/feedbackEdit.js');
     	$this->render('addOns', array('iPosition' => $iPosition, 'iStyle' => $iStyle, 'iColor' => $iColor));
     }
 
@@ -576,7 +576,7 @@ class SettingsController extends Controller {
                 $user->hotkey_preference = 0;
             else
                $user->hotkey_preference = 1;
-            
+
             $user->save();
         }
         $this->redirect(Yii::app()->createUrl('/settings'));
@@ -615,7 +615,7 @@ class SettingsController extends Controller {
 		else
 			$this->render('emailPreferences', $viewData);
     }
-	
+
 	public function actionGroups() {
 		if($this->request->isAjaxrequest)
 			$this->handleGroupsAjaxRequest();
@@ -660,11 +660,11 @@ class SettingsController extends Controller {
 		if(empty($group_id))
 			$this->_404('Invalid set of parameters');
 		$sql='
-		SELECT u.user_id, u.facebook_id, u.name, u.lname, u.profile_img 
+		SELECT u.user_id, u.facebook_id, u.name, u.lname, u.profile_img
 			FROM {{user}} AS u, {{user_by_group}} AS u2g, {{user_group}} AS g
 			WHERE 1
-			AND g.group_id=:group_id 
-			AND g.group_id=u2g.group_id 
+			AND g.group_id=:group_id
+			AND g.group_id=u2g.group_id
 			AND u2g.user_id=u.user_id
 		';
 		$groupMembers=Yii::app()->db->createCommand($sql)->queryAll(

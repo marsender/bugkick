@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content="en" />
 	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" />
-    
+
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->minScript->generateUrl(array(
         '/css/form.css',
         '/js/plug-in/chosen/chosen/chosen.css',
@@ -18,7 +18,7 @@
         '/js/bootstrap/css/bootstrap.css',
         '/css/colortip.css',
         'themes/bugkick_theme/css/plug-in/imageset/imageset.css',
-    )); ?>" /> 
+    )); ?>" />
 	<?php
 	$lookAndFeel = $this->lookAndFeel();
 	if(!empty($lookAndFeel)) {
@@ -71,7 +71,7 @@ JS
     <?php
     echo CHtml::openTag('span',
             array('id'=>'user_data', 'style'=>'display:none;'));
-    
+
 	$currentProject=Project::getCurrent();
 
     //register jquery-ui css(fix for case when no projects, design of popups becomes broken)
@@ -145,9 +145,9 @@ JS
         <?php /* if (User::current()->isGlobalAdmin()) { ?>
             <li><?php echo CHtml::link(Yii::t('main', 'Admin Panel'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
         <?php } */?>
-            <li><?php echo CHtml::link(Yii::t('main', 'Help'), '/help', array('id'=>'show-help')) ?></li>
+            <li><?php echo CHtml::link(Yii::t('main', 'Help'), Yii::app()->createAbsoluteUrl('/help'), array('id'=>'show-help')) ?></li>
             <li><?php
-                echo CHtml::link(Yii::t('main', 'Logout'),
+              echo CHtml::link(Yii::t('main', 'Logout'),
                 Yii::app()->createUrl('site/logout', array('token'=>$this->request->csrfToken)),
                 array('id'=>'logout'))
             ?></li>
@@ -172,13 +172,13 @@ JS
             </li>
         </ul>
     </div>
-    
+
     <div class="top_tab summary_tickets">
     	<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>" title="Summary tickets"></a>
     </div>
-    
+
     <div class="top_tab t_separator"></div>
-    
+
 <?php
     $form = $this->beginWidget('CActiveForm', array(
         'action'=> $this->createUrl('/project/choose'),
@@ -242,7 +242,7 @@ JS
                         </span>
                     </li>
                 <?php /*?>
-                    <li>   
+                    <li>
                         <span>
                             User: <a href="<?php echo Yii::app()->createUrl('user/view')?>" title="View Profile"><?php echo Yii::app()->user->name ?></a>
                         </span>

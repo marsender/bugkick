@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var baseUrl = window.location.protocol + '//' + window.location.hostname;
+	var baseUrl = '/bugkick'; /* Todo: Set base url */ // window.location.protocol + '//' + window.location.hostname;
 	//Tree-menu
 	$(".tree").simpleTreeMenu();
 	//var get =  "'.$filterText.'";
@@ -151,7 +151,7 @@ $(document).ready(function() {
     {
         //getting new data...
         $("#filterForm").ajaxSubmit({
-            url     : baseUrl + act, //+ "/bug/" + act,
+            url     : baseUrl + '/' + act, //+ "/bug/" + act,
             beforeSubmit:function(data) {
                // $.flashMessage().beginProgress();
             },

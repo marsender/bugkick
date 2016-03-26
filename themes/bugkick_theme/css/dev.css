@@ -399,7 +399,7 @@ a#calendar-tab{
 }
 
 #main .settings .left_side .b_panel{
-	background: url("../images/feedback/fb_bg.png") no-repeat;
+	background: url("../../../images/feedback/fb_bg.png") no-repeat;
 	height: 290px;
     width: 221px;
 }
@@ -438,55 +438,55 @@ a#calendar-tab{
 }
 
 .settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_first{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px 0px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px 0px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_first{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -860px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -860px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_first{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -286px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -286px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_first{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -577px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -577px transparent;
 }
 
 .settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_second{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -51px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -51px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_second{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -911px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -911px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_second{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -337px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -337px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_second{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -628px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -628px transparent;
 }
 
 .settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_third{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -181px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -181px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_third{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -1041px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -1041px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_third{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -467px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -467px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_third{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -758px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -758px transparent;
 }
 
 .settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_fourth{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -232px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -232px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_fourth{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -1092px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -1092px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_fourth{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -518px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -518px transparent;
 }
 .settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_fourth{
-	background: url("../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -809px transparent;
+	background: url("../../../images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -809px transparent;
 }
 
 .settings .left_side .b_panel ul.b_styles > li{
@@ -538,14 +538,14 @@ a#calendar-tab{
 	margin-left: 0px;
 }
 .settings .right_side ul.b_options li.b_position ul li{
-	background: url("../images/feedback/fb_sprite_position.png") no-repeat scroll 0px 0px transparent;
+	background: url("../../../images/feedback/fb_sprite_position.png") no-repeat scroll 0px 0px transparent;
 	width: 98px;
 	height: 32px;
 	cursor: pointer;
 	margin-left: 11px;
 }
 .settings .right_side ul.b_options li.b_position ul li.active{
-	background: url("../images/feedback/fb_sprite_position.png") no-repeat scroll 0px -32px transparent;
+	background: url("../../../images/feedback/fb_sprite_position.png") no-repeat scroll 0px -32px transparent;
 	color: #FFFFFF;
 }
 
@@ -553,14 +553,14 @@ a#calendar-tab{
 	margin-left: 0px;
 }
 .settings .right_side ul.b_options li.b_style ul li{
-	background: url("../images/feedback/fb_sprite_style.png") no-repeat scroll 0px 0px transparent;
+	background: url("../../../images/feedback/fb_sprite_style.png") no-repeat scroll 0px 0px transparent;
 	width: 70px;
 	height: 32px;
 	cursor: pointer;
 	margin-left: 12px;
 }
 .settings .right_side ul.b_options li.b_style ul li.active{
-	background: url("../images/feedback/fb_sprite_style.png") no-repeat scroll 0px -32px transparent;
+	background: url("../../../images/feedback/fb_sprite_style.png") no-repeat scroll 0px -32px transparent;
 	color: #FFFFFF;
 }
 
@@ -577,19 +577,19 @@ a#calendar-tab{
 	margin-left: 4px;
 }
 .settings .right_side ul.b_options li.b_color ul li.c_azure{
-	background: url("../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -1px transparent;
+	background: url("../../../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -1px transparent;
 }
 .settings .right_side ul.b_options li.b_color ul li.c_blue{
-	background: url("../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -81px transparent;
+	background: url("../../../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -81px transparent;
 }
 .settings .right_side ul.b_options li.b_color ul li.c_gray{
-	background: url("../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -172px transparent;
+	background: url("../../../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -172px transparent;
 }
 .settings .right_side ul.b_options li.b_color ul li.c_green{
-	background: url("../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -267px transparent;
+	background: url("../../../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -267px transparent;
 }
 .settings .right_side ul.b_options li.b_color ul li div.active{
-	background: url("../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -344px transparent;
+	background: url("../../../images/feedback/fb_sprite_color.png") no-repeat scroll 0px -344px transparent;
 }
 .grey-tip{
     color: #5A6876;

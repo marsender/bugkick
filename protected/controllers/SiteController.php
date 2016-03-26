@@ -225,19 +225,19 @@ class SiteController extends Controller {
             // validate user input and redirect to the previous page if valid
             if ($attempt_limit < 4 && $model->validate() && $model->login()) {
                 $this->setBkUserCookie();
-                
+
                 $user = User::current();
-                
+
                 if( empty($user->profile_img) ){
 	                $profile_img_url  = 'images/profile_img/';
 	                $profile_img_name = md5(uniqid(mt_rand(), true)) . '.jpg';
 	                $gr_img_31 = $this->getGravatar($user->email, 31);
 	                $gr_img_81 = $this->getGravatar($user->email, 81);
-	                
+
 	                if( @fopen($gr_img_31,"r") ){
 	                	file_put_contents($profile_img_url . '31_31_' . $profile_img_name, file_get_contents($gr_img_31));
 	                	file_put_contents($profile_img_url . '81_81_' . $profile_img_name, file_get_contents($gr_img_81));
-	                
+
 	                	$user->profile_img = $profile_img_name;
 	                	$user->save();
 	                }
@@ -284,7 +284,7 @@ class SiteController extends Controller {
                 }
             }
         }
-        //Yii::app()->clientScript->registerCssFile('/themes/bugkick_theme/css/site/login/common.css');
+        //Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/themes/bugkick_theme/css/site/login/common.css');
         $viewData = array(
             'fbLoginUrl' => $fbLoginUrl,
             'model' => $model,
@@ -296,7 +296,7 @@ class SiteController extends Controller {
             MixPanel::instance()->registerEvent(MixPanel::SIGN_UP, array('type' => 'free')); // MixPanel events tracking
 
 
-            
+
 // display the login form
         $this->layout = '/layouts/index-new';
         $this->render('login', $viewData);
@@ -453,7 +453,7 @@ class SiteController extends Controller {
                 'application.components.views.help._article', array('model' => $article), false, false
         );
     }
-    
+
     public function actionSendMailCountactUs(){
         $data = $this->request->getPost('ContactUs');
         $r=CActiveForm::validate(new ContactUs());

@@ -47,7 +47,7 @@ $this->endClip();
 <div id="ajaxUpdate">
 <div class="ticket_wrapper">
     <div class="ticket_content_top">
-        <?php 
+        <?php
         echo (!empty($model->status->status_color))
               ? '<span class="status" style="background: ' . $model->status->status_color . '"></span>'
               : '<span class="status not-set"></span>' ;
@@ -61,7 +61,7 @@ $this->endClip();
 		<?php endif;?>
     </div>
 	<div class="ticket_content">
-		
+
         <div class="ticket_info">
 
             <?php if ($model->is_created_with_api != 1){ //hide owner if created via API ?>
@@ -212,6 +212,7 @@ LINKTEXT
         <?php endif;?>
 
         <?php
+        /* Remove Box.com functionality
             $token = Yii::app()->session->get('boxAuthToken');
             if(empty($token)){
                 echo CHtml::link(
@@ -231,6 +232,7 @@ LINKTEXT
                     'autoUpload'=>true,
                 ));
             }
+            */
         ?>
         <div class="clear"></div>
 

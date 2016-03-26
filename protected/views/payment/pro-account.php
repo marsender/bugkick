@@ -1,7 +1,7 @@
 <?php
 Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/css/payment/pro-account/common.css');
 Yii::app()->clientScript->registerScriptFile('https://js.stripe.com/v1/');
-Yii::app()->clientScript->registerScriptFile('/js/payment/proAccount/common.js');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/payment/proAccount/common.js');
 Yii::app()->clientScript->registerScript(
         'st_pub_k', 'Stripe.setPublishableKey("' . Yii::app()->params['stripe']['publishableKey'] . '");', CClientScript::POS_END
 );
@@ -11,7 +11,7 @@ Yii::app()->clientScript->registerScript(
         box-shadow:none;
         background:none;
     }
-</style> 
+</style>
 <div class="payment">
     <div class="payment-left-column">
         <div class="signup_plans plans_summary">
@@ -20,8 +20,8 @@ Yii::app()->clientScript->registerScript(
                 <div class="price">
                     <div class="price-month">
                         <span class="price-wrapper">$9.00</span> per month
-                    </div> 
-                    <div class="or"></div> 
+                    </div>
+                    <div class="or"></div>
                     <div class="price-year">
                         <span class="price-wrapper">$98.00</span> per year
                     </div>
@@ -146,7 +146,7 @@ Yii::app()->clientScript->registerScript(
     </div>
     <div class="clear"></div>
     <div class="stripe-powered">
-        <a href="http://stripe.com" target="_blank" title="Powered by Stripe"><img alt="Powered by Stripe" src="/themes/bugkick_theme/images/payment/stripe.png" style="margin: 2px" /></a>
+        <a href="http://stripe.com" target="_blank" title="Powered by Stripe"><img alt="Powered by Stripe" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/payment/stripe.png" style="margin: 2px" /></a>
         <div style="font-size: 10px; color: #696969">Cancel anytime. Contact us for refunds if you are miserable, we want happy customers.</div>
     </div>
 </div>
