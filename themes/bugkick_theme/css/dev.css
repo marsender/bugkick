@@ -931,7 +931,7 @@ border-radius: 2px 0 0 0;
 -moz-background-clip: padding;
 -webkit-background-clip: padding-box;
 background-clip: padding-box;
-behavior: url(/themes/bugkick_theme/css/PIE.htc);
+behavior: url(./PIE.htc);
 }
 
 #content .ticket_content_top{
@@ -946,7 +946,7 @@ behavior: url(/themes/bugkick_theme/css/PIE.htc);
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+    behavior: url(./PIE.htc);
 }
 #content #main{
     background: url("../images/main-bg-new.png") repeat-y 0 0;
@@ -956,7 +956,7 @@ behavior: url(/themes/bugkick_theme/css/PIE.htc);
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+    behavior: url(./PIE.htc);
     width: 776px;
 }
 
@@ -1057,7 +1057,7 @@ width: 690px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+    behavior: url(./PIE.htc);
 }
 
 #sidebar{
@@ -1208,7 +1208,7 @@ a#calendar-tab, a#settings-tab{
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+    behavior: url(./PIE.htc);
     width: 1080px;
     padding: 0px;
 }
