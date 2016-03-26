@@ -13,14 +13,14 @@ $this->breadcrumbs = array(
 );
 ?>
 <div id="containertop" style="min-height:500px;">
-    <div id="container">        
+    <div id="container">
         <div class="timeline_container">
             <div class="timeline">
                 <div class="plus"></div>
             </div>
             <div id="removeMe" class="item dateItem">
-                <div class="dateText">                  
-                </div>    
+                <div class="dateText">
+                </div>
             </div>
         </div>
     </div>
@@ -41,26 +41,26 @@ $this->breadcrumbs = array(
                      break;
                  case 'local':
                      ?>
-                <div class='bug-profile-pic-wrapper'><img src="/images/profile_img/{{=it.profile_img || "default.jpg" }}" class="bug-profile-pic "/></div>
+                <div class='bug-profile-pic-wrapper'><img src="<?php echo Yii::app()->baseUrl; ?>/images/profile_img/{{=it.profile_img || "default.jpg" }}" class="bug-profile-pic "/></div>
                 <?php
                 break;
         }
         ?>
-             <div class="infoBox">            
+             <div class="infoBox">
             {{=it.name}}: {{=it.content}}
             <span class="dateTimeLeft">
                 {{=it.date}}
             </span>
-            <span class="endMessage"></span>  
-        </div> 
+            <span class="endMessage"></span>
+        </div>
     </div>
 </script>
 
 <script id="dateFn" type="text/TemplateFn">
     <div class="item dateItem">
         <div class="dateText">
-            {{=it.date}}    
-        </div>    
+            {{=it.date}}
+        </div>
     </div>
 </script>
 

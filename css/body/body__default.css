@@ -6,5 +6,5 @@
         Purpose of the stylesheet follows.
 */
 body{
-    background: url("/images/body_backgrounds/body_bg.jpg") repeat center top;
+    background: url("../../images/body_backgrounds/body_bg.jpg") repeat center top;
 }

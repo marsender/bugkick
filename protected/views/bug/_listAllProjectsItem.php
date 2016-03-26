@@ -1,6 +1,6 @@
 <div class="b_project_name disabled" project_id="<?php echo $data->project->project_id ?>"><div><?php echo $data->project->name ?></div><hr></div>
 <div>
-	<a href="<?php echo '/'.$data->project->project_id.'/'.$data->number ?>">
+	<a href="<?php echo Yii::app()->baseUrl . '/'.$data->project->project_id.'/'.$data->number ?>">
 		<div class="t_status"<?php echo (!empty($data->status->status_color))
 		              			   ? ' style="background: ' . $data->status->status_color . '"'
 		              			   : '' ;

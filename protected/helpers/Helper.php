@@ -4,7 +4,7 @@
  * Date: 16.10.11
  * Time: 16:47
  */
- 
+
 class Helper {
 
     //Ordinary trimming
@@ -41,52 +41,58 @@ class Helper {
     //format date and time to 12h format
     public static function formatDate12($date = null)
     {
+        $format = Yii::app()->params['date']['formatDate12'];
         if($date)
-            return date('Y-m-d g:ia', strtotime($date));
+            return date($format, strtotime($date));
         else
-            return date('Y-m-d g:ia');
+            return date($format);
     }
 
     //format date to format:  oct 12
     public static function formatDateShort($date)
     {
-        return strtolower(date('M d', strtotime($date)));
+        $format = Yii::app()->params['date']['formatDateShort'];
+    		return strtolower(date($format, strtotime($date)));
     }
 
     //format date to format:  03th December 2011
     public static function formatDateLong($date = null)
     {
-        if($date)
-            return strtolower(date('dS F Y', strtotime($date)));
+        $format = Yii::app()->params['date']['formatDateLong'];
+    		if($date)
+            return strtolower(date($format, strtotime($date)));
         else
-            return strtolower(date('dS F Y'));
+            return strtolower(date($format));
     }
 
     //format date to format:  2/25/12 - mon/day/year
     public static function formatDateSlash($date = null)
     {
+        $format = Yii::app()->params['date']['formatDateSlash'];
         if($date)
-            return strtolower(date('n/j/y', strtotime($date)));
+            return strtolower(date($format, strtotime($date)));
         else
-            return strtolower(date('n/j/y'));
+            return strtolower(date($format));
     }
 
     //format date to format:  2/25/12 at 10:38pm - mon/day/year at time
     public static function formatDateSlashFull($date = null)
     {
-        if($date)
-            return strtolower(date('n/j/y \a\t g:ia', strtotime($date)));
+        $format = Yii::app()->params['date']['formatDateSlashFull'];
+    		if($date)
+            return strtolower(date($format, strtotime($date)));
         else
-            return strtolower(date('n/j/y \a\t g:ia'));
+            return strtolower(date($format));
     }
 
     //format date to format:  2nd April 2012 - 3:42pm
     public static function formatDateLongWithTime($date = null)
     {
-        if($date)
-            return date('jS F Y - g:ia', strtotime($date));
+        $format = Yii::app()->params['date']['formatDateLongWithTime'];
+    		if($date)
+            return date($format, strtotime($date));
         else
-            return date('jS F Y - g:ia');
+            return date($format);
     }
 
     /**

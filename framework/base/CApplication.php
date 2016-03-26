@@ -533,10 +533,13 @@ abstract class CApplication extends CModule
 	public function createAbsoluteUrl($route,$params=array(),$schema='',$ampersand='&')
 	{
 		$url=$this->createUrl($route,$params,$ampersand);
-		if(strpos($url,'http')===0)
+		if(strpos($url,'http')===0) {
 			return $url;
-		else
-			return $this->getRequest()->getHostInfo($schema).$url;
+		}
+
+		$url = $this->getRequest()->getHostInfo($schema).$url;
+
+		return $url;
 	}
 
 	/**
@@ -549,7 +552,9 @@ abstract class CApplication extends CModule
 	 */
 	public function getBaseUrl($absolute=false)
 	{
-		return $this->getRequest()->getBaseUrl($absolute);
+		$url = $this->getRequest()->getBaseUrl($absolute);
+
+		return $url;
 	}
 
 	/**
@@ -557,15 +562,20 @@ abstract class CApplication extends CModule
 	 */
 	public function getHomeUrl()
 	{
-		if($this->_homeUrl===null)
-		{
-			if($this->getUrlManager()->showScriptName)
-				return $this->getRequest()->getScriptUrl();
-			else
-				return $this->getRequest()->getBaseUrl().'/';
+		if($this->_homeUrl===null) {
+			if($this->getUrlManager()->showScriptName) {
+				$url = $this->getRequest()->getScriptUrl();
+				return $url;
+			}
+			else {
+				$url = $this->getRequest()->getBaseUrl().'/';
+				return $url;
+			}
 		}
-		else
-			return $this->_homeUrl;
+		else {
+			$url = $this->_homeUrl;
+			return $url;
+		}
 	}
 
 	/**

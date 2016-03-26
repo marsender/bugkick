@@ -130,7 +130,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
                     return $options;
                 }
             } else {
-                $base = '/';
+                $base = Yii::app()->baseUrl . '/';
             }
             $allowDirs = array();
             foreach ((array)$cOptions['allowDirs'] as $allowDir) {
