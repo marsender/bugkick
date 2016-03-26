@@ -242,9 +242,9 @@ LINKTEXT
 <!--    <div class="ticket_content_bottom"></div>-->
     <!-- .ticket_content -->
 	<div class="ticket_reply">
-<!--		<h3 class="header" id="comments"><?php echo Yii::t('main', 'Replies and Issue History'); ?></h3>-->
         <!-- List of comments     -->
             <ul class="message">
+				<h3><?php echo Yii::t('main', 'Comments'); ?></h3>
 		<?php
 		$expression="'{$model->id}_".count($model->comment)."'";
 		$beginCache=$this->beginCache(

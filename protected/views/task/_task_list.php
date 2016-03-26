@@ -1,6 +1,6 @@
 <div class="task-box">
-    <div class="task-icon"></div>
-    <div class="clear"></div>
+    <!-- <div class="task-icon"></div>
+    <div class="clear"></div> -->
     <ul class="task-list">
         <h3><?php echo Yii::t('main', 'Micro Tasks');?></h3>
         <?php $this->widget('zii.widgets.CListView', array(

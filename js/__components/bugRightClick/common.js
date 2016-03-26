@@ -192,7 +192,7 @@ $(document).ready(function () {
         	if(confirm('Are you sure you want to delete this comment?')){
             	jQuery.ajax({
             		"type": 'POST',
-            		"url" : '/bug/DeleteComment/' + iCommentID,
+            		"url" : '/bugkick/bug/DeleteComment/' + iCommentID, /* Todo: Set base url */
             		"data": {
             					 YII_CSRF_TOKEN : YII_CSRF_TOKEN
             				},

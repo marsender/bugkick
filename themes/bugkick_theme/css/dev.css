@@ -75,6 +75,7 @@ a.cancel-search{
 ul.message div:last-child{
     border: none !important;
     margin: 0px;
+    margin-bottom: 5px;
 }
 
 .view-more-pager li.next a{
@@ -771,6 +772,7 @@ a#calendar-tab{
     float: right;
     clear: both;
     height: 5px;
+    margin-bottom: 5px;
 }
 input[disabled],
 select[disabled],
@@ -1042,6 +1044,7 @@ margin-left: 1px;
 
 #commentBlock {
 width: 690px;
+margin-bottom: 5px;
 }
 
 #comment-form .row{

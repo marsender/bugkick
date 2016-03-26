@@ -2870,7 +2870,8 @@ body *.unselectable {
   margin-right: 5px;
 }
 #commentBlock .row.buttons #postCommentBtn {
-  float: right;
+	margin-left: 15px;
+  /*float: right;*/
 }
 /* Comments Advanced Options */
 #commentBlock .row.buttons #showAdvancedOptions {

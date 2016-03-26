@@ -20,7 +20,7 @@
 	<div class="row txtAreaBlock">
 		<?php /*
 		<img alt="Insert the Code" title="<?php echo Yii::t('main','Insert The Code'); ?>" class="imgBtn codeBtn"
-			 src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/code.png" /> 
+			 src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/code.png" />
 		 */
 		?>
 <!--		<script type="text/javascript">
@@ -148,10 +148,10 @@
 						Yii::app()->urlManager->createUrl('site/previewMarkdown'),
 				),
 			)
-			
-			
-			
-			
+
+
+
+
 		);*/
 		?>
 		<?php echo $form->error($model,'message'); ?>
@@ -225,7 +225,7 @@
                     'class'=>'bkButtonBlueSmall normal',
                     'style'=>'width: 145px;margin-top: 0px;height:32px')
             );
-            if (!$bug->isarchive){
+            if (false && !$bug->isarchive){
                 echo CHtml::link(Yii::t('main', 'Comment and Close'), '#', array(
                     'id'=>'postCommentCloseBtn',
                     'class'=>'bkButtonGraySmall normal',
