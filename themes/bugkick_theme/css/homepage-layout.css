@@ -270,7 +270,7 @@ div.flash-success a {
   width: 90px;
 }
 #main-content #bug-image {
-  background: url("../images/Landing/bug_bg.png") no-repeat;
+  background: url("../images/landing/bug_bg.png") no-repeat;
   height: 250px;
   position: absolute;
   right: 0;
