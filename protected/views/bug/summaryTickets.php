@@ -11,7 +11,7 @@ function fixProjectName(){
 	});
 	$('html, body').animate({ scrollTop: 0 }, 'slow');
 };
-		
+
 fixProjectName();
 ", CClientScript::POS_READY);
 ?>
@@ -39,9 +39,9 @@ $this->widget('zii.widgets.CListView', array(
 ?>
 
 	<div class="b_closed_tickets">
-		<div class="b_label">Tickets Closed per Day:</div>
+		<div class="b_label"><?php echo Yii::t('main', 'Tickets closed per day'); ?>:</div>
 		<ul class="b_daily_score">
-		  <?php foreach($bugChanges as $record) { 
+		  <?php foreach($bugChanges as $record) {
 		  	$fScorePerc = ($max_closed == 0) ? 0 : (($record['count'] / $max_closed) * 100);
 		  	?>
         	<li>

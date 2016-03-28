@@ -1,4 +1,5 @@
-<?php return array(
+<?php
+return array(
 	'Hi'=>'Bonjour',
 	'New Ticket'=>'Nouveau ticket',
 	'Calendar'=>'Calendrier',
@@ -7,4 +8,5 @@
 	'Labels'=>'Étiquettes',
 	'New Project'=>'Nouveau projet',
 	'Projects'=>'Projets',
+	'Tickets closed per day'=>'Tickets fermés par jour',
 );

@@ -1673,7 +1673,7 @@ JS
     		}
     		if( $iMaxClosed < $iCount )
     			$iMaxClosed = $iCount;
-    		array_push($arrClosedTickets, array('date' => date('m/d/Y', strtotime($dDate)), 'count' => $iCount));
+    		array_push($arrClosedTickets, array('date' => Helper::formatDateSlash($dDate), 'count' => $iCount));
     	}
     	////////////////////////////////////////////
 
