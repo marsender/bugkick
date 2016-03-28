@@ -1,7 +1,8 @@
 <?php
 $currDir = dirname(__FILE__) . DIRECTORY_SEPARATOR;
 $paramsDir = $currDir . 'params' . DIRECTORY_SEPARATOR;
-$baseUrl = '/bugkick';
+
+$app = require($currDir . 'app.php');
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
@@ -14,6 +15,8 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 
 	'name'=>'BugKick',
+
+	'language'=>$app['language'],
 
 	'theme'=>'bugkick_theme',
 
@@ -193,7 +196,7 @@ return array(
 					'prevPageLabel' => '<span class="pagination-left"></span>',
 				),
 				'CJuiDialog' => array(
-					'themeUrl' => $baseUrl . '/css/',
+					'themeUrl' => $app['baseurl'] . '/css/',
 					'theme' => 'ui',
 					'options'=>array(
 						'resizable'=>false,
