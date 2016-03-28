@@ -11,11 +11,11 @@ class Helper {
     public static function  truncateString($string, $limit = 20, $break= ' ', $pad = "&#133;")
     {
       // return with no change if string is shorter than $limit
-      if(strlen($string) <= $limit) return $string;
+      if(mb_strlen($string) <= $limit) return $string;
 
-      $string = substr($string, 0, $limit);
-      if(false !== ($breakpoint = strrpos($string, $break))) {
-        $string = substr($string, 0, $breakpoint);
+      $string = mb_substr($string, 0, $limit);
+      if(false !== ($breakpoint = mb_strrpos($string, $break))) {
+        $string = mb_substr($string, 0, $breakpoint);
       }
 
       return $string . $pad;
@@ -24,9 +24,9 @@ class Helper {
     //Use for trimming and keep words unbroken
     public static function neatTrim($str, $n, $delim = '&#133;')
     {
-       $len = strlen($str);
+       $len = mb_strlen($str);
        if ($len > $n) {
-			$str=rtrim( preg_replace('/\s+?(\S+)?$/', '', substr($str, 0, $n)) );
+			$str=rtrim( preg_replace('/\s+?(\S+)?$/', '', mb_substr($str, 0, $n)) );
 			$str=preg_replace('#</?[^>]*$#', '', $str);
 			$str.=$delim;
 			if(preg_match('#<(\w+)[^>/]*>(?!</\w+>.*?$)#', $str, $matches))
