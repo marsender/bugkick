@@ -5,12 +5,12 @@
  * @author f0t0n
  */
 class KeyController extends ApiController {
-    
+
 	public function actionGenerate()
     {
         $company = Company::model()->findByPk( Company::current() );
         if(empty($company)) {
-            $this->redirect(array('/site/login'));
+            $this->redirect(array(Yii::app()->createUrl('/site/login')));
         }
         if ($company->account_type == Company::TYPE_PAY){
 

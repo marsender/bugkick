@@ -11,7 +11,7 @@
     ));
     ?>
     <div class="row">
-        <span class="invites-text">Invite a friend, give them 1 year of pro free!</span>
+        <span class="invites-text"><?php echo Yii::t('main', 'Invite a friend, give them 1 year of pro free!'); ?></span>
         <?php echo $form->textField($model, 'email', array('style'=>'width: 175px', 'placeholder'=>'Email'));  ?>
         <a href="#" title="Hide" class="cancel-search" style="left:-9px;top:9px;float: right;position: relative">Hide</a>
         <?php echo $form->error($model, 'email'); ?>

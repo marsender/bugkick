@@ -11,7 +11,7 @@ class TaskController extends Controller
     {
         if(Yii::app()->user->isGuest) {
             Yii::app()->user->setFlash('error','Please log in to access this page.');
-            $this->redirect('/site/login');
+            $this->redirect($this->createUrl('/site/login'));
         }
     }
 
@@ -78,7 +78,7 @@ class TaskController extends Controller
             : Task::STATUS_COMPLETED;
         $task->save();
     }
-    
+
 	public function actionDelete($id)
 	{
         $model = $this->loadModel($id);
@@ -89,7 +89,7 @@ class TaskController extends Controller
 
         $this->redirect(Yii::app()->request->getUrlReferrer());
 	}
-    
+
 	public function actionEdit()
 	{
         $taskID = (int) $_POST['taskID'];
@@ -108,7 +108,7 @@ class TaskController extends Controller
         $task->description = $_POST['description'];
         $task->save();
 	}
-    
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

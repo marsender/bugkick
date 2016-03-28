@@ -38,7 +38,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 
 <div class="settings">
     <div class="settings-header">
-	   <h2>Preferences</h2>
+	   <h2><?php echo Yii::t('main', 'Preferences'); ?></h2>
 	   <a href="#" id="btn_change_password"><?php echo Yii::t('main', 'Change Password'); ?></a>
     </div>
     <?php

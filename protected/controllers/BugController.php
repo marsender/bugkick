@@ -16,7 +16,7 @@ class BugController extends Controller
     {
         if(Yii::app()->user->isGuest) {
             Yii::app()->user->setFlash('error','Please log in to access this page.');
-            $this->redirect('/site/login');
+            $this->redirect(Yii::app()->baseUrl . '/site/login');
         }
     }
 
@@ -97,7 +97,7 @@ class BugController extends Controller
              ),
          );
      }
-       
+
     public function actionUpdateAjaxComment(){
         $comment = Yii::app()->request->getPost('Comment');
         $bugForm = Yii::app()->request->getPost('BugForm');
@@ -150,7 +150,7 @@ class BugController extends Controller
         }
     }
 
-    
+
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
@@ -163,17 +163,17 @@ class BugController extends Controller
 		if(!empty($user))
 			$currentProject = $user->currentProject;
 		if(empty($currentProject))
-			$this->redirect('/project/index');
+			$this->redirect(Yii::app()->baseUrl . '/project/index');
         Yii::app()->minScript->generateScriptMap(array(
-            '/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js',
-            '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js',
-            '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushCss.js',
-            '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushPhp.js',
-            '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushSql.js',
-            '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushXml.js',
-            '/themes/bugkick_theme/js/comments-0.0.1.min.js',
-            '/js/bugkick/bug/view.js',
-            '/js/plug-in/autoresize/jquery.autoresize.min.js',
+            Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js',
+            Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js',
+            Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushCss.js',
+            Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushPhp.js',
+            Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushSql.js',
+            Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushXml.js',
+            Yii::app()->baseUrl . '/themes/bugkick_theme/js/comments-0.0.1.min.js',
+            Yii::app()->baseUrl . '/js/bugkick/bug/view.js',
+            Yii::app()->baseUrl . '/js/plug-in/autoresize/jquery.autoresize.min.js',
         ));
 		Yii::app()->clientScript->registerScriptFile(
 			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js'
@@ -287,7 +287,7 @@ JS
     protected function initBugForm() {
         $this->bugForm = new BugForm(BugForm::SCENARIO_EDIT);
         if($this->bug->title != $this->bug->description) {
-            $this->bug->description = 
+            $this->bug->description =
                 str_replace('&#133;', '', $this->bug->title)
                 . $this->bug->description;
         }
@@ -413,7 +413,7 @@ JS
             $model->save();
         }
 	}
-	
+
 	protected function createBug(BugBase $model, Project $project) {
         $transactionResult = false;
         $model->getDbConnection()->setAutoCommit(false);
@@ -518,7 +518,7 @@ JS
                 Yii::app()->createUrl('bug/view/',array('id'=>$model->number)));
         }
     }
-    
+
     public function updateBug(Bug $bugModel,
             $formId = null, $onSuccess = null) {
         $temp = $bugModel; // Save old state bug model before changes
@@ -655,7 +655,7 @@ JS
 	protected function tranFault() {
 		throw new CException('Transaction failed.');
 	}
-	
+
 	/**
      * Deletes a selected comment.
      * If deletion is successful, clearing selected comment from page.
@@ -676,7 +676,7 @@ JS
             } catch(CException $ex) {
 				 $sErrEcho = 'Comment deleting failed...';
 			}
-            
+
             if( !isset($sErrEcho) ){
 				echo json_encode(array("status" => 200));
 			} else{
@@ -684,7 +684,7 @@ JS
 			}
         }
     }*/
-    
+
     /**
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -748,21 +748,21 @@ JS
             if(isset($projectID)) {
                 User::updateCurrentProject($projectID);
             }
-            
+
             // if AJAX request (triggered by deletion via admin grid view),
             // we should not redirect the browser
             if (!isset($_GET['ajax'])) {
                 $this->redirect(
-                    isset($_POST['returnUrl']) 
+                    isset($_POST['returnUrl'])
                         ? $_POST['returnUrl']
                         : array('index'));
             }
         } else {
-            throw new CHttpException(400, 
+            throw new CHttpException(400,
                 'Invalid request. Please do not repeat this request again.');
         }
     }
-    
+
     /**
      * Lists all models.
      */
@@ -1047,7 +1047,7 @@ JS
 				'pagination'=>$pages,
 			)
 		);
-		
+
         if (Yii::app()->request->isAjaxRequest){
          // $this->renderPartial('_bugGrid', array(
             $this->renderPartial('_bugList', array(
@@ -1201,12 +1201,12 @@ JS
         if (Yii::app()->request->isAjaxRequest && !empty($_GET['id'])) {
             $this->bug = Bug::model()->resetScope()->findByPk($_GET['id']);
             $this->initBugForm();
-            $this->layout = 'layout';         
+            $this->layout = 'layout';
             $this->render('_form', array('model'=>$this->bugForm));
             Yii::app()->end();
         }
     }
-    
+
     /**
      * Move ticket to the archive
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -1227,7 +1227,7 @@ JS
                 $model->archiving_date = new CDbExpression('NOW()');
                 $changes = array(0=>array('field'=>'archived', 'value'=>1));
             }
-            
+
             if ($model->save()){
                 if(isset($changes) && !empty($changes)){
                     $changeLog = new BugChangelog();
@@ -1335,7 +1335,7 @@ JS
 
 /*
     Drag and Drop actions:
-*/        
+*/
     public function actionDndPrioritySort()
     {
         if (Yii::app()->request->isAjaxRequest){
@@ -1533,7 +1533,7 @@ JS
     {
         $ticketIDs = $this->request->getParam('elemID');
         $statusID = (int) $this->request->getParam('statusID');
-        if(Yii::app()->request->isAjaxRequest 
+        if(Yii::app()->request->isAjaxRequest
                 && !empty($ticketIDs)
                 && $statusID > 0) {
 
@@ -1564,12 +1564,12 @@ JS
         else
             throw new CHttpException(400, 'Invalid request.');
     }
-    
+
     public function actionGetTicketOrder($id)
     {
       header('Content-type: application/json');
       $id = (int) $id;
-      $sql = "SELECT id, priority_order FROM bk_bug WHERE project_id = " . $id . " ORDER BY priority_order";      
+      $sql = "SELECT id, priority_order FROM bk_bug WHERE project_id = " . $id . " ORDER BY priority_order";
       $connection = Yii::app()->db;
       $connection->active = true;
       $command = $connection->createCommand($sql);
@@ -1579,7 +1579,7 @@ JS
 
       Yii::app()->end();
     }
-    
+
     public function actionUpdateTicketOrder()
     {
         if (Yii::app()->request->isAjaxRequest){
@@ -1588,13 +1588,13 @@ JS
 
             $sql = 'UPDATE bk_bug SET priority_order = CASE id';
             $idarray = array();
-            foreach ($new_positions as $value) {  
-                $id = (int) $value['id'];        
+            foreach ($new_positions as $value) {
+                $id = (int) $value['id'];
                 $position = (int) $value['position'];
                 array_push($idarray, $id);
-                $sql .= ' WHEN '.$id.' THEN '.$position.' ';                
+                $sql .= ' WHEN '.$id.' THEN '.$position.' ';
             }
-            
+
             $sql .= ' END WHERE id IN ('.implode(",", $idarray).')';
 
             $connection = Yii::app()->db;
@@ -1611,13 +1611,13 @@ JS
         else
             throw new CHttpException(400, 'Invalid request.');
     }
-    
+
     public function actionSummaryTickets(){
     	$this->layout = '//layouts/column1';
-    	 
+
     	$user    = User::current();
     	$project = Project::getCurrent();
-    	 
+
     	$criteria = new CDbCriteria();
     	$criteria->with = array(
     			'label'   => array(),
@@ -1629,15 +1629,15 @@ JS
     	$criteria->distinct = true;
     	$criteria->together = false;
     	$criteria->order    = 'project.name ASC';
-    	 
+
     	$pages = new CPagination(Bug::model()->currentCompany()->count($criteria));
     	//tickets per page is set on settings page, by default, it's 30
     	$pages->pageSize = $user->tickets_per_page;
     	$pages->applyLimit($criteria);
-    	 
+
     	//create model
     	$bugFinder = Bug::model()->currentCompany();
-    	 
+
     	$model = new CActiveDataProvider(
     			$bugFinder,
     			array(
@@ -1645,7 +1645,7 @@ JS
     					'pagination' => $pages,
     			)
     	);
-    	 
+
     	//Tickets closed per day
     	$iLastDaysCount = 30;
     	$criteria = new CDbCriteria();
@@ -1656,12 +1656,12 @@ JS
     	);
     	$last30Days  = date('Y-m-d H:i:s', time() - 3600 * 24 * $iLastDaysCount);
     	$criteria->addCondition("t.date > '". $last30Days . "'");
-    
+
     	$bugChanges = new CActiveDataProvider('BugChangelog', array(
     			'criteria'  => $criteria,
     	));
     	$bugChanges->setPagination(false);
-    
+
     	$arrClosedTickets = array();
     	$iMaxClosed = 0;
     	for($i = $iLastDaysCount; $i >= 1; $i--){
@@ -1676,7 +1676,7 @@ JS
     		array_push($arrClosedTickets, array('date' => date('m/d/Y', strtotime($dDate)), 'count' => $iCount));
     	}
     	////////////////////////////////////////////
-    	 
+
     	$this->render('summaryTickets', array(
     			'project'       => $project,
     			'model'         => $model,

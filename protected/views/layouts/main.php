@@ -17,7 +17,7 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>    
+<body>
 
 <div class="container" id="page">
 
@@ -26,19 +26,19 @@
 	</div><!-- header -->
 
 	<div id="mainmenu">
-		<?php 
+		<?php
 
         $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/bug'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Company', 'url'=>array('/company'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>'Settings', 'url'=>array('/settings'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Home', 'url'=>array(Yii::app()->baseUrl . '/bug'), 'visible'=>!Yii::app()->user->isGuest),
+        array('label'=>'Company', 'url'=>array(Yii::app()->baseUrl . '/company'), 'visible'=>!Yii::app()->user->isGuest),
+        array('label'=>'Settings', 'url'=>array(Yii::app()->baseUrl . '/settings'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Login', 'url'=>array(Yii::app()->baseUrl . '/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array(Yii::app()->baseUrl . '/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
-		)); 
-        
-        
+		));
+
+
         ?>
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
@@ -46,7 +46,7 @@
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
-        
+
 	<?php echo $content; ?>
 
 	<div id="footer">

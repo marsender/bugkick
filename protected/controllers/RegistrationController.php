@@ -16,7 +16,7 @@ class RegistrationController extends Controller
 		$response = FacebookHelper::parseSignedRequest($signedRequest);
 		return $response;
 	}
-	
+
 	protected function fbRegisterUser($response)
     {
 		/*$company = new Company;
@@ -48,10 +48,10 @@ class RegistrationController extends Controller
             return;
         }
 		Yii::app()->user->setFlash('success', 'Registration complete!');
-		$this->forward('/site/login');
+		$this->forward($this->createUrl('/site/login'));
 		//$this->redirect($this->createUrl('bug/'));
 	}
-	
+
 	public function actionFacebook()
     {
 		$graph = $this->session->get('fbGraph');
@@ -63,7 +63,7 @@ class RegistrationController extends Controller
 			$this->fbRegisterUser($response);
 		$this->render('v2/facebook');
 	}
-	
+
 	public function actionIndex()
     {
 		if(!Yii::app()->user->isGuest)
@@ -167,7 +167,7 @@ class RegistrationController extends Controller
             $user->userStatus = User::STATUS_ACTIVE;
 
             $user->isadmin = 1;
-            
+
             $user_img = CUploadedFile::getInstance($user,'profile_img');
             if(!empty($user_img))
                 $user->profile_img = md5(uniqid(mt_rand(), true)) . '.' . $user_img->getExtensionName();
@@ -183,7 +183,7 @@ class RegistrationController extends Controller
                 $user->setDefaultEmailPreferences();
                 $user->defaultCompany = $company->company_id;
 
-				$user->registration_token = 
+				$user->registration_token =
 					Hash::sha256($user->id . uniqid(mt_rand(100,100500), true));
 				if(!$user->save())
 					throw new CException('MySQL error #01 during registration.');
@@ -218,7 +218,7 @@ class RegistrationController extends Controller
 //                    $company_logo->saveAs(Yii::getPathOfAlias('webroot.images.company_logo') . '/' . $company->company_logo);
 //                    ImageHelper::thumb(100, 100, Yii::getPathOfAlias('webroot.images.company_logo') . '/' . $company->company_logo);
 //                }
-                          
+
                 $userByCompany = new UserByCompany;
                 $userByCompany->company_id = $company->company_id;
                 $userByCompany->user_id = $user->user_id;
@@ -307,13 +307,13 @@ class RegistrationController extends Controller
     {
 		$token = $this->request->getParam('t');
 		if(empty($token))
-			$this->forward('/registration');
+			$this->forward($this->createUrl('/registration'));
 		$user = User::model()->find(
 			'registration_token=:registration_token',
 			array(':registration_token'=>$token)
 		);
 		if(empty($user))
-			$this->forward('/registration');
+			$this->forward($this->createUrl('/registration'));
 		$user->userStatus = User::STATUS_ACTIVE;
 		if(!$user->save())
 			throw new CException(404, 'Error during registration verification.');
@@ -326,7 +326,7 @@ class RegistrationController extends Controller
 		$loginForm->login(false);
 		$this->redirect($this->createUrl('site/login'));
 	}
-    
+
     public function performAjaxValidation($user, $company)
     {
         //validate coupon

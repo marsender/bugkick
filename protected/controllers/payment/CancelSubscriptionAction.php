@@ -5,7 +5,7 @@
  * @author f0t0n
  */
 class CancelSubscriptionAction extends Action {
-	
+
 	/**
 	 *
 	 * @var User
@@ -16,25 +16,25 @@ class CancelSubscriptionAction extends Action {
 	 * @var Company
 	 */
 	protected $company;
-	
+
 	/**
 	 *
 	 * @var StripeCustomer
 	 */
 	protected $stripeCustomer;
-	
+
 	/**
 	 *
 	 * @var PaymentFactory
 	 */
 	protected $paymentFactory;
-	
+
 	/**
 	 *
 	 * @var array
 	 */
 	protected $paymentData;
-	
+
 	public function __construct($controller, $id) {
 		parent::__construct($controller, $id);
 		$this->user=User::current();
@@ -42,14 +42,14 @@ class CancelSubscriptionAction extends Action {
 		$this->paymentFactory=null;
 		$this->paymentData=array();
 	}
-	
+
 	public function run() {
 		if(empty($this->user) || empty($this->company)) {
 			Yii::app()->user->setFlash(
 				'error',
 				Yii::t('main', 'You have to be logged-in within some company.')
 			);
-			$this->controller->redirect(array('/site/login'));
+			$this->controller->redirect(array(Yii::app()->baseUrl . '/site/login'));
 		}
 		$this->stripeCustomer=StripeCustomer::model()->findByAttributes(
 			array(
@@ -64,7 +64,7 @@ class CancelSubscriptionAction extends Action {
 		}
 		//	else if... another cases for other payment systems can be here
 		else {
-			$this->controller->redirect(array('bug/'));
+			$this->controller->redirect(array(Yii::app()->baseUrl . 'bug/'));
 		}
 		$this->viewData['isSubscriptionCanceled']=false;
 		if(!empty($_POST)) {
@@ -72,7 +72,7 @@ class CancelSubscriptionAction extends Action {
 		}
 		$this->controller->render('cancel-subscription', $this->viewData);
 	}
-	
+
 	protected function cancelSubscription() {
 		$subscription=$this->paymentFactory->createSubscription($this->paymentData);
 		if($subscription->unsubscribeClient($this->user)) {

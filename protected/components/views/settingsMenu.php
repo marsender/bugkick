@@ -1,5 +1,5 @@
 <ul id="right_menu">
-	<li><?php echo CHtml::link(Yii::t('main','Settings'), CHtml::normalizeUrl(array('settings/')),
+	<li><?php echo CHtml::link(Yii::t('main','Preferences'), CHtml::normalizeUrl(array('settings/')),
         ($controllerId == 'settings' && $actionId == 'index')? array('class'=>'active') : array()
     ) ?></li>
 	<li><?php echo CHtml::link(Yii::t('main','Notifications'), CHtml::normalizeUrl(array('settings/emailPreferences')),

@@ -22,20 +22,20 @@ class ProAccountAction extends Action {
 	 * @var StripeCustomer
 	 */
 	protected $stripeCustomer;
-	
+
 	public function __construct($controller, $id) {
 		parent::__construct($controller, $id);
 		$this->user=User::current();
 		$this->company=Company::model()->findByPk(Company::current());
 	}
-	
+
 	public function run() {
 		if(empty($this->user) || empty($this->company)) {
 			Yii::app()->user->setFlash(
 				'error',
 				Yii::t('main', 'You have to be logged-in within some company.')
 			);
-			$this->controller->redirect(array('/site/login'));
+			$this->controller->redirect(array(Yii::app()->baseUrl . '/site/login'));
 		}
 		$this->stripeCustomer=StripeCustomer::model()->findByAttributes(
 			array(
@@ -59,12 +59,12 @@ class ProAccountAction extends Action {
                     break;
                 default:
                     Yii::app()->user->setFlash('error', "Please choose a subscription.");
-                    $this->controller->redirect(array('payment/chooseSubscription'));
+                    $this->controller->redirect(array(Yii::app()->baseUrl . 'payment/chooseSubscription'));
             }
         }
         else{
             Yii::app()->user->setFlash('error', "Please choose a subscription.");
-            $this->controller->redirect(array('payment/chooseSubscription'));
+            $this->controller->redirect(array(Yii::app()->baseUrl . 'payment/chooseSubscription'));
         }
 
 		$this->initViewData();
@@ -78,13 +78,13 @@ class ProAccountAction extends Action {
         }
 		$this->controller->render($view, $this->viewData);
 	}
-	
+
 	protected function checkStripeCustomer() {
 		if(!empty($this->stripeCustomer)) {
-			$this->controller->redirect(array('bug/'));
+			$this->controller->redirect(array(Yii::app()->baseUrl . 'bug/'));
 		}
 	}
-	
+
 	protected function initViewData() {
 		$this->viewData['model']=new PaymentForm();
 		$currYear=date('Y');
@@ -92,14 +92,14 @@ class ProAccountAction extends Action {
 		$this->viewData['months']=$this->createListData(1, 13, 'm');
 		$this->viewData['years']=$this->createListData($currYear, $lastYear, 'y');
 	}
-	
+
 	protected function createListData($min, $max, $key) {
 		$arr=array();
 		for($i = $min; $i < $max; $i++)
 			$arr[]=array($key=>$i);
 		return $arr;
 	}
-	
+
 	protected function handlePost() {
 		$paymentFormAttributes=$this->request->getPost('PaymentForm');
 		$paymentFactory=null;
@@ -125,7 +125,7 @@ class ProAccountAction extends Action {
 			$this->viewData['paymentError']=$ex->getMessage();
 		}
 	}
-	
+
 	protected function getStripePaymentData($interval)
     {
         $type = $this->controller->session['planType'];
@@ -138,7 +138,7 @@ class ProAccountAction extends Action {
 
         if( empty($type) || empty($planID) ){
             Yii::app()->user->setFlash('error', "Please choose a subscription.");
-            $this->controller->redirect(array('payment/chooseSubscription'));
+            $this->controller->redirect(array(Yii::app()->baseUrl . 'payment/chooseSubscription'));
         }
 		return array(
 			'apiKey'=>Yii::app()->params['stripe']['secretKey'],
@@ -146,7 +146,7 @@ class ProAccountAction extends Action {
             'planName'=>$planName,
 		);
 	}
-	
+
 	protected function processCall($paymentFactory, $paymentData) {
 		if($paymentFactory instanceof PaymentFactory && !empty($paymentData)) {
 			//	Next case is only for Stripe payment for now
@@ -158,13 +158,13 @@ class ProAccountAction extends Action {
 			}
 		}
 	}
-	
+
 	protected function charge(
 		PaymentFactory $paymentFactory, array $paymentData) {
 		$charge=$paymentFactory->createCharge($paymentData);
 		$charge->chargeClient($this->user);
 	}
-	
+
 	protected function subscribe(
 		PaymentFactory $paymentFactory, array $paymentData) {
 		$subscription=$paymentFactory->createSubscription($paymentData);
