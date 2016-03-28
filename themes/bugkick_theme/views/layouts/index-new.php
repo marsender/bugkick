@@ -53,12 +53,12 @@ JS
 			<a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" title="Home Page"><h1 id="logo">BugKick</h1></a>
 			<div id="landing-nav">
 				<ul>
-                <?php if($this->getId() == 'site' && $this->getAction()->getId() == 'index') { ?>
+            <?php if(Yii::app()->params['showBugkickHomePage'] && !($this->getId() == 'site' && $this->getAction()->getId() == 'index')) { ?>
+				    <li id="back-to-home"><a href="<?php echo Yii::app()->homeUrl ?>" title="Go back to the home page" class="buttonLandingStyle no-bg"><< Back to the homepage</a></li>
+            <?php }else{ ?>
 				    <li><a href="<?php echo $this->createUrl('/registration'); ?>" title="Sign Up" class="buttonLandingStyle green">Sign Up</a></li>
 				    <li><a href="<?php echo $this->createUrl('/site/login'); ?>" title="Sign In" class="buttonLandingStyle no-bg">Sign In >></a></li>
-                <?php }else{ ?>
-                    <li id="back-to-home"><a href="<?php echo Yii::app()->homeUrl ?>" title="Go back to the home page" class="buttonLandingStyle no-bg"><< Back to the Homepage</a></li>
-                <?php } ?>
+            <?php } ?>
 				</ul>
 			</div>
 			<div class="clear"></div>

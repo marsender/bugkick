@@ -59,7 +59,9 @@ class ProjectController extends Controller
 			$this->redirect($this->createUrl('site/login'));
 		}
 
-		$this->showHelpForNewUsers();
+		if (Yii::app()->params['showBugkickSteps']) {
+			$this->showHelpForNewUsers();
+		}
 
 		$user = User::current();
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-json/jquery.json.min.js');
@@ -450,10 +452,6 @@ class ProjectController extends Controller
 	//    }
 	protected function showHelpForNewUsers()
 	{
-		if (!Yii::app()->params['showHelpForNewUsers']) {
-			return;
-		}
-
 		Yii::import('application.controllers.SiteController');
 		if (Yii::app()->request->cookies->contains(SiteController::BK_NEW_USER) && Yii::app()->request->cookies[SiteController::BK_NEW_USER]->value == 1) {
 			//remove new user flag

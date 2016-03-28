@@ -11,7 +11,9 @@ return array(
 
 	'passwordSalt'=>require($paramsDir . 'salt.php'),
 
-	'showHelpForNewUsers'=>false,
+	'showBugkickHomePage'=>true,
+	
+	'showBugkickSteps'=>true,
 
 	'bcryptWorkFactor'=>10,
 

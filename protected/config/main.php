@@ -22,7 +22,6 @@ return array(
 
 	'controllerMap' => require($currDir . 'controller-map.php'),
 
-
 	// preloading 'log' component
 	'preload'=>array('log'),
 
