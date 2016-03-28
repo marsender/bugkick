@@ -11,6 +11,8 @@ return array(
 
 	'passwordSalt'=>require($paramsDir . 'salt.php'),
 
+	'showHelpForNewUsers'=>false,
+
 	'bcryptWorkFactor'=>10,
 
 	'profileImageUrl'=>'images/profile_img/',

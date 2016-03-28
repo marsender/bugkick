@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/landing.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/plug-in/prettyphoto/prettyphoto.css" />
     -->
-    
+
     <?php
         $csrfToken=Yii::app()->request->csrfToken;
         echo
@@ -78,7 +78,7 @@ JS
 </div>
  <script type="text/javascript" src="<?php echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/chosen/chosen/chosen.jquery.min.js',
-     
+
         '/themes/bugkick_theme/js/home/jquery-prettyphoto.js',
     )); ?>"></script>
 <!--

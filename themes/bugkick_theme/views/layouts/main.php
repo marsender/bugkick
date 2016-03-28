@@ -168,7 +168,7 @@ JS
                 </li>
             <?php } ?>
             <li class="project-item">
-                <a href="<?php echo $this->createUrl('/project'); ?>" class="new-project-icon"><?php echo Yii::t('main','All Projects'); ?></a>
+                <a href="<?php echo $this->createUrl('/project'); ?>" class="new-project-icon"><?php echo Yii::t('main','All projects'); ?></a>
             </li>
         </ul>
     </div>

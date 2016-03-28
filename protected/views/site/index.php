@@ -15,31 +15,31 @@
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery-thumbnail-01.jpg" alt="Alt Text" />
                         </a>
                     </li>
-    				
+
                     <li>
                         <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery/instant-search.png" rel="prettyPhoto[pp_gal]" title="Like Google Instant to quickly search all your tickets.">
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery-thumbnail-02.jpg" alt="Alt Text" />
                         </a>
                     </li>
-    				
+
                     <li>
                         <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery/projects.jpg" rel="prettyPhoto[pp_gal]" title="Projects are a simple way to group sets of tasks. The project page let's you quickly view all projects and their progress at once.">
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery-thumbnail-03.jpg" alt="Alt Text" />
                         </a>
                     </li>
-    				
+
                     <li>
                         <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery/ticket-view.png" rel="prettyPhoto[pp_gal]" title="Example of a ticket. The original ticket and its labels, status, assignees are on the top, comments below. Changes in ticket status are shown on the top-right side.">
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery-thumbnail-04.jpg" alt="Alt Text" />
                         </a>
                     </li>
-    				
+
                     <li>
                         <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery/drag-and-drop.png" rel="prettyPhoto[pp_gal]" title="Drag-and-drop tickets to set priority or to add/remove/change a label or other filter.">
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery-thumbnail-05.jpg" alt="Alt Text" />
                         </a>
                     </li>
-    				
+
                     <li>
                         <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery/gantt-charts.png" rel="prettyPhoto[pp_gal]" title="View project progress using Gantt charts. These let you quickly assess how many tickets are open in a project and how close each is to being complete.">
                             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/landing/gallery-thumbnail-06.jpg" alt="Alt Text" />
@@ -51,7 +51,7 @@
     			<div class="feature-container">
     				<h3>Actually Free</h3>
     				<p>
-    					Free and without limits: Unlimited users, 
+    					Free and without limits: Unlimited users,
 						tickets, labels, projects, basically unlimited.
     				</p>
     				<ul class="ui-accordion">
@@ -116,7 +116,7 @@
     			<div class="feature-container">
     				<h3>BugKick Extensions</h3>
     				<p>
-    					Built to help support Musopen.org, and all 
+    					Built to help support Musopen.org, and all
 						profits from premium users will be donated.
     				</p>
     				<ul class="ui-accordion">
@@ -141,7 +141,8 @@
     				</ul>
     			</div>
                 <div class="video-intro">
-                    <iframe width="600" height="368" src="https://www.youtube.com/embed/fwHvtTZ5GUU?rel=0&vq=hd1080" frameborder="0" allowfullscreen></iframe>
+    								<iframe width="800" height="450" src="https://www.youtube.com/embed/T4YEIy_lQug?rel=0&vq=hd1080" frameborder="0" allowfullscreen></iframe>
+                    <!-- <iframe width="600" height="368" src="https://www.youtube.com/embed/fwHvtTZ5GUU?rel=0&vq=hd1080" frameborder="0" allowfullscreen></iframe> -->
                 </div>
     		</div>
     		<div id="content-footer">
