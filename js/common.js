@@ -306,7 +306,7 @@ $(function() {
     setupSortable();
     $("#showCalendar").click(function(){
             $.ajax({
-                'url': '/site/calendar',
+                'url': '/bugkick/site/calendar',
                 'type': 'post',
                 'data': {'YII_CSRF_TOKEN':YII_CSRF_TOKEN},
                 'success' : function(data) {
