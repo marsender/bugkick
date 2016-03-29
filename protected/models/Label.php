@@ -27,7 +27,7 @@ class Label extends CActiveRecord
 	{
 		return '{{label}}';
 	}
-    
+
     public function primaryKey()
     {
         return 'label_id';
@@ -67,7 +67,7 @@ class Label extends CActiveRecord
                 break;
             }
     }
-    
+
     protected function beforeSave()
     {
         if( $this->scenario == 'insert'){
@@ -76,7 +76,7 @@ class Label extends CActiveRecord
         $this->name = htmlspecialchars($this->name);
         return true;
     }
-    
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -126,7 +126,7 @@ class Label extends CActiveRecord
 		return array(
 			'label_id' => 'id',
 			'name' => 'Name',
-            'label_color'=> 'Label Color',
+            'label_color'=> 'Label color',
 			'company_id' => 'Company',
             'pre_created'=> 'Created by default'
 		);
@@ -153,14 +153,14 @@ class Label extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-    
+
     public static function getLabelByCompany($company_id='') {
         if(empty($company_id))
             $company_id = Yii::app()->user->company_id;
         $label = Label::model();
         return $label->findall('company_id=' . $company_id);
     }
-    
+
     public static function getNameById($id) {
         if(!empty($id)) {
             $model = Label::model()->findByPk((int) $id);

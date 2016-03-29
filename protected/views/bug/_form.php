@@ -99,7 +99,7 @@
                 )
             );
             ?>
-            <img class="createBug_newLabelBtn" alt="Create New Label" title="Create New Label"
+            <img class="createBug_newLabelBtn" alt="<?php echo Yii::t('main', 'Create new label'); ?>" title="<?php echo Yii::t('main', 'Create new label'); ?>"
                  src="<?php echo Yii::app()->theme->baseUrl; ?>/images/btn_plus.png"/>
             <?php echo $form->error($model, 'labels'); ?>
         </div>

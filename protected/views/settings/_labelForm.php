@@ -56,25 +56,25 @@
 </div>
 
 <div class="row buttons" style="height: 18px;">
-    <?php //echo CHtml::submitButton('Save Label', array('id'=>'label-form-submit-btn')); ?>
+    <?php //echo CHtml::submitButton('Save label', array('id'=>'label-form-submit-btn')); ?>
 	<a href="#" class="label-form-submit-btn bkButtonBlueSmall normal" onclick="$('#<?php echo $formID; ?>').submit(); return false;">
-		<?php echo Yii::t('main', 'Save Label'); ?>
+		<?php echo Yii::t('main', 'Save label'); ?>
 	</a>
 	<img alt="In progress" class="imgAjaxLoading" style="vertical-align: middle; display: none;" src="<?php echo Yii::app()->theme->baseUrl ?>/images/ajaxLoading16.png" />
-    <?php //echo CHtml::linkButton('Save Label', array('class'=>'label-form-submit-btn bkButtonGraySmall,)); ?>
-    <?php 
+    <?php //echo CHtml::linkButton('Save label', array('class'=>'label-form-submit-btn bkButtonGraySmall,)); ?>
+    <?php
     /*
-     echo CHtml::ajaxSubmitButton('Save', 
+     echo CHtml::ajaxSubmitButton('Save',
             CHtml::normalizeUrl(array('label/create')),
             array(
                 'dataType'=>'json',
                 'success'=>'js:function(data){
-                    //$("#labelDialog").dialog("close");      
+                    //$("#labelDialog").dialog("close");
                     $("#label-grid").html(data);
                     }'
             ),
             array('id'=>'labelButton')
-    ); 
+    );
       */
     ?>
 </div>

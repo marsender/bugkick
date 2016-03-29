@@ -67,4 +67,7 @@ return array(
 	'Post comment'=>'Ajouter le commentaire',
 	'Show advanced'=>'Options avancées',
 	'Status'=>'Statut',
+	'Save label'=>'Enregistrer l\'étiquette',
+	'Label color'=>'Couleur de l\'étiquette',
+	'Create new label'=>'Créer une nouvelle étiquette',
 );

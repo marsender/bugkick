@@ -1941,8 +1941,8 @@ div.basic-project-text {
   background-clip: padding-box;
 }
 .form-date-row {
-  float: right;
-  width: 161px;
+  /*float: right;*/
+  width: 200px;
 }
 #createBugDialog .row,
 #updateBugDialog .row {
@@ -1971,14 +1971,14 @@ div.basic-project-text {
   margin-right: 5px;
 }
 .form-date-row #duedate {
-  margin: 0;
+  margin-left: 0;
 }
-#createBugDialog .row #BugForm_labels_chzn,
+/*#createBugDialog .row #BugForm_labels_chzn,
 #updateBugDialog .row #BugForm_labels_chzn {
   display: inline-block;
   margin-left: 22px;
   margin-right: 6px;
-}
+}*/
 #updateBugDialog .row.update-ticket-status .chzn-container {
   float: left;
   margin-left: 22px;

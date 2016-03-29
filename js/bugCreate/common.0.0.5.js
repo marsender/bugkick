@@ -128,13 +128,13 @@ function createTicket() {
                 $.fn.yiiListView.update('bug-list', {data: searchKeywords});
             }
             $.jGrowl(
-                "Ticket is created. <a href='/ticket/"+data.ticketNumber+"'>View</a> "
+                "Ticket is created. <a href='/bugkick/ticket/"+data.ticketNumber+"'>View</a> "
             );
             if(typeof data.redirect != 'undefined'){
                 window.location = data.redirect;
             }
             /*setTimeout(function() {
-                $.flashMessage().message(" Ticket is created. <a href='/ticket/"+data.ticketNumber+"'>View</a> ")
+                $.flashMessage().message(" Ticket is created. <a href='/bugkick/ticket/"+data.ticketNumber+"'>View</a> ")
                 // $.flashMessage().success("Ticket is created");
              }, 800);*/
         },

@@ -145,23 +145,31 @@ $this->endClip();
                         title="<?php echo Yii::t('main', ($model->isarchive == 1? 'Open' : 'Close'));?>">
                     <a href="<?php echo Yii::app()->createUrl('bug/setarchived', array('id'=>$model->id))?>"  id="archived-link" ticket-id="<?php echo $model->id?>"  ><?php echo Yii::t('main', ($model->isarchive == 1? 'Open' : 'Close'));?></a>
 				</li>
-				<li class="delete" title="Delete">
-                    <?php echo CHtml::ajaxLink(
-                        Yii::t('main', 'Delete Ticket'),
-                        Yii::app()->createUrl('bug/delete',array('id' =>$model->id, 'YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken)),
-                        array(
-                            "type" => "POST",
-                            "success" => "function(){ window.location = '".Yii::app()->createUrl('bug/index')."' }"
-                        ),
-                        array(
-                            'id'=>'delete_bug_link',
-                            'confirm' => 'Are you sure you want to delete this item?'
-                        )
-                    ); ?>
-				</li>
-				<li class="duplicate" title="Duplicate">
-                    <a href="<?php echo Yii::app()->createUrl('bug/getDuplicateFormByBugId/',array('id'=>$model->id))?>" class="duplicate-link" ></a>
-				</li>
+<?php
+	$wantDelete = false;
+	if ($wantDelete) {
+		echo '<li class="delete" title="Delete">' . "\n";
+		echo CHtml::ajaxLink(
+			Yii::t('main', 'Delete Ticket'),
+			Yii::app()->createUrl('bug/delete',array('id' =>$model->id, 'YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken)),
+			array(
+			    "type" => "POST",
+			    "success" => "function(){ window.location = '".Yii::app()->createUrl('bug/index')."' }"
+				),
+			array(
+			    'id'=>'delete_bug_link',
+			    'confirm' => 'Are you sure you want to delete this item?'
+				)
+	    );
+		echo '</li>' . "\n";
+	}
+	$wantDuplicate = false;
+	if ($wantDuplicate) {
+		echo '<li class="duplicate" title="Duplicate">' . "\n";
+		echo '<a href="' . Yii::app()->createUrl('bug/getDuplicateFormByBugId/',array('id'=>$model->id)) . '" class="duplicate-link" ></a>' . "\n";
+  	echo '</li>' . "\n";
+	}
+?>
 			</ul>
             <div class="clear"></div>
 		</div><!-- .ticket_info -->
