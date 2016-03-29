@@ -18,7 +18,7 @@ $columns = array(
     array(
         'name' => 'created_at',
         'htmlOptions' => array('style'=>'width:150px'),
-        'value' => ' "Date joined: " . Helper::formatDateSlash($data->created_at)',
+        'value' => ' "' . Yii::t('main', 'Date joined') . ': " . Helper::formatDateSlash($data->created_at)',
     ),
 );
 
@@ -66,7 +66,7 @@ jQuery("#user-grid a.update").live("click",function() {
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'userDialog-edit',
         'options'=>array(
-            'title'=>'Edit User',
+            'title'=>'Edit user',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

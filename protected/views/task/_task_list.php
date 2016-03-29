@@ -2,7 +2,7 @@
     <!-- <div class="task-icon"></div>
     <div class="clear"></div> -->
     <ul class="task-list">
-        <h3><?php echo Yii::t('main', 'Micro Tasks');?></h3>
+        <h3><?php echo Yii::t('main', 'Micro tasks');?></h3>
         <?php $this->widget('zii.widgets.CListView', array(
             'id'=>'task-list',
             'summaryText'=>'',
@@ -18,7 +18,7 @@
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'createTaskDialog',
         'options'=>array(
-            'title'=>'Add Task',
+            'title'=>'Add task',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

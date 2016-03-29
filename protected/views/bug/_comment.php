@@ -159,16 +159,18 @@
 	<!--<textarea rows="5" cols="20"></textarea>-->
     <div class="row buttons">
         <?php
-            echo CHtml::link(Yii::t('main', 'Show Advanced <span class="arrow-down"></span>'), '#', array(
+        	if (true) {
+            echo CHtml::link(Yii::t('main', 'Show advanced') . ' <span class="arrow-down"></span>', '#', array(
                 'id'=>'showAdvancedOptions',
                 'class'=>'button light-gray',
                 'tabindex'=>'-1',
             ));
-           /* echo CHtml::link(Yii::t('main', 'Post Comment'), '#', array(
+        	}
+           /* echo CHtml::link(Yii::t('main', 'Post comment'), '#', array(
                 'id'=>'postCommentBtn',
                 'class'=>'bkButtonBlueSmall normal',
             ));*/
-            echo CHtml::ajaxButton(Yii::t('main', 'Post Comment'),
+            echo CHtml::ajaxButton(Yii::t('main', 'Post comment'),
                 $this->createUrl('bug/UpdateAjaxComment'),
                 array('type' => 'POST',
                     'beforeSend'=>'js:function(){
@@ -222,8 +224,8 @@
                     'onclick'=>'
                         $(this).attr("disabled","disabled");
                     ',
-                    'class'=>'bkButtonBlueSmall normal',
-                    'style'=>'width: 145px;margin-top: 0px;height:32px')
+                    'class'=>'bkButtonBlue normal',
+                    'style'=>'width: 180px;margin-top: 0px;height:32px')
             );
             if (false && !$bug->isarchive){
                 echo CHtml::link(Yii::t('main', 'Comment and Close'), '#', array(

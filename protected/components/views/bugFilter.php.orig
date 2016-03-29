@@ -80,7 +80,7 @@ JS
                     <?php echo CHtml::hiddenField("filterText[user][0]", '', array('name' => 'user[]')) ?>
                 </li>
 <?php else: ?>
-         <a href="<?php echo Yii::app()->createUrl('settings/members'); ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','Invite User'); ?></a>
+         <a href="<?php echo Yii::app()->createUrl('settings/members'); ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','Invite user'); ?></a>
 <?php endif; ?>
                 </ul>
             </li>
@@ -186,7 +186,7 @@ if($this->beginCache('filter_static_html', array('duration'=>3600))) {
 	$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 		'id'=>'saveFilterDialog',
 		'options'=>array(
-			'title'=>'Save Filter',
+			'title'=>'Save filter',
 			'autoOpen'=>false,
 			'modal'=>true,
 			'hide'=>'drop',

@@ -23,7 +23,7 @@ $columns = array(
     array(
         'name' => 'created_at',
         'htmlOptions' => array('style'=>'width:150px'),
-        'value' => ' "Date joined: " . Helper::formatDateSlash($data->created_at)',
+        'value' => ' "' . Yii::t('main', 'Date joined') . ': " . Helper::formatDateSlash($data->created_at)',
     ),
 );
 

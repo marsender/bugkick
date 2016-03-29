@@ -26,11 +26,11 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
         <div class="profile-description">
           <div id="name">
             <div id="first-name">
-              <?php echo Yii::t('main', 'First Name') ?>:
+              <?php echo Yii::t('main', 'First name') ?>:
               <span class="desc"><?php echo $model->name  ?></span>
             </div>
             <div id="last-name">
-              <?php echo Yii::t('main', 'Last Name') ?>:
+              <?php echo Yii::t('main', 'Last name') ?>:
               <span class="desc"><?php echo $model->lname; ?></span>
             </div>
           </div>

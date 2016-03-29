@@ -7,8 +7,8 @@ $this->clientScript->registerScriptFile(
 <div id="container" class="settings">
     <h2 class="title"><?php echo $this->pageTitle; ?></h2>
     <ul class="nav nav-tabs" id="myTab">
-        <li class="active"><a data-toggle="tab" href="#users-grid-container">Users</a></li>
-        <li><a data-toggle="tab" href="#statistics-container">Statistics</a></li>
+        <li class="active"><a data-toggle="tab" href="#users-grid-container"><?php echo Yii::t('main', 'Users'); ?></a></li>
+        <li><a data-toggle="tab" href="#statistics-container"><?php echo Yii::t('main', 'Statistics'); ?></a></li>
     </ul>
 
     <div class="tab-content">
@@ -34,7 +34,7 @@ $this->clientScript->registerScriptFile(
 $this->widget('zii.widgets.jui.CJuiDialog', array(
     'id'=>'update-user-dialog',
     'options'=>array(
-        'title'=>'Edit User',
+        'title'=>'Edit user',
         'autoOpen'=>false,
         'modal'=>true,
         'hide'=>'drop',

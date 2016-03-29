@@ -65,7 +65,7 @@ $this->endClip();
         <div class="ticket_info">
 
             <?php if ($model->is_created_with_api != 1){ //hide owner if created via API ?>
-			<span class="creator top-line"><?php echo Yii::t('main', 'Created by:'); ?></span>
+			<span class="creator top-line"><?php echo Yii::t('main', 'Created by'); ?>:</span>
 			<span class="photo thumb top-line">
                 <?php
                     if (!empty($model->owner)){
@@ -139,11 +139,11 @@ $this->endClip();
             </span>
 			<ul class="options">
 				<li class="comment" title="Edit">
-                    <a href="<?php echo Yii::app()->createAbsoluteUrl('bug/getBugById/',array('id'=>$model->id))?>" class="update-bug-link"><?php echo Yii::t('main', 'Edit'); ?></a>
+                    <a href="<?php echo Yii::app()->createUrl('bug/getBugById/',array('id'=>$model->id))?>" class="update-bug-link"><?php echo Yii::t('main', 'Edit'); ?></a>
 				</li>
 				<li class="<?php echo ($model->isarchive == 1? 'open' : 'print');?>"
                         title="<?php echo Yii::t('main', ($model->isarchive == 1? 'Open' : 'Close'));?>">
-                    <a href="<?php echo Yii::app()->createUrl("bug/setarchived", array('id'=>$model->id))?>"  id="archived-link" ticket-id="<?php echo $model->id?>"  ><?php echo Yii::t('main', ($model->isarchive == 1? 'Open' : 'Close'));?></a>
+                    <a href="<?php echo Yii::app()->createUrl('bug/setarchived', array('id'=>$model->id))?>"  id="archived-link" ticket-id="<?php echo $model->id?>"  ><?php echo Yii::t('main', ($model->isarchive == 1? 'Open' : 'Close'));?></a>
 				</li>
 				<li class="delete" title="Delete">
                     <?php echo CHtml::ajaxLink(
@@ -160,7 +160,7 @@ $this->endClip();
                     ); ?>
 				</li>
 				<li class="duplicate" title="Duplicate">
-                    <a href="<?php echo Yii::app()->createAbsoluteUrl('bug/getDuplicateFormByBugId/',array('id'=>$model->id))?>" class="duplicate-link" ></a>
+                    <a href="<?php echo Yii::app()->createUrl('bug/getDuplicateFormByBugId/',array('id'=>$model->id))?>" class="duplicate-link" ></a>
 				</li>
 			</ul>
             <div class="clear"></div>
@@ -316,7 +316,7 @@ $("span.tip-deleted[title]").colorTip({color:"yellow", timeout:100});',
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'updateBugDialog',
         'options'=>array(
-            'title'=>'Edit Ticket',
+            'title'=>'Edit ticket',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',
@@ -362,7 +362,7 @@ $("span.tip-deleted[title]").colorTip({color:"yellow", timeout:100});',
         $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
             'id'=>'duplicateBugDialog',
             'options'=>array(
-                'title'=>'Duplicate Ticket',
+                'title'=>'Duplicate ticket',
                 'autoOpen'=>false,
                 'modal'=>true,
                 'hide'=>'drop',

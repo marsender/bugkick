@@ -48,18 +48,18 @@ $form=$this->beginWidget('CActiveForm', array(
 </div>
 <div class="row">
     <div class="row left">
-        <?php echo $form->labelEx($user,'First Name'); ?>
+        <?php echo $form->labelEx($user,'First name'); ?>
         <?php echo $form->textField($user,'name',array('maxlength'=>100)); ?>
         <?php echo $form->error($user,'name'); ?>
     </div>
     <div class="row right">
-        <?php echo $form->labelEx($user,'Last Name'); ?>
+        <?php echo $form->labelEx($user,'Last name'); ?>
 		<?php echo $form->textField($user,'lname',array('maxlength'=>255)); ?>
 		<?php echo $form->error($user,'lname'); ?>
     </div>
 </div>
 <div class="row">
-    <?php echo $form->labelEx($user,'Email Address'); ?>
+    <?php echo $form->labelEx($user,'Email address'); ?>
     <?php echo $form->textField($user,'email',array('maxlength'=>100, 'class'=>'mailcheck')); ?>
     <?php echo $form->error($user,'email'); ?>
     <div class="suggestion flash-success" style="display: none;"></div>

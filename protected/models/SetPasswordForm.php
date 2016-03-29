@@ -22,8 +22,8 @@ class SetPasswordForm extends CFormModel {
 	
 	public function attributeLabels() {
 		return array(
-            'name'=>'First Name',
-            'lname'=>'Last Name',
+            'name'=>'First name',
+            'lname'=>'Last name',
 			'password1'=>'Password',
 			'password2'=>'Password confirmation',
 		);

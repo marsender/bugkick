@@ -46,7 +46,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                   $(\'#help-form\')[0].reset();
                   $(\'#help-search\').keyup();
               }
-              
+
         }',
     ),
 ));
@@ -69,7 +69,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');
 $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
     'id' => 'contact-us',
     'options' => array(
-        'title' => 'Contact Us',
+        'title' => 'Contact us',
         'draggable' => true,
         'autoOpen' => false,
         'position' => array(
@@ -89,8 +89,8 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
   'id' => 'form-cuntact-us',
   'action' => CHtml::normalizeUrl(array('/site/SendMailCountactUs')),
   'enableAjaxValidation' => false
-  )); 
- * 
+  ));
+ *
  */
 ?>
 <div class="form">
@@ -104,13 +104,13 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
             'validateOnSubmit' => true,
             'validateOnChange' => false,
             'afterValidate' => 'js:function(form, data, hasError){ if(!hasError){
-                $("#contact-us").dialog("close");  
+                $("#contact-us").dialog("close");
                 $(".row").removeClass("success");
                 $(".row input").val("");
                 $(".row textArea").val("");
                 }
             return false; }',
-            
+
         ),
         'htmlOptions'=>array('style'=>'display:none;')
             ));
@@ -144,20 +144,20 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 <!--<div class="row">
     <label for="ContactUs" class="required">Name <span class="required">*</span></label>
     <div class="clear"></div>
-    <input name="ContactUs[Name]" id="ContactUsName" style="width:98%;" type="text" maxlength="255">		
-    <div class="errorMessage" id="ContactUsNameError" style="display:none">Input Name</div>	
+    <input name="ContactUs[Name]" id="ContactUsName" style="width:98%;" type="text" maxlength="255">
+    <div class="errorMessage" id="ContactUsNameError" style="display:none">Input Name</div>
 </div>
 <div class="row">
     <label for="ContactUs" class="required">Email <span class="required">*</span></label>
     <div class="clear"></div>
-    <input name="ContactUs[Email]" id="ContactUsEmail" style="width:98%;" type="text" maxlength="255">		
-    <div class="errorMessage" id="ContactUsEmailError" style="display:none">Input Email</div>	
+    <input name="ContactUs[Email]" id="ContactUsEmail" style="width:98%;" type="text" maxlength="255">
+    <div class="errorMessage" id="ContactUsEmailError" style="display:none">Input Email</div>
 </div>
 <div class="row">
     <label for="ContactUs" class="required">Comment <span class="required">*</span></label>
     <div class="clear"></div>
-    <textarea name="ContactUs[Comment]" id="ContactUsComment" style="width:98%;" type="text" maxlength="255"></textarea>	
-    <div class="errorMessage" id="ContactUsCommentError" style="display:none">Input Comment</div>	
+    <textarea name="ContactUs[Comment]" id="ContactUsComment" style="width:98%;" type="text" maxlength="255"></textarea>
+    <div class="errorMessage" id="ContactUsCommentError" style="display:none">Input Comment</div>
 </div>
 <div class="row buttons">
 <?php //echo CHtml::ajaxSubmitButton('submit','site/SendMailCountactUs',array(),array('class'=>"buttonLandingStyle green","id"=>"contactUsButtonSubmit"));  ?>

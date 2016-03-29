@@ -3,7 +3,7 @@
 $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
     'id' => 'labelDialog',
     'options' => array(
-        'title' => 'New Label',
+        'title' => 'New label',
         'autoOpen' => false,
         'modal' => true,
         'hide' => 'drop',

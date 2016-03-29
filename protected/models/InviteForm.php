@@ -35,11 +35,11 @@ class InviteForm extends CFormModel
 
     public function attributeLabels() {
  		return array(
- 			'name'=>'First Name',
- 			'lname'=>'Last Name',
+ 			'name'=>'First name',
+ 			'lname'=>'Last name',
  			'email'=>'Email',
  			'user'=>'User',
- 			'isadmin'=>'Is Admin',
+ 			'isadmin'=>'Is admin',
  		);
  	}
 }

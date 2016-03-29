@@ -68,7 +68,22 @@ class CJuiDialog extends CJuiWidget
 		else
 			$this->htmlOptions['id']=$id;
 
-		$options=empty($this->options) ? '' : CJavaScript::encode($this->options);
+		if (empty($this->options)) {
+			$options='';
+		}
+		else {
+			if (isset($this->options['title'])) {
+				$this->options['title'] = Yii::t('main', $this->options['title']);
+			}
+			if (isset($this->options['buttons']) && count($this->options['buttons'])) {
+				$buttons = array();
+				foreach ($this->options['buttons'] as $key => $value) {
+					$buttons[Yii::t('main', $key)] = $value;
+				}
+				$this->options['buttons'] = $buttons;
+			}
+			$options= CJavaScript::encode($this->options);
+		}
 		Yii::app()->getClientScript()->registerScript(__CLASS__.'#'.$id,"jQuery('#{$id}').dialog($options);");
 		echo CHtml::openTag($this->tagName,$this->htmlOptions)."\n";
 	}

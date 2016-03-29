@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
     <div class="clear"></div>
 <?php
 Yii::app()->clientScript->registerScript('raiser', '
-    $("#newStatus").click(function(){       
+    $("#newStatus").click(function(){
         $("#statusDialog").dialog("open");
     });
 
@@ -56,7 +56,7 @@ jQuery("#status-grid a.update").live("click",function() {
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'statusDialog-edit',
         'options'=>array(
-            'title'=>'Edit Status',
+            'title'=>'Edit status',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

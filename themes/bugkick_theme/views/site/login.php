@@ -83,7 +83,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id' => 'resetPasswordDialog',
         'options' => array(
-            'title' => 'Enter Your Email',
+            'title' => 'Enter your email',
             'autoOpen' => false,
             'modal' => true,
             'hide' => 'drop',
@@ -114,7 +114,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
         <div class="row buttons">
             <?php echo CHtml::submitButton('Reset'); ?>
         </div>
-        <div class="clear"></div>    
+        <div class="clear"></div>
         <?php $this->endWidget(); ?>
     </div>
 

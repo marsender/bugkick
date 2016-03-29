@@ -19,7 +19,7 @@ $dlgButtons = empty($project_id)
 $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	'id'=>'createBugDialog',
 	'options'=>array(
-		'title'=>'New Ticket',
+		'title'=>'New ticket',
 		'autoOpen'=>false,
 		'modal'=>true,
 //      'hide'=>'drop',

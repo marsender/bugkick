@@ -5,12 +5,12 @@
  * Time: 19:12
  */
 $this->breadcrumbs = array(
-    'Project People',
+	Yii::t('main', 'Project users'),
 );
 ?>
 <div class="settings">
     <div class="members-container">
-            <h2 class="listing-title"><?php echo Yii::t('main', 'Project Users'); ?></h2>
+            <!-- <h2 class="listing-title"><?php echo Yii::t('main', 'Project users'); ?></h2> -->
             <?php $this->renderFlash(); ?>
             <?php $this->renderPartial('_peopleGrid',array(
                 'dataProvider' => $dataProvider,
@@ -18,7 +18,7 @@ $this->breadcrumbs = array(
     </div>
     <a id="invitePeople" class="bkButtonBlueSmall normal"
        href="<?php echo $this->createUrl('project/managePeople'); ?>">
-        <?php echo Yii::t('main', 'Invite User'); ?>
+        <?php echo Yii::t('main', 'Invite user'); ?>
     </a>
 </div>
 
@@ -44,7 +44,7 @@ $this->breadcrumbs = array(
 $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 	'id'=>'invitePeopleDialog',
 	'options'=>array(
-		'title'=>'Invite User',
+		'title'=>'Invite user',
 		'autoOpen'=>false,
 		'modal'=>true,
 //      'hide'=>'drop',
@@ -67,7 +67,7 @@ $this->beginWidget(
     array(
         'id'=>'project-form-dialog',
         'options'=>array(
-            'title'=>'Edit Project',
+            'title'=>'Edit project',
             'autoOpen'=>false,
 //    			'width'=>565,
             //'height'=>440,

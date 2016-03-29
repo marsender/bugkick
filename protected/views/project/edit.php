@@ -16,7 +16,7 @@
 			    'sizeLimit'=>2097152, // 2 MB - the maximum file size
 			    //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
 			    'onComplete'=>"js:function(id, fileName, responseJSON) {
-				    if(responseJSON.filename != 'undefined' 
+				    if(responseJSON.filename != 'undefined'
 					    && responseJSON.tmpFileID != '0') {
 					    var projectLogo = $('#projectLogo')
 					    projectLogo.attr(
@@ -58,12 +58,12 @@ $form = $this->beginWidget(
 );
 ?>
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#project-common-info" data-toggle="tab">Common Info</a></li>
-        <li><a href="#project-users" data-toggle="tab">People</a></li>
-        <li><a href="#project-labels" data-toggle="tab">Labels</a></li>
-        <li><a href="#project-defaults" data-toggle="tab">Defaults</a></li>
+        <li class="active"><a href="#project-common-info" data-toggle="tab"><?php echo Yii::t('main', 'Common info'); ?></a></li>
+        <li><a href="#project-users" data-toggle="tab"><?php echo Yii::t('main', 'People'); ?></a></li>
+        <li><a href="#project-labels" data-toggle="tab"><?php echo Yii::t('main', 'Labels'); ?></a></li>
+        <li><a href="#project-defaults" data-toggle="tab"><?php echo Yii::t('main', 'Defaults'); ?></a></li>
         <?php if($projectForm->connectToGitHub) { ?>
-        <li><a href="#extra-features" data-toggle="tab">Extra Features</a></li>
+        <li><a href="#extra-features" data-toggle="tab"><?php echo Yii::t('main', 'Extra Features'); ?></a></li>
         <?php } ?>
     </ul>
 
@@ -128,7 +128,7 @@ $form = $this->beginWidget(
                     </div>
                 </div>
            </div>
-           
+
             <div id="archived-row" class="row">
                 <?php
                     if(!$project->isNewRecord && User::current()->isCompanyAdmin($project->company->company_id)
@@ -141,7 +141,7 @@ $form = $this->beginWidget(
 										'onclick'=>'return confirm("After confirming of this action this project will be deleted.\n\nContinue?");',
 								)
 						);
-						
+
                         echo CHtml::link(
                             Yii::t('main', $project->archived==1? 'Restore project' : 'Archive project'),
                             array('project/setArchived', 'id'=>$project->project_id),
@@ -168,7 +168,7 @@ $form = $this->beginWidget(
 
         <div class="tab-pane" id="project-users">
             <div class="row">
-                <?php echo $form->labelEx($projectForm, 'Project Users'); ?>
+                <?php echo $form->labelEx($projectForm, 'Project users'); ?>
                 <?php
                     echo CHtml::activeDropDownList(
                     $projectForm,

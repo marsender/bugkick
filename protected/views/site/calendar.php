@@ -41,7 +41,7 @@ $this->beginWidget(
     array(
         'id'=>'project-form-dialog',
         'options'=>array(
-            'title'=>'Edit Project',
+            'title'=>'Edit project',
             'autoOpen'=>false,
 //    			'width'=>565,
             //'height'=>440,

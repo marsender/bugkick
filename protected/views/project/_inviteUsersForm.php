@@ -19,7 +19,7 @@ $form = $this->beginWidget('CActiveForm', array(
 ?>
 <?php echo $form->errorSummary($model); ?>
 
-<p class="note">Invite a new user by email:</p>
+<p class="note"><?php echo Yii::t('main', 'Invite a new user by email'); ?>:</p>
 
 <div class="row">
     <?php echo $form->labelEx($model, 'name'); ?>

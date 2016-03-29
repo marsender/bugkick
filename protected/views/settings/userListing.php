@@ -16,18 +16,18 @@ $this->breadcrumbs=array(
 
 <?php
 Yii::app()->clientScript->registerScript('raiser', '
-    $("#newUser").click(function(){       
+    $("#newUser").click(function(){
         $("#userDialog").dialog("open");
     });
 
 ', CClientScript::POS_READY);
 ?>
 
-<?php 
+<?php
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'userDialog',
         'options'=>array(
-            'title'=>'New User',
+            'title'=>'New user',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

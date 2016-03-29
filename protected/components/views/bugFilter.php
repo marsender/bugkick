@@ -95,7 +95,7 @@ JS
                 <ul id="target-label">
                     <?php if (!empty($labelList)): ?>
                     <?php   foreach ($labelList as $label): ?>
-                    <li class="label"> 
+                    <li class="label">
                         <div class="label-container" labelID="<?php echo $label->label_id ?>" title="<?php echo $label->name?>">
                             <?php echo CHtml::link(Helper::truncateString($label->name). '<span class="label-count">('.$label->bugCountForProject.')</span>', '#', array('id' => 'label_' . $label->label_id)) ?>
                             <?php echo CHtml::hiddenField("filterText[label][{$label->label_id}]", '', array('name' => 'label[]')) ?>
@@ -120,7 +120,7 @@ JS
         </ul>
 
 <?php
- /* Old Labels Code 
+ /* Old Labels Code
                 <ul id="target-label">
 <?php if (!empty($labelList)): ?>
                     <li>
@@ -222,7 +222,7 @@ JS
                     <?php echo CHtml::hiddenField("filterText[user-negative][0]", '', array('class'=>'negative')) ?>
                 </li>
 <?php else: ?>
-         <a href="<?php echo Yii::app()->createUrl('settings/members'); ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','Invite User'); ?></a>
+         <a href="<?php echo Yii::app()->createUrl('settings/members'); ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','Invite user'); ?></a>
 <?php endif; ?>
                 </ul>
             </li>
@@ -269,7 +269,7 @@ if($this->beginCache('filter_static_html', array('duration'=>3600))) {
 	$this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 		'id'=>'saveFilterDialog',
 		'options'=>array(
-			'title'=>'Save Filter',
+			'title'=>'Save filter',
 			'autoOpen'=>false,
 			'modal'=>true,
 			'hide'=>'drop',

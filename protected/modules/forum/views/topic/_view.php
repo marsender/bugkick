@@ -8,7 +8,7 @@
   </h4>
   <h4 class="topic-description"><?php echo BKHelper::truncateString(CHtml::encode($data->description)); ?></h4>
   <ul class="topic-meta">
-  	  <li class="topic-meta-item"><?php echo  ' Created by  ' .  CHtml::encode($data->topicStarter->repr()); ?></li>
+  	  <li class="topic-meta-item"><?php echo  Yii::t('main', 'Created by') . ' ' .  CHtml::encode($data->topicStarter->repr()); ?></li>
       <li class="topic-meta-item"><?php echo Time::timeAgoInWords($data->time); ?></li>
       <li class="topic-meta-item"><?php echo $data->postsCount . ' ' . Yii::t('main', 'posts'); ?></li>
       <?php if(Yii::app()->user->checkAccess("moderator")){ ?>

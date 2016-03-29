@@ -352,7 +352,7 @@ function initResizable(){
 //Updates number of tickets by label
 function updateLabels(){
     $.ajax({
-        'url': '/label/updateCount',
+        'url': '/bugkick/label/updateCount',
         'type': 'post',
         'data': { 'YII_CSRF_TOKEN':YII_CSRF_TOKEN },
         'success' : function(request, status, error) {

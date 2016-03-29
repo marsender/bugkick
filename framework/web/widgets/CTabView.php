@@ -175,7 +175,7 @@ class CTabView extends CWidget
 		echo "<ul class=\"tabs\">\n";
 		foreach($this->tabs as $id=>$tab)
 		{
-			$title=isset($tab['title'])?$tab['title']:'undefined';
+			$title=isset($tab['title'])?Yii::t('main', $tab['title']):'undefined';
 			$active=$id===$this->activeTab?' class="active"' : '';
 			$url=isset($tab['url'])?$tab['url']:"#{$id}";
 			echo "<li><a href=\"{$url}\"{$active}>{$title}</a></li>\n";

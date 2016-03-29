@@ -9,7 +9,7 @@ Yii::app()->clientScript->registerCssFile('https://fonts.googleapis.com/css?fami
 <?php
 $this->setPageTitle(Yii::t('main', 'Updates'));
 $this->breadcrumbs = array(
-    'Updates',
+    Yii::t('main', 'Updates'),
 );
 ?>
 <div id="containertop" style="min-height:500px;">
@@ -73,7 +73,7 @@ $this->breadcrumbs = array(
 </script>
 
 <script id="titleFn" type="text/TemplateFn">
-    <h2 class="listing-title">Updates</h2>
+    <!-- <h2 class="listing-title">Updates</h2> -->
     <div class="item dummyItem" id="dummyItem">
     </div>
 </script>
@@ -85,7 +85,7 @@ $this->beginWidget(
     array(
         'id'=>'project-form-dialog',
         'options'=>array(
-            'title'=>'Edit Project',
+            'title'=>'Edit project',
             'autoOpen'=>false,
 //    			'width'=>565,
             //'height'=>440,

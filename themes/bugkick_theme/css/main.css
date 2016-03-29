@@ -2858,7 +2858,7 @@ body *.unselectable {
   clear: both;
 }
 #commentBlock .txtAreaBlock {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   width: 568px;
 }
 /* Comment Block Buttons */

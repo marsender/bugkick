@@ -22,7 +22,7 @@ Yii::app()->clientScript->registerScript('inviteMember', '
 $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
     'id' => 'inviteMemberDialog',
     'options' => array(
-        'title' => 'Invite Member',
+        'title' => 'Invite member',
         'autoOpen' => false,
         'modal' => true,
         'buttons' => array(

@@ -18,7 +18,7 @@
 	 */
 	var _ = window[baseNameSpace] = window[baseNameSpace] || {};
     _.jQuery_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'
-    _.LIB_URL = 'http://bugkick.local/BugKick.dev.js/';
+    _.LIB_URL = './bugkick/BugKick.dev.js/'; // 'http://bugkick.local/BugKick.dev.js/';
     _.apiKey = window._bugKickKey;
     _.projectID = window._bugKickPID;
     _.widgetStyle = window._widgetStyle;

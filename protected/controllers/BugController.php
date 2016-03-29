@@ -188,15 +188,17 @@ class BugController extends Controller
 		if (empty($currentProject))
 			$this->redirect(Yii::app()->baseUrl . '/project/index');
 		Yii::app()->minScript->generateScriptMap(array(
-			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js',
-			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js',
-			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushCss.js',
-			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushPhp.js',
-			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushSql.js',
-			Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushXml.js',
-			Yii::app()->baseUrl . '/themes/bugkick_theme/js/comments-0.0.1.min.js',
-			Yii::app()->baseUrl . '/js/bugkick/bug/view.js',
-			Yii::app()->baseUrl . '/js/plug-in/autoresize/jquery.autoresize.min.js'
+			'/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js',
+			'/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js',
+			'/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushCss.js',
+			'/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushPhp.js',
+			'/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushSql.js',
+			'/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushXml.js',
+			'/themes/bugkick_theme/js/comments-0.0.1.js',
+			//'/themes/bugkick_theme/js/comments-0.0.1.min.js',
+			'/js/bugkick/bug/view.js',
+			'/js/plug-in/autoresize/jquery.autoresize.js'
+			//'/js/plug-in/autoresize/jquery.autoresize.min.js'
 		));
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js');
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js');
@@ -206,19 +208,19 @@ class BugController extends Controller
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushXml.js');
 		Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/styles/shCoreDefault.css');
 		Yii::app()->clientScript->registerScriptFile(
-			//Yii::app()->theme->baseUrl . '/js/comments-0.0.1.js');
-			Yii::app()->theme->baseUrl . '/js/comments-0.0.1.min.js');
-
+			Yii::app()->theme->baseUrl . '/js/comments-0.0.1.js'
+			//Yii::app()->theme->baseUrl . '/js/comments-0.0.1.min.js'
+			);
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/bugkick/bug/view.js');
 		$baseUrl = Yii::app()->request->baseUrl;
 		Yii::app()->clientScript->registerScript(__CLASS__ . '#SyntaxHighlighter', <<<JS
 	SyntaxHighlighter.all({toolbar:'false'});
 JS
 , CClientScript::POS_END);
-
-		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bugkick/task/common.min.js')
-		//            Yii::app()->baseUrl . '/js/bugkick/task/common.js'
-		;
+		Yii::app()->clientScript->registerScriptFile(
+			//Yii::app()->baseUrl . '/js/bugkick/task/common.min.js'
+			Yii::app()->baseUrl . '/js/bugkick/task/common.js'
+		);
 
 		/*
 		 $relatedToBug = array(

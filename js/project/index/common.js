@@ -145,24 +145,24 @@ function editProject(targetObj) {
 
                 if (targetObj.currentTarget.attributes['class'].nodeValue == 'update')
                 {
-                    //dlg.dialog({modal: true, dialogClass: "infobox", width: width, position: [xoffset, 100], title: "Edit Project"});
+                    //dlg.dialog({modal: true, dialogClass: "infobox", width: width, position: [xoffset, 100], title: "Edit project"});
                     dlg.dialog({
                         modal: true,
                         dialogClass: "infobox",
                         width: width,
                         position: [xoffset, 100],
-                        title: "Edit Project"
+                        title: "Edit project"
                     });
                 }
                 else
                 {
-                    //dlg.dialog({modal: true, dialogClass: "infobox", width: width, position: [xoffset, 100], title: "New Project"});
+                    //dlg.dialog({modal: true, dialogClass: "infobox", width: width, position: [xoffset, 100], title: "New project"});
                     dlg.dialog({
                         modal: true,
                         dialogClass: "infobox",
                         width: width,
                         position: [xoffset, 100],
-                        title: "New Project"
+                        title: "New project"
                     });
                     $('#archived-row').hide();
                 }

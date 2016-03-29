@@ -22,7 +22,7 @@ $columns = array(
     ),
     array(
         'name' => 'created_at',
-        'value' => ' "Date joined: " . Helper::formatDateSlash($data->created_at)',
+        'value' => ' "' . Yii::t('main', 'Date joined') . ': " . Helper::formatDateSlash($data->created_at)',
         'htmlOptions' => array('style'=>'width:150px'),
     ),
     array(
@@ -74,7 +74,7 @@ jQuery("#managePeopleBtn").live("click",function() {
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'projectDialog-edit',
         'options'=>array(
-            'title'=>'Project Users',
+            'title'=>'Project users',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',
@@ -111,7 +111,7 @@ jQuery("#user-grid a.update").live("click",function() {
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'userDialog-edit',
         'options'=>array(
-            'title'=>'Edit User',
+            'title'=>'Edit user',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

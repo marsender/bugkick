@@ -32,7 +32,7 @@
         array(
             'id'=>'project-form-dialog',
             'options'=>array(
-                'title'=>'New Project',
+                'title'=>'New project',
                 'autoOpen'=>!empty($forceCreate),
                 //'width'=>350,
                 //'height'=>440,
@@ -66,7 +66,7 @@
         array(
             'id'=>'update-dialog',
             'options'=>array(
-                'title'=>'Please Upgrade',
+                'title'=>'Please upgrade',
                 'autoOpen'=>!empty($forceCreate),
                 //'width'=>350,
                 //'height'=>440,

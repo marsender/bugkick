@@ -504,16 +504,16 @@ class SettingsController extends Controller {
             $objPHPExcel->getActiveSheet()->setTitle('Tickets list');
 
             $objPHPExcel->setActiveSheetIndex(0)
-                        ->setCellValue('A1', 'Ticket #')
-                        ->setCellValue('B1', 'Created')
-                        ->setCellValue('C1', 'Title')
-                        ->setCellValue('D1', 'Description')
-                        ->setCellValue('E1', 'Status')
-                        ->setCellValue('F1', 'Label')
-                        ->setCellValue('G1', 'Company')
-                        ->setCellValue('H1', 'Created by')
-                        ->setCellValue('I1', 'Assigned to')
-                        ->setCellValue('J1', 'Due date');
+                        ->setCellValue('A1', Yii::t('main', 'Ticket') . ' #')
+                        ->setCellValue('B1', Yii::t('main', 'Created'))
+                        ->setCellValue('C1', Yii::t('main', 'Title'))
+                        ->setCellValue('D1', Yii::t('main', 'Description'))
+                        ->setCellValue('E1', Yii::t('main', 'Status'))
+                        ->setCellValue('F1', Yii::t('main', 'Label'))
+                        ->setCellValue('G1', Yii::t('main', 'Company'))
+                        ->setCellValue('H1', Yii::t('main', 'Created by'))
+                        ->setCellValue('I1', Yii::t('main', 'Assigned to'))
+                        ->setCellValue('J1', Yii::t('main', 'Due date'));
 
             foreach ($bugs as $bug) {
                 $bugsArray[$bug->id][0] = $bug->number;

@@ -37,7 +37,7 @@
 	</div>
 	
 	  <div class="row right">
-                <?php echo $form->labelEx($user,'First Name'); ?>
+                <?php echo $form->labelEx($user,'First name'); ?>
                 <?php echo $form->textField($user,'name',array('size'=>60,'maxlength'=>100)); ?>
                 <?php echo $form->error($user,'name'); ?>
         </div>
@@ -50,13 +50,13 @@
 	</div>
   
     <div class="row right">
-		<?php echo $form->labelEx($user,'Last Name'); ?>
+		<?php echo $form->labelEx($user,'Last name'); ?>
 		<?php echo $form->textField($user,'lname',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($user,'lname'); ?>
 	</div>
 
     <div class="row right">
-		<?php echo $form->labelEx($user,'Email Address'); ?>
+		<?php echo $form->labelEx($user,'Email address'); ?>
 		<?php echo $form->textField($user,'email',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($user,'email'); ?>
 	</div>

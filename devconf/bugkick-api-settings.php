@@ -1,5 +1,5 @@
 <?php return array(
     'apiKey'=>'<apiKey>',
     'projectID'=>'<projectID>',
-    'scriptURL'=>'bugkick.local/BugKick.dev.js/bugkick/base.js',
+    'scriptURL'=>'./bugkick/BugKick.dev.js/bugkick/base.js',
 );

@@ -18,7 +18,7 @@ Yii::app()->clientScript->registerScript('passwordChange', '
 $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
     'id' => 'passwordDialog',
     'options' => array(
-        'title' => 'Change Password',
+        'title' => 'Change password',
         'autoOpen' => false,
         'modal' => true,
         'hide'=>'drop',

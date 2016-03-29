@@ -36,7 +36,7 @@ $this->breadcrumbs = array(
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'updateBugDialog',
         'options'=>array(
-            'title'=>'Edit Ticket',
+            'title'=>'Edit ticket',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',
@@ -65,7 +65,7 @@ $this->breadcrumbs = array(
         $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
             'id'=>'duplicateBugDialog',
             'options'=>array(
-                'title'=>'Duplicate Ticket',
+                'title'=>'Duplicate ticket',
                 'autoOpen'=>false,
                 'modal'=>true,
                 'hide'=>'drop',
@@ -88,7 +88,7 @@ if(!Yii::app()->request->isAjaxRequest){
     	array(
     		'id'=>'project-form-dialog',
     		'options'=>array(
-    			'title'=>'Edit Project',
+    			'title'=>'Edit project',
     			'autoOpen'=>false,
 //    			'width'=>565,
     			//'height'=>440,

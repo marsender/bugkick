@@ -37,7 +37,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Post Comment' : 'Save',array('class'=>'bkButtonBlueSmall normal')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Post comment' : 'Save',array('class'=>'bkButtonBlueSmall normal')); ?>
         <?php /*echo CHtml::button('Cancel', array('class'=>'btn','onclick'=>'history.go(-1)'));*/ ?>
 	</div>
 

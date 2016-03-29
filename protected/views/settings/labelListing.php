@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
     <div class="clear"></div>
 <?php
 Yii::app()->clientScript->registerScript('raiser', '
-    $("#newlabel").click(function(){       
+    $("#newlabel").click(function(){
         $("#labelDialog").dialog("open");
     });
 ', CClientScript::POS_READY);
@@ -58,7 +58,7 @@ jQuery("#label-grid a.update").live("click",function() {
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'labelDialog-edit',
         'options'=>array(
-            'title'=>'Edit Label',
+            'title'=>'Edit label',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

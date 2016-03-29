@@ -15,7 +15,7 @@
         
     };
     
-    _.Client.API_URL = 'http://bugkick.local/api';
+    _.Client.API_URL = './bugkick/api'; // 'http://bugkick.local/api';
     _.Client.TicketType = {
         BUG: 'Bug',
         FEATURE_REQUEST: 'Feature request',

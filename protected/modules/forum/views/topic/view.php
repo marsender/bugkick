@@ -50,7 +50,7 @@ $this->pageTitle = CHtml::encode($model->title);
     <h3 class="topic-title"><?php echo $this->pageTitle; ?></h3>
     <h4 class="topic-description"><?php echo BKHelper::truncateString(CHtml::encode($model->description)); ?></h4>
     <ul class="topic-meta">
-        <li class="topic-meta-item"><?php echo ' Created by  ' . CHtml::encode($model->topicStarter->repr()); ?></li>
+        <li class="topic-meta-item"><?php echo Yii::t('main', 'Created by') . ' ' . CHtml::encode($model->topicStarter->repr()); ?></li>
         <li class="topic-meta-item"><?php echo Time::timeAgoInWords($model->time); ?></li>
         <li class="topic-meta-item"><?php echo $model->postsCount . ' ' . Yii::t('main', 'posts'); ?></li>
     </ul>
@@ -70,7 +70,7 @@ $this->widget('zii.widgets.CListView', array(
 ));
 ?>
 
-<!-- <h4 class="pad_20"><?php echo Yii::t('main', 'Post Comment'); ?></h4> -->
+<!-- <h4 class="pad_20"><?php echo Yii::t('main', 'Post comment'); ?></h4> -->
 
 <?php
 if (Yii::app()->user->checkAccess('user'))

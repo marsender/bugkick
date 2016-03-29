@@ -20,7 +20,7 @@ $str_js = "
             update : function () {
                 serial = $('#bug-list div.items').sortable('serialize', {key: 'items[]', attribute: 'class'});
                 $.ajax({
-                    'url': '" . $this->createUrl('//bug/prioritySort') . "',
+                    'url': '" . $this->createUrl('/bug/prioritySort') . "',
                     'type': 'post',
                     'data': serial,
                     'success': function(data){

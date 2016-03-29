@@ -7,7 +7,7 @@
     $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
         'id'=>'statusDialog',
         'options'=>array(
-            'title'=>'New Status',
+            'title'=>'New status',
             'autoOpen'=>false,
             'modal'=>true,
             'hide'=>'drop',

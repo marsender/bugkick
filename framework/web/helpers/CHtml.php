@@ -520,6 +520,7 @@ class CHtml
 	 */
 	public static function label($label,$for,$htmlOptions=array())
 	{
+		$label = Yii::t('main', $label);
 		if($for===false)
 			unset($htmlOptions['for']);
 		else

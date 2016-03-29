@@ -12,7 +12,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name'=>'isadmin',
-            'header'=>'Is Admin',
+            'header'=>'Is admin',
             'filter'=>CHtml::activeDropDownList($model, 'isadmin', array(
                 ''=>'---',
                 '1'=>'Yes',
