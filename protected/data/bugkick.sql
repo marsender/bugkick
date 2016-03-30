@@ -1062,6 +1062,8 @@ INDEX (  `user_id` ,  `ticket_id` ,  `box_file_id` )
 ALTER TABLE  `bk_file` ADD FOREIGN KEY (  `ticket_id` ) REFERENCES `bk_bug` (
 `id`
 ) ON DELETE CASCADE ON UPDATE CASCADE ;
+
+drop table `bk_site_settings`;
 CREATE TABLE `bk_site_settings` (
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `invites_module` TINYINT( 1 ) UNSIGNED NOT NULL COMMENT  'Defines if invites module is enabled',
