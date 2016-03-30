@@ -2,7 +2,7 @@
 /**
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
- * 
+ *
  * @property CHttpSession $session An equivalent of call Yii::app()->session.
  * @property CHttpRequest $request The value returned by calling Yii::app()->getRequest().
  * @property CClientScript $clientScript The value returned by calling Yii::app()->clientScript.
@@ -12,9 +12,9 @@ class Controller extends CController
     public function __construct($id, $module = null) {
         parent::__construct($id, $module);
         //if(Yii::app()->user->isGuest)
-                //$this->redirect('/login');
+                //$this->redirect(Yii::app()->getBaseUrl() . '/login');
         //if(empty(Yii::app()->user->company_id))
-                //$this->redirect('/company');
+                //$this->redirect(Yii::app()->getBaseUrl() . '/company');
     }
 	/**
 	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
@@ -31,7 +31,7 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
-    
+
     public function complete($message, $status, $stop = false){
 		if ( Yii::app()->request->isAjaxRequest ){
 			echo json_encode(array('status' => $status, 'message' => $message));
@@ -39,10 +39,10 @@ class Controller extends CController
 		}else{
 			Flashes::addFlash($status, $message);
 			//if ( $stop )
-				//$this->redirect('/site/message/');
+				//$this->redirect(Yii::app()->getBaseUrl() . '/site/message/');
 		}
 	}
-    
+
     //if for current user not set company redirect to company
     public function filterCompanySet($filterChain) {
 
@@ -52,7 +52,7 @@ class Controller extends CController
 
         $filterChain->run();
     }
- 
+
 	/**
 	 *
 	 * @return CHttpRequest The value returned by calling Yii::app()->getRequest();
@@ -60,7 +60,7 @@ class Controller extends CController
 	public function getRequest() {
 		return Yii::app()->getRequest();
 	}
-	
+
 	/**
 	 *
 	 * @return CClientScript The value returned by calling Yii::app()->clientScript;
@@ -70,18 +70,18 @@ class Controller extends CController
 	}
 	/**
 	 *
-	 * @return CHttpSession Equivalent of call Yii::app()->session 
+	 * @return CHttpSession Equivalent of call Yii::app()->session
 	 */
-	public function getSession() {	
+	public function getSession() {
 		return Yii::app()->session;
 	}
-	
+
 	public function lookAndFeel() {
 		$user = User::current();
 		$lookAndFeel = empty($user) ? null : $user->laf;
 		return empty($lookAndFeel) ? null : $lookAndFeel;
 	}
-	
+
 	public function getProjectsDropDown($htmlOptions) {
 		$sql = '
 		SELECT p.project_id, p.name FROM {{project}} AS p
@@ -196,7 +196,7 @@ class Controller extends CController
 			: $response;
 		Yii::app()->end();
 	}
-	
+
 	/**
      * Performs the AJAX validation.
      * @param CModel $model the model to be validated
@@ -209,11 +209,11 @@ class Controller extends CController
 			Yii::app()->end();
 		}
     }
-	
+
 	public function renderFlash() {
 		$this->renderPartial('application.views.site._flash');
 	}
-	
+
 	/**
 	 *
 	 * Throws a CHttpException with status 404 and message $message.

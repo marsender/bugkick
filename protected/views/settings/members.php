@@ -19,17 +19,17 @@ $this->breadcrumbs = array(
             <?php endif ?>
         </div>
 
-        
+
         <?php if( $pendingUserProvider->getTotalItemCount() > 0 ): ?>
             <div id="pending-members">
-                <h2 class="listing-title"><?php echo Yii::t('main', 'Pending Members'); ?></h2>
+                <h2 class="listing-title"><?php echo Yii::t('main', 'Pending members'); ?></h2>
                 <?php $this->renderPartial('_usersPending',array(
                     'model' => $pendingUserProvider,
                 )); ?>
             </div>
         <?php endif ?>
 
-        
+
         <?php /*if( $deletedUserProvider->getTotalItemCount() > 0 ): ?>
             <div id="deletet-members">
                 <h2 class="listing-title <?php if($deletedUserProvider->getTotalItemCount() == 0) echo 'deleted-title'; ?>">

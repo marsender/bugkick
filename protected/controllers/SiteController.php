@@ -173,7 +173,7 @@ class SiteController extends Controller
 	protected function fbSignUp($graph)
 	{
 		$this->session->add('fbGraph', $graph);
-		$this->redirect('/registration/facebook');
+		$this->redirect(Yii::app()->getBaseUrl() . '/registration/facebook');
 	}
 
 	protected function fbLogin($graph)

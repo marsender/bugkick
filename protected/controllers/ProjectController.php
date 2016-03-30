@@ -112,7 +112,7 @@ class ProjectController extends Controller
 			'user_id' => $user->user_id,
 			'project_id' => $project->project_id
 		));
-		$this->redirect('/project');
+		$this->redirect(Yii::app()->getBaseUrl() . '/project');
 	}
 
 	public function actionUploadLogo()
@@ -318,7 +318,7 @@ class ProjectController extends Controller
 	 else{
 	 Yii::app()->user->setFlash('success', "An error has occurred while saving, please try again!");
 	 }
-	 $this->redirect('/projects/people');
+	 $this->redirect(Yii::app()->getBaseUrl() . '/projects/people');
 	 }
 
 	 if (Yii::app()->request->isAjaxRequest) {
@@ -437,7 +437,7 @@ class ProjectController extends Controller
 	//            else{
 	//                Yii::app()->user->setFlash('success', "An error has occurred while saving, please try again!");
 	//            }
-	//            $this->redirect('/projects/people');
+	//            $this->redirect(Yii::app()->getBaseUrl() . '/projects/people');
 	//        }
 	//
 	//        if (Yii::app()->request->isAjaxRequest) {

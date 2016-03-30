@@ -13,6 +13,6 @@ $this->breadcrumbs=array(
 //);
 ?>
 <div class="settings">
-<h2 class="listing-title"><?php echo Yii::t('main', 'Update Status'); ?></h2>
+<h2 class="listing-title"><?php echo Yii::t('main', 'Update status'); ?></h2>
     <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 </div>

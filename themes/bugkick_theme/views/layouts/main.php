@@ -142,9 +142,9 @@ JS
         <?php }?>
         */
         ?>
-        <?php /* if (User::current()->isGlobalAdmin()) { ?>
-            <li><?php echo CHtml::link(Yii::t('main', 'Admin Panel'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
-        <?php } */?>
+        <?php if (User::current()->isGlobalAdmin()) { ?>
+            <li><?php echo CHtml::link(Yii::t('main', 'Admin panel'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
+        <?php } ?>
             <li><?php echo CHtml::link(Yii::t('main', 'Help'), Yii::app()->createAbsoluteUrl('/help'), array('id'=>'show-help')) ?></li>
             <li><?php
               echo CHtml::link(Yii::t('main', 'Logout'),

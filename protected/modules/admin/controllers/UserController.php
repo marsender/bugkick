@@ -5,16 +5,16 @@
  * @author f0t0n
  */
 class UserController extends AdminController {
-    
+
     const GRID_USERS_ID = 'users-grid';
     const GRID_RECENT_USERS_ID = 'recent-users-grid';
-    
+
     public function actionIndex() {
         $usersStats = UsersStats::instance();
         $user = new AUser('search');
         $userRecent = new AUser('search');
         $daysCount = 30;
-        
+
         if($this->request->isAjaxRequest) {
             $this->handleGridAjaxRequest($user, $userRecent, $daysCount);
         } else {
@@ -26,7 +26,7 @@ class UserController extends AdminController {
             ));
         }
     }
-    
+
     protected function handleGridAjaxRequest(
             AUser $user, AUser $userRecent, $daysCount = 30) {
         $ajaxVar = $this->request->getParam('ajax');
@@ -49,7 +49,7 @@ class UserController extends AdminController {
             ));
         }
     }
-    
+
     public function actionUpdate($id) {
         $user = AUser::model()->findByPk($id);
         if(empty($user)) {
@@ -69,7 +69,7 @@ class UserController extends AdminController {
             'formID'=>$formID,
         ));
     }
-    
+
     protected function updateUser(AUser $user, array $attributes) {
         $this->skipEmptyFields($attributes, array(
             'email',
@@ -82,7 +82,7 @@ class UserController extends AdminController {
         $user->setAttributes($attributes);
         return $user->validate() && $user->save();
     }
-    
+
     /**
      * @param array $attributes
      * @param array $attributeNames The keys in $attributes array
@@ -104,7 +104,7 @@ class UserController extends AdminController {
             if($identity->authenticate(false)){
                 $duration=3600*24*3000; // 3000 days
                 Yii::app()->user->login($identity,$duration);
-                $this->redirect('/user/view');
+                $this->redirect(Yii::app()->getBaseUrl() . '/user/view');
             }
         }
         $this->_404('User is not active.');
@@ -137,7 +137,7 @@ class UserController extends AdminController {
                     array(':owner_id'=>$user->user_id)
                 );
             }
-            $this->redirect('/admin/user');
+            $this->redirect(Yii::app()->getBaseUrl() . '/admin/user');
         }
         else{
             $this->_404('User was not found.');

@@ -75,4 +75,5 @@ return array(
 	'No articles'=>'Pas d\'articles',
 	'Email address has already been taken'=>'Adresse mail déjà enregistrée',
 	'Profile logo'=>'Logo de votre profil',
+	'Admin panel'=>'Administration',
 );
