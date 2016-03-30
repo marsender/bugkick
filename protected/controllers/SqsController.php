@@ -8,7 +8,7 @@
 /**
  * Description of SqsController
  *
- * @author Evgeniy `f0t0n` Naydenov 
+ * @author Evgeniy `f0t0n` Naydenov
  */
 class SqsController extends Controller {
 
@@ -18,7 +18,7 @@ class SqsController extends Controller {
      * @var SQSMail
      */
     protected $sqsMail;
-    protected $from = 'notifications@bugkick.com';
+    protected $from = Yii::app()->params['adminEmail'];
 
     public function setUp() {
         $this->sqsMail = new SQSMail();

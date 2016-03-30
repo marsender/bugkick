@@ -517,8 +517,8 @@ class SiteController extends Controller
 		$data = $this->request->getPost('ContactUs');
 		$r = CActiveForm::validate(new ContactUs());
 		if ($r == "[]") {
-			$e = new Notificator(); //aaron@bugkick.com
-			$e->sendEmail("aaron@bugkick.com", $data['email'], 'CuntactUs', 'Name:' . $data['name'] . PHP_EOL . 'Comment:' . $data['comment']);
+			$e = new Notificator();
+			$e->sendEmail(Yii::app()->params['adminEmail'], $data['email'], 'CuntactUs', 'Name:' . $data['name'] . PHP_EOL . 'Comment:' . $data['comment']);
 			echo $r;
 		}
 		else {

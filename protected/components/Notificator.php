@@ -156,7 +156,7 @@ class Notificator
 	public static function newRegistration(User $user)
 	{
 		$appName = Yii::app()->name;
-		$subject = '[' . $appName . '] :: User Registration';
+		$subject = 'User Registration';
 		$appUrl = Yii::app()->createAbsoluteUrl('/');
 		$veryficationUrl = Yii::app()->createAbsoluteUrl('/registration/verify', array(
 			't' => $user->registration_token
@@ -238,6 +238,8 @@ MSG;
 
 	public static function sendEmail($to, $from = '', $subject = '', $message = '', $headers = '', $reply_to = null)
 	{
+		$subject = Yii::app()->name . ': ' . $subject;
+
 		switch (Yii::app()->params['emailService']) {
 		case 'ses':
 			$SESMail = new SESMail();

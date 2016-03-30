@@ -1,7 +1,7 @@
 <?php
 /**
  * Usage
- *   Yii::app()->params['sendNewRegistrationEmail']
+ *   Yii::app()->params['adminEmail']
  */
 return array(
 
@@ -15,7 +15,7 @@ return array(
 	'passwordSalt'=>require($paramsDir . 'salt.php'),
 
 	'sendNewRegistrationEmail'=>false,
-	
+
 	'showBugkickHomePage'=>false,
 
 	'showBugkickSteps'=>false,
