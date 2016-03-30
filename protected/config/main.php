@@ -129,29 +129,8 @@ return array(
 			*/
 		),
 
-		/*'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-
-		// uncomment the following to use a MySQL database
-		*/
-
+		// database config
 		'db'=>require($currDir . 'db.php'),
-		/**
-		 * 	The database settings has been placed in db.php file.
-		 *	So we can set this file as ignored in the .hgignore to
-		 *	avoid the overwriting of developers local settings.
-		 *
-		 *	-f0t0n
-		 *
-		 'db'=>array(
-			'connectionString' => 'mysql:host=bugs2.db.3312190.hostedresource.com;dbname=bugs2',
-			'emulatePrepare' => true,
-			'username' => 'bugs2',
-			'password' => 'fwf3#sefsS',
-			'charset' => 'utf8',
-		),
-		 */
 
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

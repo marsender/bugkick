@@ -6,14 +6,13 @@ return array(
 
 	'adminEmail'=>'notifications@bugkick.com',
 
-	// Yii::app()->params['date']['formatDateSlash']
 	'date'=>require($paramsDir . 'date.php'),
 
 	'passwordSalt'=>require($paramsDir . 'salt.php'),
 
-	'showBugkickHomePage'=>true,
-	
-	'showBugkickSteps'=>true,
+	'showBugkickHomePage'=>false,
+
+	'showBugkickSteps'=>false,
 
 	'bcryptWorkFactor'=>10,
 
