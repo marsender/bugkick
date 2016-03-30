@@ -1,10 +1,11 @@
 assets/
 protected/config/app.php
-protected/config/db.php
-protected/config/stripe.php
-protected/config/node.php
-protected/config/curl-options.php
 protected/config/bugkick-api-settings.php
+protected/config/curl-options.php
+protected/config/db.php
+protected/config/init.php
+protected/config/node.php
+protected/config/stripe.php
 protected/config/params/
 protected/runtime/
 tmp/

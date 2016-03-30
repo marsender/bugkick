@@ -148,10 +148,6 @@
 						Yii::app()->urlManager->createUrl('site/previewMarkdown'),
 				),
 			)
-
-
-
-
 		);*/
 		?>
 		<?php echo $form->error($model,'message'); ?>
