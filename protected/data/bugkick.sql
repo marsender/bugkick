@@ -1044,12 +1044,6 @@ CREATE TABLE IF NOT EXISTS `bk_coupon` (
 INDEX (  `code` ,  `enabled` )
 ) ENGINE = INNODB;
 
-ALTER TABLE  `bk_company` ADD  `coupon_id` INT UNSIGNED NOT NULL ,
-ADD INDEX (  `coupon_id` );
-
-ALTER TABLE  `bk_company` ADD  `coupon_expires_at` INT UNSIGNED NOT NULL ,
-ADD INDEX (  `coupon_expires_at` );
-
 ALTER TABLE `bk_user` ADD `feedback_style` smallint(6) DEFAULT '322' COMMENT 'means Position | Style | Color';
 
 CREATE TABLE `bk_file` (
