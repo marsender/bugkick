@@ -1,4 +1,8 @@
 <?php
+/**
+ * Usage
+ *   Yii::app()->params['sendNewRegistrationEmail']
+ */
 return array(
 
 	// this is used in contact page
@@ -10,6 +14,8 @@ return array(
 
 	'passwordSalt'=>require($paramsDir . 'salt.php'),
 
+	'sendNewRegistrationEmail'=>false,
+	
 	'showBugkickHomePage'=>false,
 
 	'showBugkickSteps'=>false,
@@ -100,7 +106,7 @@ return array(
 		'#B42AD0',
 	),
 
-	 //if set to false - we send both email and node notification,
+	//if set to false - we send both email and node notification,
 	//else node message will be shown if user is online, email will be send if not.
 	'skipEmailIfNodeReceived'=>false,
 

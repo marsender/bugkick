@@ -162,7 +162,7 @@ class Notificator
 			't' => $user->registration_token
 		));
 		$message = <<<MSG
-	<p>Thank you for your registration at the <a href="{$appUrl}">{$appName}</a>.</p>
+	<p>Thank you for your registration at <a href="{$appUrl}/">{$appName}</a>.</p>
 	<p>Please click <a href="{$veryficationUrl}"><b>this link</b></a> to complete your registration.</p>
 	<p>Best regards. {$appName}.</p>
 MSG;
@@ -256,7 +256,7 @@ MSG;
 				$from = Yii::app()->params['adminEmail'];
 			}
 			$headers .= "From: $from\r\n";
-			$sent = mail($to, $subject, $message, $headers);
+			$sent = @mail($to, $subject, $message, $headers);
 			break;
 		}
 

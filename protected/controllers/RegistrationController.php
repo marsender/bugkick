@@ -184,12 +184,13 @@ class RegistrationController extends Controller
 				$user->defaultCompany = $company->company_id;
 
 				$user->registration_token = Hash::sha256($user->id . uniqid(mt_rand(100, 100500), true));
-				if (!$user->save())
+				if (!$user->save()) {
 					throw new CException('MySQL error #01 during registration.');
+				}
 
-					//uncomment the below to enable confirmation
+				if (Yii::app()->params['sendNewRegistrationEmail']) {
 					Notificator::newRegistration($user);
-
+				}
 
 				//save image files and thumb
 				if (!empty($user->profile_img)) {
