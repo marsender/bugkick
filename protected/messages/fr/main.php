@@ -57,7 +57,7 @@ return array(
 	'Extra Features'=>'Fonctionnalités supplémentaires',
 	'Configure project'=>'Configuration du projet',
 	'Calendar for this project'=>'Calendrier du projet',
-	'Timeline of ticket updates'=>'Chronologie des mises à jour des tickets',
+	'Timeline of ticket updates'=>'Chronologie de mise à jour des tickets',
 	'Your dashboard'=>'Votre tableau de bord',
 	'List of the tickets for this project'=>'Liste des tickets pour ce projet',
 	'Created by'=>'Créé par',
@@ -70,4 +70,6 @@ return array(
 	'Save label'=>'Enregistrer l\'étiquette',
 	'Label color'=>'Couleur de l\'étiquette',
 	'Create new label'=>'Créer une nouvelle étiquette',
+	'Help'=>'Aide',
+	'Summary tickets'=>'Liste des tickets',
 );

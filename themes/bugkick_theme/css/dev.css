@@ -185,12 +185,12 @@ ul.options li.open {
 }
 
 #helpDialog .form-container .row.search label {
-    left: 55px;
+    left: 65px;
 }
 #helpDialog .form-container .row.search #cancel-search {
     background: url("../images/icons/close-help-form.png");
     background-repeat: no-repeat;
-    right: 0px;
+    right: 30px;
     top: 0px;
     height: 33px;
     width: 42px;
@@ -200,7 +200,7 @@ ul.options li.open {
     min-width: 300px;
 }
 #helpDialog .form input[type="text"] {
-    width: 450px;
+    width: 425px;
 }
 /*end help dialog window*/
 

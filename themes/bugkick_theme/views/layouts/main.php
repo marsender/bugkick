@@ -174,7 +174,7 @@ JS
     </div>
 
     <div class="top_tab summary_tickets">
-    	<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>" title="Summary tickets"></a>
+    	<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>" title="<?php echo Yii::t('main', 'Summary tickets'); ?>"></a>
     </div>
 
     <div class="top_tab t_separator"></div>
