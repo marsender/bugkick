@@ -27,11 +27,11 @@
     <div class="step-item">
         <?php if($this->currentStep==3): ?>
             <a href="#" class="bkButtonBlueSmall normal fr"
-                onclick="$('#createBug').trigger('click')"><?php echo Yii::t('main', 'New Ticket'); ?>
+                onclick="$('#createBug').trigger('click')"><?php echo Yii::t('main', 'New ticket'); ?>
             </a>
         <?php else: ?>
             <a class="disabled-button bkButtonGraySmall normal" href="#" onclick="return false;">
-                <?php echo Yii::t('main', 'New Ticket'); ?>
+                <?php echo Yii::t('main', 'New ticket'); ?>
             </a>
         <?php endif;?>
     </div>

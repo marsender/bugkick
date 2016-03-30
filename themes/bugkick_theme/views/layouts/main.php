@@ -198,7 +198,7 @@ JS
     </div>
  */?>
 <?php if(isset($projectsData['selected']['archived']) && $projectsData['selected']['archived']!=1): ?>
-    <div class="top_tab new_ticket"><?php echo CHtml::link(Yii::t('main', 'New Ticket'), Yii::app()->createAbsoluteUrl('#'), array('id'=>'createBug')) ?></div>
+    <div class="top_tab new_ticket"><?php echo CHtml::link(Yii::t('main', 'New ticket'), Yii::app()->createAbsoluteUrl('#'), array('id'=>'createBug')) ?></div>
 <?php endif; ?>
 <?php endif; ?>
 			<div class="clear"></div>
