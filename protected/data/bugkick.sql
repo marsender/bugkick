@@ -1046,6 +1046,7 @@ INDEX (  `code` ,  `enabled` )
 
 ALTER TABLE `bk_user` ADD `feedback_style` smallint(6) DEFAULT '322' COMMENT 'means Position | Style | Color';
 
+drop table `bk_file`;
 CREATE TABLE `bk_file` (
 `id` BIGINT( 20 ) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `name` VARCHAR( 255 ) NOT NULL ,
