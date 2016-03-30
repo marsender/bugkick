@@ -3,6 +3,7 @@
         <div class="head">
             <h3>Pro Plan</h3>
             <span id="premium-price">$9/month</span>
+<?php echo 'test'; ?>
         </div>
     </div>
     <div class="content-outer">

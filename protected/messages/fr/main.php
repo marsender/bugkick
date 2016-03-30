@@ -72,4 +72,7 @@ return array(
 	'Create new label'=>'Créer une nouvelle étiquette',
 	'Help'=>'Aide',
 	'Summary tickets'=>'Liste des tickets',
+	'No articles'=>'Pas d\'articles',
+	'Email address has already been taken'=>'Adresse mail déjà enregistrée',
+	'Profile logo'=>'Logo de votre profil',
 );

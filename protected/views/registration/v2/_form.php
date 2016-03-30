@@ -33,12 +33,12 @@ $form=$this->beginWidget('CActiveForm', array(
 <div class="row">
     <div class="profile-pic">
         <div class="profile-pic-preview">
-            <img src="<?php echo ImageHelper::thumb( 42, 42, 'images/profile_img/default.jpg', 75 ); ?>" alt="Profile Logo" />
+            <img src="<?php echo ImageHelper::thumb( 42, 42, 'images/profile_img/default.jpg', 75 ); ?>" alt="<?php echo Yii::t('main', 'Profile logo'); ?>" />
             <div class="profile-pic-shadow"></div>
         </div>
     </div>
     <div class="description">
-        <label for="profile-pic-upload">Profile Logo</label>
+        <label for="profile-pic-upload"><?php echo Yii::t('main', 'Profile logo'); ?></label>
     </div>
     <div id="photo-upload">
         <?php //echo $form->labelEx($user,'Profile Image'); ?>
@@ -69,6 +69,8 @@ $form=$this->beginWidget('CActiveForm', array(
     <?php echo $form->passwordField($user,'password',array('size'=>60,'maxlength'=>100)); ?>
     <?php echo $form->error($user,'password'); ?>
 </div>
+<?php
+/*
 <div class="row" id="plan-selection">
     <div class="description">
         <label for="plan">Choose a Plan:</label>
@@ -82,6 +84,8 @@ $form=$this->beginWidget('CActiveForm', array(
     );
     ?>
 </div>
+*/
+?>
 <?php /*
 <div class="row">
     <div class="description">

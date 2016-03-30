@@ -11,4 +11,4 @@
         )); ?>
     </div>
 </div>
-<?php $this->renderPartial('v2/premium-description'); ?>
+<?php // $this->renderPartial('v2/premium-description'); ?>
