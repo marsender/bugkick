@@ -204,9 +204,7 @@ return array(
 			),
 		),
 
-		'cache'=>array(
-			'class'=>'system.caching.CApcCache',
-		),
+		'cache'=>require($paramsDir . 'cache.php'),
 
 		 // Redis cache:
 		'rcache'=>array(
