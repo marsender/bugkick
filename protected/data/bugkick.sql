@@ -980,3 +980,115 @@ CREATE TABLE IF NOT EXISTS `tbl_migration` (
 /*!40000 ALTER TABLE `tbl_migration` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+-- 2016 add
+
+drop table `bk_user_block`;
+CREATE TABLE IF NOT EXISTS `bk_user_block` (
+  `user_ip` varchar(255) NOT NULL,
+  `block_to` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `count_entry` int(11) NOT NULL,
+  `first_entry` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+
+drop table `bk_domains_blacklist`;
+CREATE TABLE IF NOT EXISTS `bk_domains_blacklist` (
+`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`domain` VARCHAR( 255 ) NOT NULL COMMENT  'Email services that are prohibited to register on Bugkick',
+INDEX (  `domain` )
+) ENGINE = INNODB;
+
+INSERT INTO `bk_domains_blacklist` (`id` ,`domain`)
+VALUES
+(NULL ,  'mailinator.com'
+),(
+NULL ,  'zippymail.info'
+), (
+NULL ,  'mailinator2.com'
+),(
+NULL ,  'sendspamhere.com'
+), (
+NULL ,  'chammy.info'
+),(
+NULL ,  'notmailinator.com'
+), (
+NULL ,  'mailinator.net'
+),(
+NULL ,  'letthemeatspam.com'
+), (
+NULL ,  'tradermail.info'
+), (
+NULL ,  'dcemail.com'
+), (
+NULL ,  'mail2world.com'
+),(
+NULL ,  'bigstring.com'
+), (
+NULL ,  'hushmail.com'
+),(
+NULL ,  'tempinbox.com'
+), (
+NULL ,  'lavabit.com'
+), (
+NULL ,  'techemail.com'
+);
+
+drop table `bk_coupon`;
+CREATE TABLE IF NOT EXISTS `bk_coupon` (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`code` VARCHAR( 255 ) NOT NULL COMMENT  'Coupon code',
+`enabled` TINYINT UNSIGNED NOT NULL ,
+`period` INT NOT NULL COMMENT  'Defines how much time for free (in seconds)',
+INDEX (  `code` ,  `enabled` )
+) ENGINE = INNODB;
+
+ALTER TABLE  `bk_company` ADD  `coupon_id` INT UNSIGNED NOT NULL ,
+ADD INDEX (  `coupon_id` );
+
+ALTER TABLE  `bk_company` ADD  `coupon_expires_at` INT UNSIGNED NOT NULL ,
+ADD INDEX (  `coupon_expires_at` );
+
+ALTER TABLE `bk_user` ADD `feedback_style` smallint(6) DEFAULT '322' COMMENT 'means Position | Style | Color';
+
+CREATE TABLE `bk_file` (
+`id` BIGINT( 20 ) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` VARCHAR( 255 ) NOT NULL ,
+`public_name` VARCHAR( 255 ) NOT NULL COMMENT 'Box.net name of the file for downloading',
+`user_id` BIGINT( 20 ) UNSIGNED NOT NULL COMMENT  'ID of user who uploaded ',
+`ticket_id` BIGINT( 20 ) UNSIGNED NOT NULL ,
+`box_file_id` VARCHAR( 255 ) NOT NULL COMMENT  'Box.net file ID',
+`size` BIGINT( 20 ) UNSIGNED NOT NULL COMMENT  'Size in bytes',
+`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+INDEX (  `user_id` ,  `ticket_id` ,  `box_file_id` )
+) ENGINE = INNODB;
+
+ALTER TABLE  `bk_file` ADD FOREIGN KEY (  `ticket_id` ) REFERENCES `bk_bug` (
+`id`
+) ON DELETE CASCADE ON UPDATE CASCADE ;
+CREATE TABLE `bk_site_settings` (
+`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`invites_module` TINYINT( 1 ) UNSIGNED NOT NULL COMMENT  'Defines if invites module is enabled',
+`invites_count` INT UNSIGNED NOT NULL COMMENT  'Limit of invites per user',
+`invites_limit` TINYINT( 1 ) UNSIGNED NOT NULL COMMENT  'Defines if we limit number of available invites per user'
+) ENGINE = INNODB;
+
+INSERT INTO `bk_site_settings` (
+`id` ,
+`invites_module` ,
+`invites_count` ,
+`invites_limit`
+)
+VALUES (
+NULL ,  '0',  '5',  '1'
+);
+
+ALTER TABLE  `bk_user` ADD  `default_page` TINYINT UNSIGNED NOT NULL DEFAULT  '1' COMMENT  '1-dashboard, 2-tickets list' AFTER  `tickets_per_page`;
+
+ALTER TABLE bk_bug
+ADD CONSTRAINT uc_number UNIQUE (project_id,number);
+ALTER TABLE bk_bug
+ADD CONSTRAINT uc_prev_number UNIQUE (project_id,prev_number);
+ALTER TABLE bk_bug
+ADD CONSTRAINT uc_next_number UNIQUE (project_id,next_number);
