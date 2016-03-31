@@ -65,7 +65,7 @@ JS
         );
     </script>*/ ?>
     <title><?php echo html_entity_decode(CHtml::encode($this->pageTitle)); ?></title>
-    <?php MixPanel::instance()->registerTracking(); ?>
+    <?php if (Yii::app()->params['trackClickEvents']) { MixPanel::instance()->registerTracking(); } ?>
 </head>
 <body>
     <?php
@@ -236,7 +236,12 @@ JS
                 <?php endif?>
                     <li>
                         <span>
-                            <a href="<?php echo Yii::app()->createUrl('/bug/closed')?>" title="Closed"><?php echo Yii::t('main', 'Closed tickets'); ?></a>
+                        	<?php if (isset($this->currentView) && $this->currentView == 'closed') { ?>
+                            <a href="<?php echo Yii::app()->createUrl('/bug')?>" title="Open"><?php echo Yii::t('main', 'Display opened tickets'); ?></a>
+                          <?php }
+                          else { ?>
+                            <a href="<?php echo Yii::app()->createUrl('/bug/closed')?>" title="Closed"><?php echo Yii::t('main', 'Display closed tickets'); ?></a>
+                          <?php } ?>
                             <!-- <span class="delimiter">|</span> -->
                         </span>
                     </li>
@@ -334,13 +339,13 @@ JS
         d.getElementsByTagName('head')[0].appendChild(s);
     })(document);
 </script>
-<script type="text/javascript">
+<?php /*<script type="text/javascript">
     (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-</script>
+</script>*/ ?>
 
 </body>
 </html>

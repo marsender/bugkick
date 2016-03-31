@@ -53,7 +53,7 @@
         <h1>Bug tracking for the rest of us</h1>
         <p>BugKick was built for the engineers behind Musopen.org. We think others might enjoy what we've created and have decided to make it a separate service. BugKick is free even with unlimited users and tickets. We offer a pay plan but 100% of the profits from these plans will support charity.</p>
         <span class="call-to-action-1"><a href="#" data-reveal-id="myModal" data-animation="fade">Compare Plans</a></span>
-        <span class="call-to-action-2"><a href="<?php echo $this->createUrl('/registration'); ?>">Sign Up</a></span>
+        <span class="call-to-action-2"><a href="<?php echo $this->createUrl('/registration'); ?>"><?php echo Yii::t('main', 'Sign up'); ?></a></span>
       </div>
         <span class="splash-screenshot"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/home/screenshot.png" width="435" height="274" class="screenshot" alt="example" /></span>
         <span class="clouds"></span>
@@ -112,7 +112,7 @@
       <h2>Try it free today then upgrade later if you like it.</h2>
       <div class="clear"></div>
       <p>Or use it free indefinitely, with unlimited tickets and users.</p>
-      <span class="call-to-action-1"><a href="<?php echo $this->createUrl('/registration'); ?>">Sign Up</a></span>
+      <span class="call-to-action-1"><a href="<?php echo $this->createUrl('/registration'); ?>"><?php echo Yii::t('main', 'Sign up'); ?></a></span>
     </div>
     <!-- //End -->
 
@@ -180,7 +180,7 @@
                     <li>&nbsp;</li>
                 </ul>
                 <div class="button">
-                    <a href="<?php echo $this->createUrl('/registration'); ?>" class="btn_signup">Sign Up</a>
+                    <a href="<?php echo $this->createUrl('/registration'); ?>" class="btn_signup"><?php echo Yii::t('main', 'Sign up'); ?></a>
                 </div>
             </li>
 
@@ -196,7 +196,7 @@
                     <li>Custom logo, No Ads</li>
                 </ul>
                 <div class="button">
-                    <a href="<?php echo $this->createUrl('/registration/index', array('subscription'=>'pro')); ?>" class="btn_signup">Sign Up</a>
+                    <a href="<?php echo $this->createUrl('/registration/index', array('subscription'=>'pro')); ?>" class="btn_signup"><?php echo Yii::t('main', 'Sign up'); ?></a>
                 </div>
             </li>
 
@@ -213,7 +213,7 @@
                     <li>&nbsp;</li>
                 </ul>
                 <div class="button">
-                    <a href="<?php echo $this->createUrl('/registration/index', array('subscription'=>'premium')); ?>" class="btn_signup">Sign Up</a>
+                    <a href="<?php echo $this->createUrl('/registration/index', array('subscription'=>'premium')); ?>" class="btn_signup"><?php echo Yii::t('main', 'Sign up'); ?></a>
                 </div>
             </li>
             <li class="ultimate_membership highlighted">
@@ -228,7 +228,7 @@
                     <li>GitHub Integration</li>
                 </ul>
                 <div class="button">
-                    <a href="<?php echo $this->createUrl('/registration/index', array('subscription'=>'ultimate')); ?>" class="btn_signup">Sign Up</a>
+                    <a href="<?php echo $this->createUrl('/registration/index', array('subscription'=>'ultimate')); ?>" class="btn_signup"><?php echo Yii::t('main', 'Sign up'); ?></a>
                 </div>
             </li>
             <?php */ ?>

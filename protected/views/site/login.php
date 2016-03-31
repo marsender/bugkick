@@ -19,9 +19,9 @@ $this->breadcrumbs=array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
-    
+
 <?php if(Yii::app()->user->hasFlash('success'))
-    echo Yii::app()->user->getFlash('success'); 
+    echo Yii::app()->user->getFlash('success');
 ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -51,4 +51,4 @@ $this->breadcrumbs=array(
 <?php $this->endWidget(); ?>
 </div><!-- form -->
 
-Not Registered? <?php echo CHtml::link('Sign Up Now', Yii::app()->createUrl('registration')) ?>
+<?php echo Yii::t('main', 'Not registered'); ?> ? <?php echo CHtml::link(Yii::t('main', 'Sign up'), Yii::app()->createUrl('registration')) ?>

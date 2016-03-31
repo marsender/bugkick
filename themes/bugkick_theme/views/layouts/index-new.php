@@ -43,20 +43,20 @@ JS
     ?>
     <?php /*<title>BugKick - Landing Page</title>*/ ?>
     <title><?php echo html_entity_decode(CHtml::encode($this->pageTitle)); ?></title>
-    <?php MixPanel::instance()->registerTracking(); ?>
+    <?php if (Yii::app()->params['trackClickEvents']) { MixPanel::instance()->registerTracking(); } ?>
 </head>
 <body>
 <div id="main-wrapper">
    <div id="header">
 		<div class="wrapper">
-			<a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" title="Home Page"><h1 id="logo">BugKick</h1></a>
+			<a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" title="<?php echo Yii::t('main', 'Home page'); ?>"><h1 id="logo"><?php echo Yii::t('main', 'Login'); ?></h1></a>
 			<div id="landing-nav">
 				<ul>
             <?php if(Yii::app()->params['showBugkickHomePage'] && !($this->getId() == 'site' && $this->getAction()->getId() == 'index')) { ?>
 				    <li id="back-to-home"><a href="<?php echo Yii::app()->homeUrl ?>" title="Go back to the home page" class="buttonLandingStyle no-bg"><< Back to the homepage</a></li>
             <?php }else{ ?>
-				    <li><a href="<?php echo $this->createUrl('/registration'); ?>" title="Sign Up" class="buttonLandingStyle green">Sign Up</a></li>
-				    <li><a href="<?php echo $this->createUrl('/site/login'); ?>" title="Sign In" class="buttonLandingStyle no-bg">Sign In >></a></li>
+				    <li><a href="<?php echo $this->createUrl('/registration'); ?>" title="Sign Up" class="buttonLandingStyle green"><?php echo Yii::t('main', 'Sign up'); ?></a></li>
+				    <li><a href="<?php echo $this->createUrl('/site/login'); ?>" title="Sign In" class="buttonLandingStyle no-bg"><?php echo Yii::t('main', 'Login'); ?></a></li>
             <?php } ?>
 				</ul>
 			</div>
@@ -68,10 +68,10 @@ JS
     </div>
     <div class="footer-wrapper" id="footer-wrapper">
         <div class="footer-inner" id="footer-inner">
-            <p class="copyright">BugKick &copy; <!-- <?php echo date('Y'); ?> --> 2013</p>
-            <div class="footer-info" id="footer-info">
-            	<a href="<?php echo $this->createUrl('/site/login'); ?>" title="Sign In to BugKick">Sign in >></a>
-            </div>
+            <p class="copyright"><a href="https://github.com/marsender/bugkick">BugKick &copy; 2013</a></p>
+<?php /*    <div class="footer-info" id="footer-info">
+            	<a href="<?php echo $this->createUrl('/site/login'); ?>" title="Sign In to BugKick"><?php echo Yii::t('main', 'Login'); ?> >></a>
+            </div> */ ?>
         </div>
     </div>
 </div>
@@ -100,12 +100,12 @@ JS
         $('.chzn-select').chosen();
     })(jQuery);
 </script>
-<script type="text/javascript">
+<?php /* <script type="text/javascript">
     (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-</script>
+</script>*/ ?>
 </body>
 </html>

@@ -14,6 +14,8 @@ return array(
 
 	'passwordSalt'=>require($paramsDir . 'salt.php'),
 
+	'trackClickEvents'=>false,
+
 	'sendNewRegistrationEmail'=>false,
 
 	'showBugkickHomePage'=>false,

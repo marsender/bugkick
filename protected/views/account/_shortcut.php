@@ -37,6 +37,14 @@
                         </tr>
                         <tr>
                             <td class="short-key">
+                                b
+                            </td>
+                            <td>
+                               : <?php echo Yii::t('main', 'Go to tickets page') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="short-key">
                                 t
                             </td>
                             <td>

@@ -3,6 +3,10 @@ $(document).bind('keydown', 'n', function(evt) {
 	$('#createBugDialog').dialog('open');
 	return false;
 });
+$(document).bind('keydown', 'b', function(evt) {
+	window.location = '/bugkick/bug';
+	return false;
+});
 $(document).bind('keydown', 't', function(evt) {
 	window.location = '/bugkick/bug/summaryTickets';
 	return false;

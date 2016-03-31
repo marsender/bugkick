@@ -151,7 +151,7 @@
     					<p class="accent">Try it free today then upgrade later if you like it.</p>
     					<p>Or use it free indefinitely, with unlimited tickets and users.</p>
     				</div>
-    				<a href="<?php echo $this->createUrl('/registration'); ?>" title="Sign Up" class="buttonLandingStyle green fl">Sign Up</a>
+    				<a href="<?php echo $this->createUrl('/registration'); ?>" title="Sign up" class="buttonLandingStyle green fl"><?php echo Yii::t('main', 'Sign up'); ?></a>
     			</div>
     		</div>
     	</div>

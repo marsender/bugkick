@@ -20,7 +20,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
 <?php if (!Yii::app()->user->hasFlash('block')): ?>
     <div id="login" class="centered-form">
         <div class="head">
-            <h2>Login to <?php echo Yii::app()->name ?></h2>
+            <h2><?php echo Yii::t('main', 'Login'); ?></h2>
         </div>
         <div class="form">
             <?php
@@ -55,7 +55,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
             </div>
 
             <div class="row buttons">
-                <?php echo CHtml::submitButton('Login >>', array('class' => 'buttonLandingStyle green')); ?>
+                <?php echo CHtml::submitButton(Yii::t('main', 'Login') . ' >>', array('class' => 'buttonLandingStyle green')); ?>
             </div>
             <?php $this->endWidget(); ?>
         </div>
@@ -65,8 +65,8 @@ $this->pageTitle = Yii::app()->name . ' - Login';
          </div>-->
     </div>
     <div id="additional-actions">
-        <p>Not registered? <?php echo CHtml::link('Sign Up', Yii::app()->createUrl('/registration')) ?> now for free!</p>
-        <p><a href="#" title="Click to recover your password" class="reset-password-link">Forgot your password</a> ?</p>
+        <?php /* <p><?php echo Yii::t('main', 'Not registered'); ?> ? <?php echo CHtml::link(Yii::t('main', 'Sign up'), Yii::app()->createUrl('/registration')) ?></p> */ ?>
+        <p><a href="#" title="Click to recover your password" class="reset-password-link"><?php echo Yii::t('main', 'Forgot your password'); ?></a> ?</p>
     </div>
 
     <?php
@@ -112,7 +112,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
         </div>
 
         <div class="row buttons">
-            <?php echo CHtml::submitButton('Reset'); ?>
+            <?php echo CHtml::submitButton(Yii::t('main', 'Reset')); ?>
         </div>
         <div class="clear"></div>
         <?php $this->endWidget(); ?>

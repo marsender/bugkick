@@ -245,7 +245,7 @@ JS
     <div>
         <ul class="operations tree"  id="filterTree"  style="display: none;">
             <li>
-            <span class="menu-title"><?php echo Yii::t('main', 'Saved Filters') ?></span>
+            <span class="menu-title"><?php echo Yii::t('main', 'Saved filters') ?></span>
                 <ul id="target-filter">
 <?php if (!empty($filterList)): ?>
             <?php foreach ($filterList as $filter): ?>
