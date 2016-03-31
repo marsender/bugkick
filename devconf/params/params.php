@@ -22,6 +22,8 @@ return array(
 
 	'showBugkickSteps'=>false,
 
+	'showForum'=>false,
+
 	'bcryptWorkFactor'=>10,
 
 	'profileImageUrl'=>'images/profile_img/',
