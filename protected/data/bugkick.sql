@@ -280,7 +280,7 @@ INSERT INTO `bk_email_preference` (`email_preference_id`, `name`) VALUES
 	(1, 'New ticket'),
 	(2, 'Ticket status changes'),
 	(3, 'New comment'),
-	(4, 'Due Date reminder');
+	(4, 'Due date reminder');
 /*!40000 ALTER TABLE `bk_email_preference` ENABLE KEYS */;
 
 

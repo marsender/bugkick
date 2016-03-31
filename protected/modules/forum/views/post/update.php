@@ -14,11 +14,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-    array('label'=>'Back to Topic', 'url'=>array('forum/topic/view', 'id'=>$model->topic->id)),
-    array('label'=>'Back to Forum', 'url'=>array('forum/view', 'id'=>$model->topic->forum->id)),
-    array('label'=>'Back to Forums', 'url'=>array('/forum')),
+    array('label'=>Yii::t('main', 'Back to topic'), 'url'=>array('forum/topic/view', 'id'=>$model->topic->id)),
+    array('label'=>Yii::t('main', 'Back to forum'), 'url'=>array('forum/view', 'id'=>$model->topic->forum->id)),
+    array('label'=>Yii::t('main', 'Back to forums'), 'url'=>array('/forum')),
 );
-$this->pageTitle = Yii::t('main','Update Post');
+$this->pageTitle = Yii::t('main','Update post');
 ?>
 <header><h3><?php echo $this->pageTitle; ?></h3></header>
 

@@ -11,8 +11,8 @@
 	'id'=>'bkpost-form',
 	'enableAjaxValidation'=>false,
     'action'=>$model->isNewRecord
-        ? '/forum/post/create/topicID/' . $topic->id
-        : '/forum/post/update/id/' . $model->id
+        ? Yii::app()->baseUrl . '/forum/post/create/topicID/' . $topic->id
+        : Yii::app()->baseUrl . '/forum/post/update/id/' . $model->id
 )); ?>
 
 <!--	<p class="note">Fields with <span class="required">*</span> are required.</p>-->
@@ -37,7 +37,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Post comment' : 'Save',array('class'=>'bkButtonBlueSmall normal')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::t('main', 'Send post') : Yii::t('main', 'Save'),array('class'=>'bkButtonBlueSmall normal')); ?>
         <?php /*echo CHtml::button('Cancel', array('class'=>'btn','onclick'=>'history.go(-1)'));*/ ?>
 	</div>
 

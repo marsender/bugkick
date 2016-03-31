@@ -229,14 +229,14 @@ JS
                 <?php else:?>
                     <li>
                         <span>
-                            <a href="<?php echo $this->createUrl('settings/exportTickets'); ?>" target="_blank" id="export_tickets"><?php echo Yii::t('main', 'Export Tickets'); ?></a>
+                            <a href="<?php echo $this->createUrl('settings/exportTickets'); ?>" target="_blank" id="export_tickets"><?php echo Yii::t('main', 'Export tickets'); ?></a>
                             <!-- <span class="delimiter">|</span> -->
                         </span>
                     </li>
                 <?php endif?>
                     <li>
                         <span>
-                            <a href="<?php echo Yii::app()->createUrl('/bug/closed')?>" title="Closed"><?php echo Yii::t('main', 'Closed Tickets'); ?></a>
+                            <a href="<?php echo Yii::app()->createUrl('/bug/closed')?>" title="Closed"><?php echo Yii::t('main', 'Closed tickets'); ?></a>
                             <!-- <span class="delimiter">|</span> -->
                         </span>
                     </li>

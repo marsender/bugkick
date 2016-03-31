@@ -9,20 +9,20 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => 'List Forums', 'url' => array('forum/index')),
-    array('label' => 'Back to Forum', 'url' => array('forum/view', 'id' => $model->forum->id)),
+    array('label' => Yii::t('main', 'List forums'), 'url' => array('forum/index')),
+    array('label' => Yii::t('main', 'Back to forum'), 'url' => array('forum/view', 'id' => $model->forum->id)),
     array(
-        'label' => 'Create Topic',
+        'label' => Yii::t('main', 'Create topic'),
         'url' => array('create', 'forumID' => $model->forum->id),
         'visible' => Yii::app()->user->checkAccess('user')
     ),
     array(
-        'label' => 'Update Topic',
+        'label' => Yii::t('main', 'Update topic'),
         'url' => array('update', 'id' => $model->id),
         'visible' => Yii::app()->user->checkAccess('moderator')
     ),
     array(
-        'label' => 'Delete Topic',
+        'label' => Yii::t('main', 'Delete topic'),
         'url' => '#',
         'linkOptions' => array(
             'submit' => array('delete', 'id' => $model->id),
@@ -38,7 +38,7 @@ $this->menu = array(
       ), */
     array('label' => Yii::t('main', 'Posts'), 'itemOptions' => array('class' => 'nav-header')),
     array(
-        'label' => 'Create Post',
+        'label' => Yii::t('main', 'Create post'),
         'url' => array('post/create', 'topicID' => $model->id),
         'visible' => Yii::app()->user->checkAccess('user')
     ),
@@ -63,7 +63,7 @@ $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $posts,
     'itemView' => 'application.modules.forum.views.post._view',
     'summaryText' => '',
-    'emptyText' => Yii::t('main', 'No posts yet.'),
+    'emptyText' => Yii::t('main', 'No posts'),
     'pager' => array(
         'header' => '',
     )
@@ -76,7 +76,7 @@ $this->widget('zii.widgets.CListView', array(
 if (Yii::app()->user->checkAccess('user'))
     echo $this->renderPartial('forum.views.post._form', array('model' => $form, 'topic' => $model));
 else
-    echo CHtml::link(Yii::t('main', 'New Post'), array('/forum/post/create', 'topicID' => $model->id), array('class' => 'btn btn-primary btn-toolbar'));
+    echo CHtml::link(Yii::t('main', 'New post'), array('/forum/post/create', 'topicID' => $model->id), array('class' => 'btn btn-primary btn-toolbar'));
 ?>
 
 

@@ -11,11 +11,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Back to Forum', 'url'=>array('forum/view','id'=>$forum->id)),
-	array('label'=>'Manage Topics', 'url'=>array('admin'),
+	array('label'=>Yii::t('main', 'Back to forum'), 'url'=>array('forum/view','id'=>$forum->id)),
+	array('label'=>Yii::t('main', 'Manage topics'), 'url'=>array('admin'),
 	    'visible'=>Yii::app()->user->checkAccess('moderator')),
 );
-$this->pageTitle = Yii::t('main','Create Topic');
+$this->pageTitle = Yii::t('main','Create topic');
 ?>
 
 <header><h3><?php echo $this->pageTitle; ?></h3></header>

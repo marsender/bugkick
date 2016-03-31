@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Topic', 'url'=>array('create'),
+	array('label'=>'Create topic', 'url'=>array('create'),
 		'visible'=>Yii::app()->user->checkAccess('user')),
 	array('label'=>'Manage Topic', 'url'=>array('admin'),
 	    'visible'=>Yii::app()->user->checkAccess('moderator')),

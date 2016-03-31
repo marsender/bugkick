@@ -7,19 +7,19 @@ $this->breadcrumbs=array(
     CHtml::encode(BKHelper::truncateString($model->title)),
 );
 $this->menu=array(
-    array('label'=>'List Forums', 'url'=>array('index')),
+    array('label'=>Yii::t('main', 'List forums'), 'url'=>array('index')),
    	array(
-        'label'=>'Create Forum',
+        'label'=>Yii::t('main', 'Create forum'),
         'url'=>array('create'),
         'visible'=>Yii::app()->user->checkAccess('moderator')
     ),
    	array(
-        'label'=>'Update Forum',
+        'label'=>Yii::t('main', 'Update forum'),
         'url'=>array('update', 'id'=>$model->id),
         'visible'=>Yii::app()->user->checkAccess('moderator')
     ),
    	array(
-        'label'=>'Delete Forum', 'url'=>'#',
+        'label'=>Yii::t('main', 'Delete forum'), 'url'=>'#',
         'linkOptions'=>array(
             'submit'=>array('delete','id'=>$model->id),
             'confirm'=>'Are you sure you want to delete this item?',
@@ -28,13 +28,13 @@ $this->menu=array(
         'visible'=>Yii::app()->user->checkAccess('moderator')
     ),
    	array(
-        'label'=>'Manage Forums',
+        'label'=>Yii::t('main', 'Manage forums'),
         'url'=>array('admin'),
    	    'visible'=>Yii::app()->user->checkAccess('moderator')
     ),
     array('label'=>Yii::t('main','Topics'),'itemOptions'=>array('class'=>'nav-header')),
     array(
-        'label'=>'Create Topic',
+        'label'=>Yii::t('main', 'Create topic'),
         'url'=>array('topic/create', 'forumID'=>$model->id),
         'visible'=>Yii::app()->user->checkAccess('user')
     ),
@@ -62,7 +62,7 @@ $this->pageTitle = CHtml::encode(BKHelper::truncateString($model->title));
 
 <?php
     if(Yii::app()->user->checkAccess('user')){
-        echo CHtml::link(Yii::t('main','New Topic'), array('/forum/topic/create', 'forumID'=>$model->id),
+        echo CHtml::link(Yii::t('main','New topic'), array('/forum/topic/create', 'forumID'=>$model->id),
             array('class'=>'btn btn-primary btn-toolbar', 'id'=>'btn-new-topic'));
     }
 ?>
