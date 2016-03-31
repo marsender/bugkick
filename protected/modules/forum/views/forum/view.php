@@ -53,7 +53,7 @@ $this->pageTitle = CHtml::encode(BKHelper::truncateString($model->title));
     	'dataProvider'=>$topics,
     	'itemView'=>'application.modules.forum.views.topic._view',
         'summaryText'=>'',
-        'emptyText'=>Yii::t('main','No topics yet.'),
+        'emptyText'=>Yii::t('main','No topics'),
         'pager'=>array(
             'header'=>'',
         )

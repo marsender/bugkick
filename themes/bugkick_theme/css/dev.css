@@ -807,10 +807,11 @@ textarea[readonly] {
 }
 .add-task{
     margin-top: 10px;
+    margin-right: 20px;
     display: block;
-    width: 10px;
+    /*width: 10px;*/
     height: 10px;
-    background: url("../images/icons/icon_task_plus.png");
+    background: url("../images/icons/icon_task_plus.png") no-repeat;
 }
 .crossed{
     text-decoration: line-through;
@@ -966,9 +967,9 @@ behavior: url(./PIE.htc);
     padding: 0px;    
 }
 #content #main h3{
-    padding: 15px 0px 15px 16px;
-    font-size: 18px;
-    font-family: "proxima-nova-alt-n7","proxima-nova-alt",sans-serif;
+    padding: 15px 15px 0px 15px;
+    /*font-size: 18px;
+    font-family: "proxima-nova-alt-n7","proxima-nova-alt",sans-serif;*/
 }
 
 #content{
@@ -1332,5 +1333,5 @@ div.form .row{
 }
 
 .float-filters .sidebar_middle:last-child{
-    border-top: 1px solid #e8e8e9;
+    /*border-top: 1px solid #e8e8e9;*/
 }

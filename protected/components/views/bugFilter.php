@@ -44,7 +44,11 @@ JS
 <?php echo CHtml::form(Yii::app()->createAbsoluteUrl($act), 'post', array('id'=>'filterForm')); ?>
 
 
-<?php $groupList = Project::getUserGroups() ?>
+<?php
+	$isGlobalAdmin = User::current()->isGlobalAdmin();
+	$groupList = Project::getUserGroups();
+	if (!empty($groupList)) {
+?>
     <div>
         <ul class="operations tree"  id="groupTree"  style="display: none;">
             <li>
@@ -52,12 +56,14 @@ JS
                 <?php echo Yii::t('main', 'Groups') ?>
             </span>
                 <?php
+                	if ($isGlobalAdmin) {
                     echo CHtml::link('',
                         'settings/groups',
                         array(
                             'class'=>'filter-edit-link',
                         )
-                    )
+                    );
+                	}
                 ?>
                 <ul id="target-group">
 <?php if (!empty($groupList)): ?>
@@ -68,14 +74,14 @@ JS
                     <?php echo CHtml::hiddenField("filterText[group-negative][{$group->group_id}]", '', array('class'=>'negative')) ?>
                 </li>
             <?php endforeach; ?>
-<?php else: ?>
+<?php elseif (false): ?>
          <a href="<?php echo Yii::app()->createUrl('settings/groups'); ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','New Group'); ?></a>
 <?php endif; ?>
                 </ul>
             </li>
         </ul>
     </div>
-
+<?php } ?>
 
 <?php $labelList = Project::getLabels(); ?>
     <div>
@@ -85,12 +91,14 @@ JS
                     <?php echo Yii::t('main', 'Labels') ?>
                 </span>
                 <?php
-                    echo CHtml::link('',
+                if ($isGlobalAdmin) {
+                	echo CHtml::link('',
                         'settings/labelListing',
                         array(
                             'class'=>'filter-edit-link',
                         )
-                    )
+                    );
+                }
                 ?>
                 <ul id="target-label">
                     <?php if (!empty($labelList)): ?>
@@ -168,12 +176,14 @@ JS
                 <?php echo Yii::t('main', 'Status') ?>
             </span>
                 <?php
-                    echo CHtml::link('',
+                if ($isGlobalAdmin) {
+                	echo CHtml::link('',
                         'settings/statusListing',
                         array(
                             'class'=>'filter-edit-link'
                         )
-                    )
+                    );
+                }
                 ?>
                 <ul id="target-status">
 <?php if (!empty($statusList)): ?>
@@ -200,12 +210,14 @@ JS
                 <?php echo Yii::t('main', 'People') ?>
             </span>
                 <?php
+                if ($isGlobalAdmin) {
                     echo CHtml::link('',
                         'settings/members',
                         array(
                             'class'=>'filter-edit-link',
                         )
-                    )
+                    );
+                }
                 ?>
                 <ul id="target-user">
 <?php if (!empty($userList)): ?>

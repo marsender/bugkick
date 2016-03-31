@@ -11,7 +11,7 @@ $this->breadcrumbs = array(
 ?>
 <div class="settings">
 
-<h2><?php echo Yii::t('main', 'Company Settings'); ?></h2>
+<h2><?php echo Yii::t('main', 'Company settings'); ?></h2>
 
 <?php $this->renderFlash(); ?>
 
@@ -150,7 +150,7 @@ $this->breadcrumbs = array(
      </div>
 
      <div class="clear"></div>
-     
+
      <div class="row-left">
          <a href="<?php echo Yii::app()->createUrl("settings/resetCompanyTopBar")?>" onclick="return confirm('Reset header to default?');" >Reset to default colors</a>
      </div>

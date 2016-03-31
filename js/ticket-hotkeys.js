@@ -19,22 +19,22 @@ $(document).bind(
     'keydown',
     'c',
     function (evt){
-//      if (confirm('Close this ticket?')){
-          window.location='/bug/setarchived/' + $("#archived-link").attr("ticket-id");
-//       }
+      if (confirm('Close this ticket?')){
+          window.location='/bugkick/bug/setarchived/' + $("#archived-link").attr("ticket-id");
+       }
        return false;
     }
 );
 $(document).bind(
     'keydown',
-    'd',
+    'x',
     function (evt){
        if (confirm('Delete this ticket?')){
           $.post(
-              '/bug/delete/' + $("#archived-link").attr("ticket-id"),
+              '/bugkick/bug/delete/' + $("#archived-link").attr("ticket-id"),
               {YII_CSRF_TOKEN :YII_CSRF_TOKEN},
               function(data){
-                window.location='/bug/';
+                window.location='/bugkick/bug/';
               },
               "html"
           );

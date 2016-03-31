@@ -37,20 +37,20 @@ Yii::import('application.controllers.RegistrationController');
  * @property integer $bugCreatedCount The count of bugs which the user has created.
  * @property User $invitedByUser
  * @property GithubUser $githubUser
- * @property User[] $invitedUsers 
+ * @property User[] $invitedUsers
  * @property integer $invitedUsersCount
  * @property StripeCustomer $stripeCustomer The Stripe customer, <br />
  * associated with BugKick user or null if the user is not a Stripe customer.
  * @property integer pro_status - flag shows if user has pro status. Pro status makes all user's
  * companies upgraded to Pro plan for ever (Gift)
- * 
+ *
  *													Relations properties:
- * 
+ *
  * @property Project $currentProject Selected project <br />
  * or null if none project selected.
  *													Relations properties END
  * @method User currentCompany() Returns the finder of users that belongs to current company.
- * 
+ *
  * @todo http://bugkick.com/BugKick/ticket/283
  */
 class User extends CActiveRecord
@@ -61,7 +61,7 @@ class User extends CActiveRecord
     const STATUS_ACTIVE = 1;
     const STATUS_REJECTED = 2;
     const STATUS_DELETED = 3;
-    
+
     const ALGORITHM_SHA256 = 1;
     const ALGORITHM_BCRYPT = 2;
 
@@ -165,7 +165,7 @@ class User extends CActiveRecord
     }
 
     /**
-     * 
+     *
      * @return string sha1 hash of random value.
      */
     public function generateInviteToken() {
@@ -284,7 +284,7 @@ class User extends CActiveRecord
 
     /**
      * Allows to determine is the current User record a company admin.
-     * 
+     *
      * @param integer $company_id
      * @return boolean Is the current User record a company admin.
      */
@@ -311,7 +311,7 @@ class User extends CActiveRecord
     /**
      * Creates the scope to fetch the users which are assigned
      * to ticket and also are in project.
-     * 
+     *
      * @param BugBase $bug
      * @return \User
      */
@@ -426,28 +426,28 @@ class User extends CActiveRecord
         return array(
             'user_id' => 'ID',
             'facebook_id' => 'Facebook ID',
-            'created_at' => 'Created At',
+            'created_at' => 'Created at',
             'name' => 'First name',
             'lname' => 'Last name',
             'email' => 'Email address',
             'password' => 'Password',
             'salt' => 'Salt',
             'email_notify' => 'Email when my tickets were changed',
-            'isadmin' => 'Project Manager',
-            'is_global_admin' => 'Global Admin',
-            'profile_img' => 'Profile Img',
-            'email_preference' => 'Email Preference',
-            'hotkey_preference' => 'Use Shortcuts',
-            'randomPassword' => 'Random Password',
-            'userStatus' => 'User Status',
-            'defaultAssignee' => 'Default Assignee',
-            'defaultStatus' => 'Default Status',
-            'defaultLabel' => 'Default Label',
-			'tickets_per_page' => 'Tickets Per Page',
-			'ticket_update_return' => 'Ticket Update Return',
-            'look_and_feel' => 'Choose Theme',
-            'use_wysiwyg' => 'Use WYSIWYG-editor',
-            'default_page' => 'Default Page',
+            'isadmin' => 'Project manager',
+            'is_global_admin' => 'Global admin',
+            'profile_img' => 'Profile image',
+            'email_preference' => 'Email preference',
+            'hotkey_preference' => 'Use shortcuts',
+            'randomPassword' => 'Random password',
+            'userStatus' => 'User status',
+            'defaultAssignee' => 'Default assignee',
+            'defaultStatus' => 'Default status',
+            'defaultLabel' => 'Default label',
+						'tickets_per_page' => 'Tickets per page',
+						'ticket_update_return' => 'Ticket update return',
+            'look_and_feel' => 'Choose theme',
+            'use_wysiwyg' => 'Html editor',
+            'default_page' => 'Default page',
         );
     }
 
@@ -511,25 +511,25 @@ class User extends CActiveRecord
     public static function getId() {
         return empty(Yii::app()->user) ? null : Yii::app()->user->id;
     }
-	
+
 	public static function getTicketUpdRtnOptions() {
         return array(
-			1 => 'Return home',
-			2 => 'Stay in the ticket',
+			1 => Yii::t('main', 'Return home'),
+			2 => Yii::t('main', 'Stay in the ticket'),
 		);
     }
 
 	public static function getDefaultPageOptions() {
         return array(
-			self::DEFAULT_PAGE_DASHBOARD => 'Dashboard',
-			self::DEFAULT_PAGE_TICKETS_LIST => 'Tickets List',
-			self::DEFAULT_PAGE_UPDATES => 'Updates',
+			self::DEFAULT_PAGE_DASHBOARD => Yii::t('main', 'Dashboard'),
+			self::DEFAULT_PAGE_TICKETS_LIST => Yii::t('main', 'Tickets List'),
+			self::DEFAULT_PAGE_UPDATES => Yii::t('main', 'Updates'),
 		);
     }
 
     /**
      * Returns current logged-in user's model or null if the user is guest.
-	 * 
+	 *
      * @return User
      */
     public static function current()
@@ -620,15 +620,15 @@ class User extends CActiveRecord
             $this->salt = $this->generateSalt();
         return $this->salt;
     }
-    
+
     /**
      * Performs the password encrypting and set the encrypted value.
-     * @param string $password 
+     * @param string $password
      */
     public function setPassword($password) {
         $this->password = $this->hashPassword($password);
     }
-    
+
     /**
 	 * Checks if the given password is correct.
 	 * @param string the password to be validated
@@ -652,15 +652,15 @@ class User extends CActiveRecord
         }
         return $isValid;
 	}
-    
+
     protected function validatePasswordSHA256($password) {
         return Hash::sha256($password . $this->salt()) == $this->password;
     }
-    
+
     protected function validatePasswordBcrypt($password) {
         return Bcrypt::check($password . $this->salt(), $this->password);
     }
-    
+
     protected function reEncryptPassword($password) {
         $this->encryption_algorithm =
             RegistrationController::PASSWORD_ENCRYPTION_ALGORITHM;
@@ -671,7 +671,7 @@ class User extends CActiveRecord
         }
         return false;
     }
-    
+
 	/**
 	 * Generates Bcrypt hash of password and salt
 	 * @param string password
@@ -688,11 +688,11 @@ class User extends CActiveRecord
                 return $this->getBcryptHash($password);
         }
 	}
-    
+
     protected function getSHA256Hash($password) {
         return Hash::sha256($password . $this->salt());
     }
-    
+
     protected function getBcryptHash($password) {
         return Bcrypt::hash($password . $this->salt(),
                 Yii::app()->params['bcryptWorkFactor']);
@@ -756,7 +756,7 @@ class User extends CActiveRecord
     /**
      * Retrieves the existing Invite model or creates new one
      * if there is no existing record for this project and user.
-     * 
+     *
      * @param Project $project
      * @return Invite Invite model or null on failure.
      */

@@ -45,7 +45,7 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
         </div>
         <?php if($model->defaultCompany == $this->loadModel(Yii::app()->user->id)->defaultCompany):?>
         <div class="user-activity">
-            <h2><?php echo Yii::t('main', 'Last Activity') ?></h2>
+            <h2><?php echo Yii::t('main', 'Last activity') ?></h2>
 
             <h3><?php echo Yii::t('main', 'Tickets') ?>:</h3>
             <div>
@@ -64,7 +64,7 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
                        $out .= '</ul></div>';
                    }
                    else{
-                       $out = Yii::t('main', 'No Tickets');
+                       $out = Yii::t('main', 'No tickets');
                    }
                    echo  $out;
                 ?>
@@ -80,14 +80,14 @@ $this->loadModel(Yii::app()->user->id)->defaultCompany;
                              <div class="activity-date">' . Helper::formatDate12($value['created']) . '</div>
                              <div class="ticket-data">
                                <div class="item-name">'.  Yii::t('main', 'Comment') .': ' . strip_tags(Helper::neatTrim($value['message'], 100)) . '</div>
-                               <div class="item-name">'.  Yii::t('main', 'On Ticket') .': <a href="' . Yii::app()->baseUrl . '/'.$value['project_id'].'/'.$value['number'].'">' . strip_tags($value['title']) . '</a></div>
+                               <div class="item-name">'.  Yii::t('main', 'On ticket') .': <a href="' . Yii::app()->baseUrl . '/'.$value['project_id'].'/'.$value['number'].'">' . strip_tags($value['title']) . '</a></div>
                              </div>
                            </li>';
                        }
                        $out .= '</ul></div>';
                    }
                    else{
-                       $out = Yii::t('main', 'No Comments');
+                       $out = Yii::t('main', 'No comments');
                    }
                    echo  $out;
                 ?>

@@ -1,19 +1,19 @@
 <div class="dashboard-container">
     <div class="dash-item">
-        <div class="dash-title"><?php echo Yii::t('main', 'Tickets: Open / Closed'); ?></div>
+        <div class="dash-title"><?php echo Yii::t('main', 'Tickets open / closed'); ?></div>
         <div><?php echo $bugCount ?><span class="gray-dash-number">/<?php echo $archivedBugCount ?></span></div>
     </div>
     <div class="dash-item">
-        <div class="dash-title"><?php echo Yii::t('main', 'Tickets per Person:'); ?></div>
+        <div class="dash-title"><?php echo Yii::t('main', 'Tickets per person'); ?></div>
         <div><?php echo $bugsPerUser ?></div>
     </div>
     <div class="clr"></div>
     <div  class="dash-item">
-        <div class="dash-title"><?php echo Yii::t('main', 'Open Tickets Today:'); ?></div>
+        <div class="dash-title"><?php echo Yii::t('main', 'Open tickets today'); ?></div>
         <div><?php echo $openBugsToday ?></div>
     </div>
     <div class="dash-item">
-        <div class="dash-title"><?php echo Yii::t('main', 'New Tickets Today:'); ?></div>
+        <div class="dash-title"><?php echo Yii::t('main', 'New tickets today'); ?></div>
         <div><?php echo $newBugsToday ?></div>
     </div>
 </div>
@@ -25,9 +25,9 @@
 <div id="graph"></div>
     <p style=""><b><?php echo Yii::t('main', 'Display'); ?>: </b>
         <input type=checkbox id=0 onClick="change(this)" checked>
-        <label for="0"> <?php echo Yii::t('main', 'Closed Tickets'); ?></label>
+        <label for="0"> <?php echo Yii::t('main', 'Closed tickets'); ?></label>
         <input type=checkbox id=1 onClick="change(this)" checked>
-        <label for="1"> <?php echo Yii::t('main', 'New Tickets'); ?></label>
+        <label for="1"> <?php echo Yii::t('main', 'New tickets'); ?></label>
     </p>
 
 <?php
@@ -58,7 +58,7 @@ Yii::app()->clientScript->registerScript('graph', '
 ', CClientScript::POS_END);
 ?>
 
-<div style="margin-top: 20px;"><?php echo Yii::t('main', 'Total Tickets'); ?>: <b><?php echo $bugCount ?></b></div>
+<div style="margin-top: 20px;"><?php echo Yii::t('main', 'Total tickets'); ?>: <b><?php echo $bugCount ?></b></div>
 
 <div class="reportTable">
 <table>
@@ -111,9 +111,11 @@ Yii::app()->clientScript->registerScript('graph', '
 <div class="clr"></div>
 
 <?php
+	if (false) {
     $project = Project::getCurrent();
     if (!empty($project))
         $this->widget('InviteMember');
+	}
 ?>
 
 <?php

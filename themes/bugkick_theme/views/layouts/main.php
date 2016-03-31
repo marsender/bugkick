@@ -93,10 +93,14 @@ JS
     $controllerId = $this->getId();
     $actionId = $this->getAction()->getId();
     if (User::checkHotkeyPreference()){
-        if (!Yii::app()->user->isGuest)
-             Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/app-hotkeys.min.js');
-        if ($controllerId == 'bug' && $actionId == 'view')
-             Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/ticket-hotkeys.min.js');
+        if (!Yii::app()->user->isGuest) {
+             Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/app-hotkeys.js');
+             //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/app-hotkeys.min.js');
+        }
+        if ($controllerId == 'bug' && $actionId == 'view') {
+             Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/ticket-hotkeys.js');
+             //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/ticket-hotkeys.min.js');
+        }
     }
 ?>
 <?php $projectsData = $this->getProjectsData(); ?>

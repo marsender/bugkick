@@ -2,16 +2,16 @@
     <!-- <div class="task-icon"></div>
     <div class="clear"></div> -->
     <ul class="task-list">
-        <h3><?php echo Yii::t('main', 'Micro tasks');?></h3>
+        <h3><?php echo Yii::t('main', 'Tasks');?></h3>
         <?php $this->widget('zii.widgets.CListView', array(
             'id'=>'task-list',
             'summaryText'=>'',
-            'emptyText'=>'',
+            'emptyText'=>'', //Yii::t('main', 'No tasks'),
         	'dataProvider'=>$tasks,
         	'itemView'=>'application.views.task._task_item',
         )); ?>
     </ul>
-    <a href="<?php echo $this->createUrl('task/create', array('ticketID'=>$ticket->id));?>" class="add-task"></a>
+    <a href="<?php echo $this->createUrl('task/create', array('ticketID'=>$ticket->id));?>" class="add-task">&nbsp; &nbsp; &nbsp; <?php echo Yii::t('main', 'Add task'); ?></a>
 </div>
 <!-- Create Task-->
 <?php

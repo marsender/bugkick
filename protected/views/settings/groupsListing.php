@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 ?>
 <div class="settings">
-<h2>Groups</h2>
+<h2><?php echo Yii::t('main', 'Groups'); ?></h2>
     <p class="grey-tip"><?php echo Yii::t('main', 'Groups let\'s you organize people into teams,
         allowing you to assign a task to anyone in "marketing" or "engineering"
         so everyone is quickly notified at once. These are company wide, but
@@ -22,7 +22,7 @@ $this->breadcrumbs=array(
         $this->renderPartial('_groupList', $this->viewData);
     ?>
     <div class="create-group">
-        <?php echo CHtml::link('Create Group', $this->createUrl('group/create'),
+        <?php echo CHtml::link(Yii::t('main', 'Create Group'), $this->createUrl('group/create'),
                     array(
                         'id'=>'createGroupBtn',
                         'class'=>'bkButtonBlueSmall normal'

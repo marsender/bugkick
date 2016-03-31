@@ -1,22 +1,22 @@
 <?php
 /**
- * 
+ *
  *
  * @author f0t0n
  */
 class InstantMessage {
-	
+
 	//const NODE_SERVER_PORT = 27000;
 	protected $nodeServerUrl;
 	protected static $_instance=null;
-	
+
 	protected function __construct() {
 		$this->nodeServerUrl=
 			//Yii::app()->createAbsoluteUrl('/').':'.self::NODE_SERVER_PORT;
 			Yii::app()->params['siteUrl'].':'
             .Yii::app()->params['node']['notifications']['port'];
 	}
-	
+
 	/**
 	 *
 	 * @return InstantMessage A singleton instance of InstantMessage class
@@ -26,7 +26,7 @@ class InstantMessage {
 			self::$_instance=new InstantMessage();
 		return self::$_instance;
 	}
-	
+
 	public function send($userID, $messageType,
             BugBase $ticket=null, $ticketURL=null) {
         $ticketNumber = $ticket->number;
@@ -43,7 +43,7 @@ class InstantMessage {
 			$post['ticket_url']=$ticketURL;
 		return $this->sendRequest($post);
 	}
-	
+
 	public function sendToAll($projectID, $messageType, $message=null) {
 		if(!Yii::app()->params['node']['notifications']['turned-on'])
 			return null;
@@ -55,7 +55,7 @@ class InstantMessage {
 			$post['message']=$message;
 		return $this->sendRequest($post);
 	}
-	
+
 	protected function sendRequest($post) {
 		$this->checkSslCaCert();
 		$response=Yii::app()->CURL->run(
@@ -63,11 +63,11 @@ class InstantMessage {
 			false,					// Is it GET request
 			$post					// Post data
 		);
-		return is_array($response) 
+		return is_array($response)
 			? $response					//	got an error from Curl extension method run()
 			: CJSON::decode($response); //	got some data from server
 	}
-	
+
 	protected function checkSslCaCert() {
 		if(!empty(Yii::app()->CURL->options['setOptions'][CURLOPT_CAINFO])) {
 			$caCert=Yii::app()->CURL->options['setOptions'][CURLOPT_CAINFO];
@@ -77,7 +77,7 @@ class InstantMessage {
 		}
 	}
 
-    protected function saveNotification($userID, $messageType, 
+    protected function saveNotification($userID, $messageType,
             $ticket=null, $ticketURL=null) {
         $ticketNumber = 0;
         $notification = new Notification;
@@ -89,21 +89,21 @@ class InstantMessage {
         }
         switch ($messageType) {
             case MessageType::NEW_COMMENT:
-                $notification->content = 'New comment created on <a href="'
+                $notification->content = Yii::t('main', 'New comment created on') . ' <a href="'
                 					     . $ticketURL . '" target="_blank">Ticket #'
                 				       	 . $ticketNumber . '</a>.';
                 break;
             case MessageType::NEW_TICKET:
-                $notification->content = 'New <a href="' . $ticketURL . '" target="_blank">Ticket #'
-                                         . $ticketNumber . '</a> assigned to you';
+                $notification->content = Yii::t('main', 'New') . ' <a href="' . $ticketURL . '" target="_blank">' . Yii::t('main', 'Ticket') . ' #'
+                                         . $ticketNumber . '</a> ' . Yii::t('main', 'assigned to you');
                 break;
             case MessageType::TICKET_CHANGED:
-                $notification->content = '<a href="' . $ticketURL . '" target="_blank">Ticket #'
-                                         . $ticketNumber . '</a> has been changed';
+                $notification->content = '<a href="' . $ticketURL . '" target="_blank">' . Yii::t('main', 'Ticket') . ' #'
+                                         . $ticketNumber . '</a> ' . Yii::t('main', 'has been changed');
                 break;
             case MessageType::TICKET_DEADLINE_REACHED:
-                $notification->content = 'The deadline passed for <a href="'
-                                         . $ticketURL . '" target="_blank">Ticket #'
+                $notification->content = Yii::t('main', 'The deadline passed for') . ' <a href="'
+                                         . $ticketURL . '" target="_blank">' . Yii::t('main', 'Ticket') . ' #'
                                          . $ticketNumber . '</a>';
                 break;
         }

@@ -1,4 +1,4 @@
-<?php echo CHtml::link('Invite new member', '#',
+<?php echo CHtml::link(Yii::t('main', 'Invite new member'), '#',
                         array(
                             'id'=>'inviteMember',
                             'class'=>'bkButtonBlueSmall normal',

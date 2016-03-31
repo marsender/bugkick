@@ -10,23 +10,26 @@
     <!-- <div class="main_bottom"></div> -->
 </div>
 
-<div id="sidebar"
-    <?php if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id) &&
-    ($this->getId() == 'bug') && ($this->getAction()->getId() != 'view')
-)
-    echo 'class="float-filters"';
-    ?>
-    >
+<?php
+	$userCurrent = User::current();
+	$isGlobalAdmin = isset($userCurrent) && $userCurrent->isGlobalAdmin();
+	$isCompany = !Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id);
+	$settingsMenu = $isCompany && (($this->getId() == 'settings') || (($this->getId() == 'user') && ($this->getAction()->getId() == 'view')));
+	$bugFilter = $isCompany && ($this->getId() == 'bug') && ($this->getAction()->getId() != 'view');
+	$createProject = $isGlobalAdmin && $isCompany && ($this->getId() == 'project') && ($this->getAction()->getId() != 'people');
+	if ($settingsMenu || $bugFilter || $createProject) {
+?>
+<div id="sidebar"<?php if ($bugFilter) echo ' class="float-filters"';?>>
     <!-- <div class="sidebar_top"></div> -->
     <div class="sidebar_middle">
-        <?php if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id) && (($this->getId() == 'settings') || (($this->getId() == 'user') && ($this->getAction()->getId() == 'view')))) $this->widget('SettingsMenu'); ?>
-        <?php if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id) && ($this->getId() == 'bug') && ($this->getAction()->getId() != 'view')) $this->widget('BugFilter'); ?>
-        <?php if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id) && ($this->getId() == 'project') && ($this->getAction()->getId() != 'people')) { ?>
-        <a id="createProjectBtn" class="bkButtonBlueSmall normal"
-           href="<?php echo $this->createUrl('project/create'); ?>">
-            <?php echo Yii::t('main', 'Add New Project'); ?>&nbsp;
-            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/cross.png" alt=""/>
-        </a>
+        <?php if ($settingsMenu) $this->widget('SettingsMenu'); ?>
+        <?php if ($bugFilter) $this->widget('BugFilter'); ?>
+        <?php if ($createProject) { ?>
+        	<a id="createProjectBtn" class="bkButtonBlueSmall normal"
+          	href="<?php echo $this->createUrl('project/create'); ?>">
+            <?php echo Yii::t('main', 'Add new project'); ?>&nbsp;
+          	<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/cross.png" alt=""/>
+        	</a>
         <?php } ?>
         <?php echo $this->clips['sidebar']; ?>
         <?php
@@ -55,4 +58,5 @@
     <!-- .sidebar_middle -->
     <!-- <div class="sidebar_bottom"></div> -->
 </div><!-- sidebar -->
+<?php } ?>
 <?php $this->endContent(); ?>

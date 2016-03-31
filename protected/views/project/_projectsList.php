@@ -11,7 +11,7 @@ $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$provider,
     'itemView' => '_listViewItem',
     'ajaxUpdate'=>true,
-    'emptyText'=>Yii::t('main', 'No projects yet, please create one to get started.'),
+    'emptyText'=>Yii::t('main', 'No projects'),
     'enablePagination'=>true,
     'summaryText' => '',
     'pagerCssClass' => 'list-pager',

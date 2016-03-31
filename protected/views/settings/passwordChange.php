@@ -1,15 +1,15 @@
 <?php
 return array(
-    'title'=>Yii::t('main', 'Change Password'),
+    'title'=>Yii::t('main', 'Change password'),
     'action'=>CHtml::normalizeUrl(array('settings/passwordChange')),
-    
+
     'activeForm'=>array(
         'id'=>'password-form',
         'class'=>'CActiveForm',
         'enableAjaxValidation'=>true,
         'htmlOptions'=>array('style'=>'display:none;'),
     ),
- 
+
     'elements'=>array(
         'password'=>array(
             'type'=>'password',

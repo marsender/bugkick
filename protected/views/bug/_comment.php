@@ -67,7 +67,7 @@ Yii::app()->clientScript->registerScript('autoresize', '
 			echo $form->textArea($model, 'message', array(
 				'rows' => 6,
 				'cols' => 50,
-				'style' => 'width:677px;max-width:677px;'
+				'style' => 'width:665px;max-width:665px;'
 			));
 		}
 		else {

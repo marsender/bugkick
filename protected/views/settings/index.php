@@ -39,7 +39,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 <div class="settings">
     <div class="settings-header">
 	   <h2><?php echo Yii::t('main', 'Preferences'); ?></h2>
-	   <a href="#" id="btn_change_password"><?php echo Yii::t('main', 'Change Password'); ?></a>
+	   <a href="#" id="btn_change_password" class="bkButtonBlueSmall"><?php echo Yii::t('main', 'Change password'); ?></a>
     </div>
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -100,7 +100,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 					</span>
 				</li>
 				<li class="use_shortcuts">
-					<span class="label"><?php echo Yii::t('main', 'Enable Shortcuts')?>:</span>
+					<span class="label"><?php echo Yii::t('main', 'Shortcuts')?>:</span>
                     <span class="checkbox-container">
                         <?php echo CHtml::activeCheckBox($userModel, 'hotkey_preference', array('class'=>'iPhone-checkbox')) ?>
                         <?php echo $form->error($userModel, 'hotkey_preference'); ?>
@@ -112,12 +112,12 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 					</div>-->
 
                     <a href="#" onclick="$('#shortcuts').css('display', 'block'); return false;" class="show_shortcuts fr">
-                        <?php echo Yii::t('main', 'Show Shortcuts')?>
+                        <?php echo Yii::t('main', 'Show shortcuts')?>
                     </a>
 				</li>
 
                 <li class="use_shortcuts">
-                    <span class="label long-title"><?php echo Yii::t('main', 'Enable WYSIWYG editor for comments')?>:</span>
+                    <span class="label"><?php echo Yii::t('main', 'Html editor')?>:</span>
                     <span class="checkbox-container">
                         <?php echo CHtml::activeCheckBox($userModel, 'use_wysiwyg', array('class'=>'iPhone-checkbox')) ?>
                         <?php echo $form->error($userModel, 'use_wysiwyg'); ?>
@@ -201,6 +201,9 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                         <?php echo $form->error($userModel, 'ticket_update_return'); ?>
 					</span>
 				</li>
+<?php
+	if (false && count($lafSet)) {
+?>
 				<li class="choose_theme">
                     <?php echo $form->hiddenField($userModel, 'look_and_feel'); ?>
 					<span class="label"><?php echo $form->labelEx($userModel, 'look_and_feel'); ?>:</span>
@@ -213,8 +216,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                         <div class="laf-sample"
                                 title="<?php echo $laf->name; ?>"
                                 name="<?php echo $laf->css_file; ?>"
-                                style="background-image: url('/images/body_backgrounds/<?php echo $laf->img_preview; ?>')">
-                        </div>
+                                style="background-image: url('<?php echo Yii::app()->baseUrl; ?>/images/body_backgrounds/<?php echo $laf->img_preview; ?>')"></div>
                 <?php if(++$i%3==0) { ?>
                         <div class="clear"></div>
                 <?php } ?>
@@ -225,6 +227,9 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                     </div>
                     <div class="clear"></div>
 				</li>
+<?php
+	}
+?>
 				<li class="save">
                     <?php
                         echo CHtml::ajaxLink(

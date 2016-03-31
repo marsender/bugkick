@@ -297,7 +297,7 @@ div.flash-success a {
   font-size: 18px;
 }
 #content #main h3 {
-  height: 40px;
+  height: 30px;
   line-height: 40px;
   color: #59677a;
   font-weight: bold;
@@ -428,12 +428,12 @@ div.flash-success a {
 }
 #content #main #btn_change_password {
   display: block;
-  width: 126px;
-  height: 31px;
   float: right;
-  margin-top: 10px;
+  margin-top: 20px;
+  /*width: 126px;
+  height: 31px;
   text-indent: -9999px;
-  background: url("../images/btn_change_password.png") no-repeat 0 0;
+  background: url("../images/btn_change_password.png") no-repeat 0 0;*/
 }
 #content #main .settings .inner {
   padding-top: 18px;
@@ -831,7 +831,7 @@ div.flash-success a {
 #createProjectBtn {
   font-size: 14px;
   text-decoration: none;
-  width: 144px;
+  /*width: 144px;*/
   margin: 8px;
 }
 #createProjectBtn img {
@@ -1740,7 +1740,7 @@ ul.yiiPager .selected a:hover {
 }
 .ui-dialog form .row input[type="text"],
 .ui-dialog form .row .chzn-container {
-  display: block;
+  /*display: block;*/
   width: 96%;
 }
 .ui-dialog form .row .chzn-select {
@@ -2191,7 +2191,7 @@ div.basic-project-text {
   padding-left: 7px;
 }
 .project-container {
-  width: 222px;
+  width: 322px; /* Project width */
   margin: 7px;
   float: left;
 }
@@ -2222,21 +2222,21 @@ div.basic-project-text {
 .project-container:before {
   content: "";
   display: block;
-  width: 222px;
+  width: 322px; /* Project width */
   height: 5px;
-  background: url("../images/project-top.png") no-repeat;
+  background: url("../images/project-top.png") no-repeat; /* Project width */
 }
 .project-container:after {
   content: "";
   display: block;
-  width: 222px;
+  width: 322px; /* Project width */
   height: 6px;
-  background: url("../images/project-bottom.png") no-repeat;
+  background: url("../images/project-bottom.png") no-repeat; /* Project width */
 }
 .project-center {
-  width: 222px;
+  width: 322px; /* Project width */
   min-height: 73px;
-  background: url("../images/project-center.png") repeat-y;
+  background: url("../images/project-center.png") repeat-y; /* Project width */
   padding: 2px 8px 0;
   overflow: hidden;
   /* added to keep the box around the picutre and description */
@@ -2264,11 +2264,11 @@ div.basic-project-text {
   behavior: url(PIE.htc);
 }
 .project-description {
-  width: 145px;
+  width: 245px; /* Project width */
   float: right;
 }
 .progress-container {
-  width: 100px;
+  width: 200px; /* Project width */
   height: 12px;
   border: 1px solid #dbdbdb;
   border-radius: 4px;
@@ -3243,7 +3243,6 @@ div.comment {
 }
 .grid-view table.items thead tr th {
   /*background: url('../images/bg25.png') repeat-x scroll 0 0 transparent;*/
-
 }
 .grid-view table.items tr:hover,
 .grid-view table.items tr.selected {

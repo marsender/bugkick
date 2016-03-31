@@ -8,7 +8,7 @@ $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'application.modules.forum.views.topic._view',
     'summaryText'=>'',
-    'emptyText'=>Yii::t('main','No topics yet.'),
+    'emptyText'=>Yii::t('main','No topics'),
     'pager'=>array(
         'header'=>'',
     )

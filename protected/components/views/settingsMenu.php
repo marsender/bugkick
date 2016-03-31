@@ -1,17 +1,23 @@
+<?php
+	$isGlobalAdmin = User::current()->isGlobalAdmin();
+?>
 <ul id="right_menu">
+	<li><?php echo CHtml::link(Yii::t('main','Profile'), CHtml::normalizeUrl(array('user/view')),
+         ($controllerId == 'user' && $actionId == 'view')? array('class'=>'active') : array()
+    ) ?></li>
 	<li><?php echo CHtml::link(Yii::t('main','Preferences'), CHtml::normalizeUrl(array('settings/')),
         ($controllerId == 'settings' && $actionId == 'index')? array('class'=>'active') : array()
     ) ?></li>
 	<li><?php echo CHtml::link(Yii::t('main','Notifications'), CHtml::normalizeUrl(array('settings/emailPreferences')),
          ($controllerId == 'settings' && $actionId == 'emailPreferences')? array('class'=>'active') : array()
     ) ?></li>
-<!--	<li><?php /*echo CHtml::link(Yii::t('main','View Profile'), CHtml::normalizeUrl(array('user/view')),
-         ($controllerId == 'user' && $actionId == 'view')? array('class'=>'active') : array()
-    ) */?></li>-->
-	<li><?php echo CHtml::link(Yii::t('main','Edit Labels'), CHtml::normalizeUrl(array('settings/labelListing')),
+<?php
+	if ($isGlobalAdmin) {
+?>
+	<li><?php echo CHtml::link(Yii::t('main','Edit labels'), CHtml::normalizeUrl(array('settings/labelListing')),
          ($controllerId == 'settings' && $actionId == 'labelListing')? array('class'=>'active') : array()
     ) ?></li>
-	<li><?php echo CHtml::link(Yii::t('main','Edit Status'), CHtml::normalizeUrl(array('settings/statusListing')),
+	<li><?php echo CHtml::link(Yii::t('main','Edit status'), CHtml::normalizeUrl(array('settings/statusListing')),
          ($controllerId == 'settings' && $actionId == 'statusListing')? array('class'=>'active') : array()
     ) ?></li>
 	<li><?php echo CHtml::link(Yii::t('main','Members'), CHtml::normalizeUrl(array('settings/members')),
@@ -27,14 +33,14 @@
     ) ?></li>
      */
     ?>
-    <li><?php echo CHtml::link(Yii::t('main','Company Settings'), CHtml::normalizeUrl(array('settings/company')),
+    <li><?php echo CHtml::link(Yii::t('main','Company settings'), CHtml::normalizeUrl(array('settings/company')),
          ($controllerId == 'settings' && $actionId == 'company')? array('class'=>'active') : array()
     ) ?></li>
-    <li><?php echo CHtml::link(Yii::t('main','Add Ons'), CHtml::normalizeUrl(array('settings/addOns')),
+    <li><?php echo CHtml::link(Yii::t('main','Add ons'), CHtml::normalizeUrl(array('settings/addOns')),
          ($controllerId == 'settings' && $actionId == 'addOns')? array('class'=>'active') : array()
     ) ?></li>
     <?php
-    if(empty(User::current()->githubUser)) {
+    if(false && empty(User::current()->githubUser)) {
     $company = Company::model()->findByPk(Company::current());
     if(!empty($company) && $company->isGitHubIntegrationAvailable()) {
     ?>
@@ -45,4 +51,7 @@
         }
     }
     ?>
+<?php
+	}
+?>
 </ul><!-- #right_menu -->

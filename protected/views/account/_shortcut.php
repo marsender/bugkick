@@ -1,9 +1,9 @@
 <div class="shortcut-container" style="display:none;" id="shortcuts">
     <div class="shortcut-header">
-        <span><?php echo Yii::t('main', 'Keyboard Shortcuts') ?></span> <a class="shortcut-close-link" onclick="$('#shortcuts').css('display', 'none');" href="#"><?php echo Yii::t('main', 'Close') ?></a>
+        <span><?php echo Yii::t('main', 'Keyboard shortcuts') ?></span> <a class="shortcut-close-link" onclick="$('#shortcuts').css('display', 'none');" href="#"><?php echo Yii::t('main', 'Close') ?></a>
     </div>
     <div class="shortcut-top">
-        <?php echo Yii::t('main', 'Keyboard Shortcuts are') ?>
+        <?php echo Yii::t('main', 'Keyboard shortcuts are') ?>
         <?php
           if (User::checkHotkeyPreference())
               echo Yii::t('main', 'enabled') .'. <a href="'.$this->createUrl('/settings/shortcutsState').'">'.  Yii::t('main', 'Disable') .'</a>';
@@ -11,6 +11,11 @@
               echo Yii::t('main', 'disabled') .'. <a href="'.$this->createUrl('/settings/shortcutsState').'">'.  Yii::t('main', 'Enable') .'</a>';
         ?>
     </div>
+<?php
+	// Associated javascript
+	//   /opt/dev/php/tools/bugkick/js/app-hotkeys.js
+	//   /opt/dev/php/tools/bugkick/js/ticket-hotkeys.js
+?>
     <div class="shortcut-body">
         <table>
                 <td>
@@ -19,7 +24,7 @@
                             <td class="short-key">
                             </td>
                             <td>
-                                <h4><?php echo Yii::t('main', 'On All Pages') ?>:</h4>
+                                <h4><?php echo Yii::t('main', 'On all pages') ?>:</h4>
                             </td>
                         </tr>
                         <tr>
@@ -27,7 +32,15 @@
                                 n
                             </td>
                             <td>
-                                : <?php echo Yii::t('main', 'Create New Ticket') ?>
+                                : <?php echo Yii::t('main', 'Create new ticket') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="short-key">
+                                t
+                            </td>
+                            <td>
+                               : <?php echo Yii::t('main', 'Go to summary tickets page') ?>
                             </td>
                         </tr>
                         <tr>
@@ -35,15 +48,23 @@
                                 p
                             </td>
                             <td>
-                               : <?php echo Yii::t('main', 'Go to Projects Page') ?>
+                               : <?php echo Yii::t('main', 'Go to projects page') ?>
                             </td>
                         </tr>
                         <tr>
                             <td class="short-key">
-                                h
+                                d
                             </td>
                             <td>
-                                : <?php echo Yii::t('main', 'Go to Dashboard Page') ?>
+                                : <?php echo Yii::t('main', 'Go to dashboard page') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="short-key">
+                                u
+                            </td>
+                            <td>
+                                : <?php echo Yii::t('main', 'Go to updates page') ?>
                             </td>
                         </tr>
                         <tr>
@@ -51,17 +72,17 @@
                                 s
                             </td>
                             <td>
-                                : <?php echo Yii::t('main', 'Go to Settings Page') ?>
+                                : <?php echo Yii::t('main', 'Go to settings page') ?>
                             </td>
                         </tr>
                         <tr>
                             <td class="short-key">
-                                Shift + /
+                                h
                             </td>
                             <td>
-                                  : <?php echo Yii::t('main', 'Open Shortcuts Help') ?>
+                                  : <?php echo Yii::t('main', 'Open shortcuts help') ?>
                             </td>
-                        </tr> 
+                        </tr>
                     </table>
                 </td>
                 <td>
@@ -70,7 +91,7 @@
                             <td  class="short-key">
                             </td>
                             <td>
-                               <h4><?php echo Yii::t('main', 'On the View Ticket Page') ?>:</h4>
+                               <h4><?php echo Yii::t('main', 'On the view ticket page') ?>:</h4>
                             </td>
                         </tr>
                         <tr>
@@ -78,7 +99,7 @@
                                 e
                             </td>
                             <td>
-                                : <?php echo Yii::t('main', 'Edit Ticket') ?>
+                                : <?php echo Yii::t('main', 'Edit ticket') ?>
                             </td>
                         </tr>
                         <tr>
@@ -86,15 +107,15 @@
                                 c
                             </td>
                             <td>
-                                : <?php echo Yii::t('main', 'Close Ticket') ?>
+                                : <?php echo Yii::t('main', 'Close ticket') ?>
                             </td>
                         </tr>
                         <tr>
                             <td class="short-key">
-                                d
+                                x
                             </td>
                             <td>
-                                 : <?php echo Yii::t('main', 'Delete Ticket') ?>
+                                 : <?php echo Yii::t('main', 'Delete ticket') ?>
                             </td>
                         </tr>
                     </table>
