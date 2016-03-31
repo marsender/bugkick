@@ -3273,7 +3273,7 @@ span.delete-filter:hover{
     background-color: #88c2f4;
     border-radius: 4px;
     text-align: center;
-    behavior: url(../../../css/PIE.htc);
+    /*behavior: url(../../../css/PIE.htc);*/
     vertical-align: middle;
     line-height: 12px;
 }

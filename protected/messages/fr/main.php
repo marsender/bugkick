@@ -141,4 +141,5 @@ return array(
 	'Edit ticket'=>'Éditer le ticket',
 	'Close ticket'=>'Fermer le ticket',
 	'Delete ticket'=>'Supprimer le ticket',
+	'Notifications for tickets you create or are assigned to'=>'Notifications pour les tickets que vous créez ou qui vous sont assigné',
 );

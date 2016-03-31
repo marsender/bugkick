@@ -45,7 +45,7 @@
                 $completed = ($tasks['total']>0 && $tasks['completed']>0)? round($tasks['completed']*100/$tasks['total'], 1) : 0;
             ?>
             <div class="progress-container">
-                <div class="progress-completed" style="width:<?php echo $completed?>px"><?php echo $completed?>%</div>
+                <div class="progress-completed" style="width:<?php echo 2 * $completed?>px"><?php echo $completed?>%</div>
             </div>
         </div>
     </div>

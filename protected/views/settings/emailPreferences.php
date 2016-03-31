@@ -24,7 +24,7 @@ $this->breadcrumbs = array(
     </div>
     <div class="clear"></div>-->
 
-	<h3><?php echo Yii::t('main', 'These affect notifications for tickets you create or are assigned to'); ?>:</h3>
+	<h3><?php echo Yii::t('main', 'Notifications for tickets you create or are assigned to'); ?>:</h3>
 	<div class="row" id="emailPreferences" <?php //if(!$emailPrefForm->email_notify) echo 'style="display:none"'?>>
 		<?php
             echo $form->checkBoxList(
