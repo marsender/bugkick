@@ -108,8 +108,11 @@ class Notificator
 				continue;
 			}
 			// Otherwise send an e-mail message to this assigned user:
-			$sendResult = (self::checkEmailPreferences($user->user_id, EmailPreference::NEW_TICKET)) ? self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress) : null;
-			Yii::app()->logger->saveLog(0, 'mail::newBug', "Bug #{$bug->bug_id}", $sendResult);
+			$sendResult = null;
+			if ((self::checkEmailPreferences($user->user_id, EmailPreference::NEW_TICKET))) {
+				self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
+			}
+			Yii::app()->logger->saveLog(0, 'mail::newBug', "Bug #{$bug->number}", $sendResult);
 		}
 	}
 

@@ -481,8 +481,7 @@ JS
 				$model->next_number = 0;
 				if (!$model->save())
 					throw new Exception('Error while saving current ticket');
-
-				Notificator::newBug($model); //send notification
+				//Notificator::newBug($model); //send notification
 			}
 			else {
 				throw new Exception('New bug has not been saved');
