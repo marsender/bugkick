@@ -241,6 +241,16 @@ MSG;
 		$subject = Yii::app()->name . ': ' . $subject;
 
 		switch (Yii::app()->params['emailService']) {
+		case 'php':
+			if (!empty($reply_to)) {
+				$headers .= "Reply-To: $reply_to\r\n";
+			}
+			if (empty($from)) {
+				$from = Yii::app()->params['adminEmail'];
+			}
+			$headers .= "From: $from\r\n";
+			$sent = @mail($to, $subject, $message, $headers);
+			break;
 		case 'ses':
 			$SESMail = new SESMail();
 			$sent = $SESMail->send($to, $from, $subject, $message, $reply_to);
@@ -251,14 +261,7 @@ MSG;
 			$sent = $res->isOK();
 			break;
 		default:
-			if (!empty($reply_to)) {
-				$headers .= "Reply-To: $reply_to\r\n";
-			}
-			if (empty($from)) {
-				$from = Yii::app()->params['adminEmail'];
-			}
-			$headers .= "From: $from\r\n";
-			$sent = @mail($to, $subject, $message, $headers);
+			$sent = true;
 			break;
 		}
 

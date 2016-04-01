@@ -34,9 +34,8 @@ return array(
 
 	'companyLogoThumbUrl'=>'images/company_logo/thumb/',
 
-	// leave empty to use php mail(), or 'ses' - to use Amazon SES
-	//'emailService' => 'ses','sqs'
-	'emailService' => '',
+	// Email sender: 'ses', 'sqs', 'php' or empty for none
+	'emailService' => 'php',
 
 	'amazon'=>require($paramsDir . 'amazon.php'),
 

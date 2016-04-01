@@ -169,5 +169,10 @@ return array(
 	'Not registered'=>'Pas enregistré',
 	'Reset'=>'Effacer',
 	'Saved filters'=>'Filtres sauvegardés',
+	// Sql: 'Due date reminder'=>'Rappel de date prévue',
+	// Sql: 'New comment'=>'Nouveau commentaire',
+	// Sql: 'Ticket status changes'=>'Modification de statut',
+	// Sql: 'New ticket'=>'Nouveau ticket',
+	'Are you sure ?'=>'Etes-vous sûr ?',
 	''=>'',
 );

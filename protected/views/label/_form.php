@@ -62,7 +62,7 @@
     </div>
 	<div class="row buttons">
         <?php
-            echo CHtml::ajaxLink('Delete', array('/label/delete', 'id'=>$model->label_id), array('success'=>'js: function(){window.location.reload(true)}'),
+            echo CHtml::ajaxLink(Yii::t('main', 'Delete'), array('/label/delete', 'id'=>$model->label_id), array('success'=>'js: function(){window.location.reload(true)}'),
                 array('class'=>'bkButtonGraySmall small','confirm'=>'Delete label?'));
         ?>
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array (

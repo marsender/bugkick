@@ -49,8 +49,8 @@ return array(
         'profileImageThumbUrl'=>'images/profile_img/thumb/',
         'companyLogoUrl'=>'images/company_logo/',
         'companyLogoThumbUrl'=>'images/company_logo/thumb/',
-        // leave empty to use php mail(), or 'ses' - to use Amazon SES
-        'emailService' => 'ses',
+				// Email sender: 'ses', 'sqs', 'php' or empty for none
+				'emailService' => 'php',
         'amazon'=>require($paramsDir . 'amazon.php'),
 		'facebook'=>require($currDir . 'facebook.php'),
         'node'=>require($currDir . 'node.php'),
@@ -59,8 +59,8 @@ return array(
         'stripe'=>require($currDir . 'stripe.php'),
 
         //Files Storage: one of these options - 's3', 'local'
-        'storageType'=>'s3',
+        'storageType'=>'local',
 	),
 
-    
+
 );

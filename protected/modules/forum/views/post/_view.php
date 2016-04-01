@@ -14,7 +14,7 @@
     </div>
     <div class="comment-data <?php if ($index%2==0) echo 'odd '; ?>">
         <!--<h4 class="comment-author"><?php //echo CHtml::encode($data->user->repr()); ?></h4>-->
-        <h4 class="comment-author"><?php 
+        <h4 class="comment-author"><?php
         echo CHtml::link(CHtml::encode($data->user->repr()),array('/user/view', 'id'=>$data->user->user_id)); ?></h4>
         <p class="comment-date"><?php echo Yii::app()->dateFormatter->formatDateTime($data->time, 'short', null)." ".strtolower(Yii::app()->dateFormatter->format("h:ma",$data->time)); ?></p>
         <div class="comment-content">
@@ -40,7 +40,7 @@
                                      'YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,
                                  ),
                              ),
-                             array('confirm'=>'Are you sure?', 'id' => 'remove-link-'.uniqid())),
+                             array('confirm'=>Yii::t('main', 'Are you sure ?'), 'id' => 'remove-link-'.uniqid())),
                          CHtml::closeTag('span');
                 }
             ?>

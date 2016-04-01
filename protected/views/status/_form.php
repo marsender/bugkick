@@ -36,7 +36,7 @@
 		<?php echo $form->error($model,'company_id'); ?>
 	</div>
 --> */?>
-    
+
     <div class="row" style="clear:both;">
         <?php echo $form->labelEx($model,'status_color'); ?>
         <?php
@@ -53,7 +53,7 @@
     <div class="clear"></div>
 	<div class="row buttons">
         <?php
-            echo CHtml::ajaxLink('Delete', array('/status/delete', 'id'=>$model->status_id), array('success'=>'js: function(){window.location.reload(true)}'),
+            echo CHtml::ajaxLink(Yii::t('main', 'Delete'), array('/status/delete', 'id'=>$model->status_id), array('success'=>'js: function(){window.location.reload(true)}'),
                 array('class'=>'bkButtonGraySmall small','confirm'=>'Delete status?',));
         ?>
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array (

@@ -30,7 +30,7 @@
                            'YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,
                        ),
                    ),
-                   array('confirm'=>'Are you sure?', 'id' => 'hide-link-'.uniqid()))?>
+                   array('confirm'=>Yii::t('main', 'Are you sure ?'), 'id' => 'hide-link-'.uniqid()))?>
       </li>
       <?php } ?>
   </ul>

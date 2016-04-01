@@ -233,7 +233,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 				<li class="save">
                     <?php
                         echo CHtml::ajaxLink(
-                            'Save',
+                            Yii::t('main', 'Save'),
                             $this->createUrl($this->getId() . '/'),
                             array(
                                 'type'=>'POST',
