@@ -212,7 +212,8 @@ class SwiftMail implements Mail
 		}
 		catch (Exception $e) {
 			$error = $e->getMessage();
-			throw new Exception($error);
+			//throw new Exception($error);
+			return false;
 		}
 
 		return true;

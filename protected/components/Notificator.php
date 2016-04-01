@@ -110,7 +110,7 @@ class Notificator
 			// Otherwise send an e-mail message to this assigned user:
 			$sendResult = null;
 			if ((self::checkEmailPreferences($user->user_id, EmailPreference::NEW_TICKET))) {
-				self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
+				$sendResult = self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
 			}
 			Yii::app()->logger->saveLog(0, 'mail::newBug', "Bug #{$bug->number}", $sendResult);
 		}
@@ -267,10 +267,7 @@ MSG;
 			break;
 		}
 
-		if ($sent)
-			return true;
-		else
-			return false;
+		return $sent;
 	}
 
 	/*
@@ -287,7 +284,9 @@ MSG;
 		$user = User::model()->findByPk($userID);
 		$currentProject = Project::getCurrent();
 		$isUserBelongsToProject = Project::isProjectAccessAllowed($currentProject->project_id, $user->id);
-		$isNotCurrentUser = (Yii::app() instanceof CConsoleApplication) || (Yii::app()->user->id != $userID);
+		// Send notifications also for current user
+		$isNotCurrentUser = true;
+		//$isNotCurrentUser = (Yii::app() instanceof CConsoleApplication) || (Yii::app()->user->id != $userID);
 
 		if (($user->email_notify == 1) && $isNotCurrentUser && $isUserBelongsToProject) {
 			if ($notificationType) {
