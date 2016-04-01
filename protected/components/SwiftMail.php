@@ -1,22 +1,21 @@
 <?php
 
-/*
- * Class to send emails using Amazon SES
- *
- * */
-class SESMail implements Mail
+/**
+ * Class to send emails using SwiftMail
+ */
+class SwiftMail implements Mail
 {
-
 	/**
 	 *
 	 * @param string $from
 	 * @param array|string $to (by default to admin)
-	 * @param boolean $body
-	 * @param boolean $subject
-	 * @return CFResponse A <CFResponse> object containing a parsed HTTP response
+	 * @param string $body
+	 * @param string $subject
+	 * @return bool true if message is sent else false
 	 */
 	public function send($to, $from = '', $subject = '', $body = '', $reply_to = null)
 	{
+		/*
 		Yii::import('application.vendors.amazon.sdkClass', true);
 		Yii::import('application.vendors.amazon.services.sesClass', true);
 		Yii::import('application.vendors.amazon.utilities.utilitiesClass', true);
@@ -34,13 +33,14 @@ class SESMail implements Mail
 			$opt['ReplyToAddresses'] = $reply_to;
 		}
 		$ses = new AmazonSES();
-		$res = $ses->send_email($from, array(
+		return $ses->send_email($from, array(
 			'ToAddresses' => $to
 		), array(
 			'Subject.Data' => $subject,
 			'Body.Html.Data' => $body
 		), $opt);
+		*/
 
-		return $res;
+		return false;
 	}
 }

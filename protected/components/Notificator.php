@@ -109,7 +109,7 @@ class Notificator
 			}
 			// Otherwise send an e-mail message to this assigned user:
 			$sendResult = (self::checkEmailPreferences($user->user_id, EmailPreference::NEW_TICKET)) ? self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress) : null;
-			//Yii::app()->logger->saveLog(0, 'mail::newComment', "Bug #{$bug->bug_id}, comment #{$bug->comment_id}", $sendResult);
+			Yii::app()->logger->saveLog(0, 'mail::newBug', "Bug #{$bug->bug_id}", $sendResult);
 		}
 	}
 
@@ -239,21 +239,20 @@ MSG;
 	public static function sendEmail($to, $from = '', $subject = '', $message = '', $headers = '', $reply_to = null)
 	{
 		$subject = Yii::app()->name . ': ' . $subject;
+		$service = Yii::app()->params['emailService'];
 
-		switch (Yii::app()->params['emailService']) {
+		switch ($service) {
 		case 'php':
-			if (!empty($reply_to)) {
-				$headers .= "Reply-To: $reply_to\r\n";
-			}
-			if (empty($from)) {
-				$from = Yii::app()->params['adminEmail'];
-			}
-			$headers .= "From: $from\r\n";
-			$sent = @mail($to, $subject, $message, $headers);
+			$phpMail = new PhpMail();
+			$sent = $phpMail->send($to, $from, $subject, $message, $reply_to);
+			break;
+		case 'swift':
+			$swiftMail = new SwiftMail();
+			$sent = $swiftMail->send($to, $from, $subject, $message, $reply_to);
 			break;
 		case 'ses':
-			$SESMail = new SESMail();
-			$sent = $SESMail->send($to, $from, $subject, $message, $reply_to);
+			$sesMail = new SESMail();
+			$sent = $sesMail->send($to, $from, $subject, $message, $reply_to);
 			break;
 		case 'sqs':
 			$sqsMail = new SQSMail();

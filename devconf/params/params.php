@@ -3,6 +3,7 @@
  * Usage
  *   Yii::app()->params['adminEmail']
  */
+
 return array(
 
 	// this is used in contact page
@@ -34,8 +35,13 @@ return array(
 
 	'companyLogoThumbUrl'=>'images/company_logo/thumb/',
 
-	// Email sender: 'ses', 'sqs', 'php' or empty for none
-	'emailService' => 'php',
+	// Email service: 'ses', 'sqs', 'swift', 'php' or empty for none
+	'emailService'=>'php',
+
+	'swiftMailSettings'=>array(
+		'libraryPath'=>'',
+		'smtpHost'=>'localhost',
+		),
 
 	'amazon'=>require($paramsDir . 'amazon.php'),
 
@@ -53,6 +59,7 @@ return array(
 
 	'label_number_shown' => 3,
 
+	// Instant notifications via InstantMessage class
 	'node'=>require($currDir . 'node.php'),
 
 	//These status presets will be created for newly registered companies
