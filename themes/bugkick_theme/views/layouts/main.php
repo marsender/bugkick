@@ -251,6 +251,11 @@ JS
                         </span>
                     </li>
                 <?php } ?>
+                    <li>
+                        <span>
+													<a href="#" onclick="$('#shortcuts').css('display', 'block'); return false;" class="show_shortcuts fr"><?php echo Yii::t('main', 'Keyboard shortcuts')?></a>
+                        </span>
+                    </li>
                 <?php /*?>
                     <li>
                         <span>
