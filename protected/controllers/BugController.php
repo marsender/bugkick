@@ -640,9 +640,10 @@ JS
 					continue;
 
 				if (!empty($v)) {
+					$label = $model->getAttributeLabel($k);
 					$changes[$i] = array(
 						'field' => $k,
-						'name' => $model->getAttributeLabel($k),
+						'name' => $label,
 						'value' => $v
 					);
 					if ($k == 'status_id')

@@ -520,7 +520,7 @@ class CHtml
 	 */
 	public static function label($label,$for,$htmlOptions=array())
 	{
-		$label = Yii::t('main', $label);
+		//$label = Yii::t('main', $label);
 		if($for===false)
 			unset($htmlOptions['for']);
 		else
@@ -1143,19 +1143,23 @@ EOD;
 			$for=$htmlOptions['for'];
 			unset($htmlOptions['for']);
 		}
-		else
+		else {
 			$for=self::getIdByName(self::resolveName($model,$attribute));
-		if(isset($htmlOptions['label']))
-		{
-			if(($label=$htmlOptions['label'])===false)
+		}
+		if(isset($htmlOptions['label'])) {
+			if(($label=$htmlOptions['label'])===false) {
 				return '';
+			}
 			unset($htmlOptions['label']);
 		}
-		else
+		else {
 			$label=$model->getAttributeLabel($attribute);
-		if($model->hasErrors($attribute))
+		}
+		if($model->hasErrors($attribute)) {
 			self::addErrorCss($htmlOptions);
-		return self::label($label,$for,$htmlOptions);
+		}
+		$label = self::label($label,$for,$htmlOptions);
+		return $label;
 	}
 
 	/**

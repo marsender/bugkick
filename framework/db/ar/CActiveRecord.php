@@ -573,25 +573,28 @@ abstract class CActiveRecord extends CModel
 	public function getAttributeLabel($attribute)
 	{
 		$labels=$this->attributeLabels();
-		if(isset($labels[$attribute]))
-			return $labels[$attribute];
-		else if(strpos($attribute,'.')!==false)
-		{
+		if(isset($labels[$attribute])) {
+			$label = $labels[$attribute];
+			$label = Yii::t('main', $label);
+		}
+		else if(strpos($attribute,'.')!==false) {
 			$segs=explode('.',$attribute);
 			$name=array_pop($segs);
 			$model=$this;
-			foreach($segs as $seg)
-			{
+			foreach($segs as $seg) {
 				$relations=$model->getMetaData()->relations;
-				if(isset($relations[$seg]))
-					$model=CActiveRecord::model($relations[$seg]->className);
-				else
+				if(!isset($relations[$seg])) {
 					break;
+				}
+				$model=CActiveRecord::model($relations[$seg]->className);
 			}
-			return $model->getAttributeLabel($name);
+			$label = $model->getAttributeLabel($name);
 		}
-		else
-			return $this->generateAttributeLabel($attribute);
+		else {
+			$label = $this->generateAttributeLabel($attribute);
+		}
+
+		return $label;
 	}
 
 	/**

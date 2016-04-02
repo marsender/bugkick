@@ -189,6 +189,7 @@ return array(
 	'Ticket was set as duplicate of the ticket'=>'',
 	'Ticket is opened'=>'Le ticket est ouvert',
 	'Ticket is closed'=>'Le ticket est fermé',
-	''=>'',
+	'Nouveau Label'=>'',
+	'status_id'=>'Statut',
 	''=>'',
 );

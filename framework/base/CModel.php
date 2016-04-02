@@ -328,10 +328,14 @@ abstract class CModel extends CComponent implements IteratorAggregate, ArrayAcce
 	public function getAttributeLabel($attribute)
 	{
 		$labels=$this->attributeLabels();
-		if(isset($labels[$attribute]))
-			return $labels[$attribute];
-		else
-			return $this->generateAttributeLabel($attribute);
+		if(isset($labels[$attribute])) {
+			$label = $labels[$attribute];
+		}
+		else {
+			$label = $this->generateAttributeLabel($attribute);
+		}
+		$label = Yii::t('main', $label);
+		return $label;
 	}
 
 	/**
