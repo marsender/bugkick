@@ -25,7 +25,13 @@ class Notificator
 		if (!empty($comment->bug->owner)) {
 			$users[] = $comment->bug->owner;
 		}
+		$tabId = array();
 		foreach ($users as $user) {
+			// Avoid duplicates
+			if (in_array($user->user_id, $tabId)) {
+				continue;
+			}
+			$tabId[] = $user->user_id;
 			// Skip the notification sending to comment initiator
 			if (Yii::app()->params['skipEmailIfUserInitiator']) {
 				if ($user->user_id == $comment->user_id) {
@@ -60,7 +66,13 @@ class Notificator
 		));
 		$subject = Yii::t('main', 'New ticket') . '#' . $bug->number;
 		$users = User::model()->bugRelated($bug)->findAll();
+		$tabId = array();
 		foreach ($users as $user) {
+			// Avoid duplicates
+			if (in_array($user->user_id, $tabId)) {
+				continue;
+			}
+			$tabId[] = $user->user_id;
 			// Skip the notification sending to new bug initiator
 			if (Yii::app()->params['skipEmailIfUserInitiator']) {
 				if ($user->user_id == Yii::app()->user->id) {
@@ -184,7 +196,13 @@ MSG;
 		if (!empty($model->owner)) {
 			$users[] = $model->owner;
 		}
+		$tabId = array();
 		foreach ($users as $user) {
+			// Avoid duplicates
+			if (in_array($user->user_id, $tabId)) {
+				continue;
+			}
+			$tabId[] = $user->user_id;
 			// Skip the notification sending to update initiator
 			if (Yii::app()->params['skipEmailIfUserInitiator']) {
 				if ($user->user_id == Yii::app()->user->id) {
