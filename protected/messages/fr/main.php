@@ -34,7 +34,7 @@ return array(
 	'Invite'=>'Inviter',
 	'Invite a new user by email'=>'Inviter un nouvel utilisateur par mail',
 	'Assignees'=>'Attribués',
-	'Due'=>'Planifié',
+	'Due'=>'Prévu', // Planifié
 	'Name'=>'Nom',
 	'E-mail'=>'Email',
 	'Email'=>'Email',
@@ -194,5 +194,8 @@ return array(
 	'Label'=>'Étiquette',
 	'Author'=>'Auteur',
 	'Message'=>'Message',
+	'Title'=>'Titre',
+	'Description'=>'Description',
+	'Duedate'=>'Date prévue',
 	''=>'',
 );
