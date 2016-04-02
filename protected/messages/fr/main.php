@@ -191,5 +191,8 @@ return array(
 	'Ticket is closed'=>'Le ticket est fermé',
 	'Nouveau Label'=>'',
 	'status_id'=>'Statut',
+	'Label'=>'Étiquette',
+	'Author'=>'Auteur',
+	'Message'=>'Message',
 	''=>'',
 );
