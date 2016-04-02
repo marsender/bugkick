@@ -1,31 +1,31 @@
 <html>
     <body>
     <div style='border: 1px solid silver; margin: 10px; padding: 10px;'>
-        <h3> <?php echo Yii::app()->user->name ?> <?php echo Yii::app()->user->lname ?> updated the ticket #<?php echo $model->number ?> "<?php echo $model->title ?>"</h3>
+        <h3><?php echo Yii::app()->user->name . ' ' . Yii::app()->user->lname . ' ' . Yii::t('main', 'updated the ticket') . ' ' . $model->number . ' "' . $model->title . '"'; ?></h3>
 <?php
-        foreach($changes as $change){
-            if ($change['field'] == 'duplicate_number'){
+        foreach($changes as $change) {
+            if ($change['field'] == 'duplicate_number') {
                 if($change['value'] == 0)
-                    echo '<p><b style="color:#666;">Duplicate Status:</b> Duplicate status was removed</p>';
+                    echo '<p><b style="color:#666;">' . Yii::t('main', 'Duplicate status') . ':</b> ' . Yii::t('main', 'Duplicate status was removed') . '</p>';
                 elseif($change['value'] > 0)
-                    echo '<p><b style="color:#666;">Duplicate Status:</b> Ticket was set as Duplicate of the Ticket #'.$change['value'].'</p>';
+                    echo '<p><b style="color:#666;">' . Yii::t('main', 'Duplicate status') . ':</b> ' . Yii::t('main', 'Ticket was set as duplicate of the ticket') . ' #'.$change['value'].'</p>';
             }
-            elseif($change['field']=='archived'){
+            elseif($change['field']=='archived') {
                 if($change['value'] == 0)
-                    echo '<p><b style="color:#666;">Ticket is opened</b></p>';
+                    echo '<p><b style="color:#666;">' . Yii::t('main', 'Ticket is opened') . '</b></p>';
                 else
-                    echo '<p><b style="color:#666;">Ticket is closed</b></p>';
+                    echo '<p><b style="color:#666;">' . Yii::t('main', 'Ticket is closed') . '</b></p>';
             }
-            elseif($change['field'] == 'label_id' || $change['field'] == 'user_id'){
+            elseif($change['field'] == 'label_id' || $change['field'] == 'user_id') {
                 $paramChange = '';
-                $paramChange = '<p><b style="color:#666;">New '. $change['name'] .':</b> ';
-                foreach ($change['value'] as $val){
+                $paramChange = '<p><b style="color:#666;">' . Yii::t('main', 'New') . ' '. $change['name'] .':</b> ';
+                foreach ($change['value'] as $val) {
                    $paramChange .= $val . ', ';
                 }
                 echo substr($paramChange, 0, -2) . '</p>';
             }
-            else{
-                echo '<p><b style="color:#666;">New '.$change['name'].':</b> '.$change['value'].'</p>';
+            else {
+                echo '<p><b style="color:#666;">' . Yii::t('main', 'New') . ' '.$change['name'].':</b> '.$change['value'].'</p>';
             }
         }
 ?>
@@ -36,11 +36,11 @@
                 <td>
                     <a style="display: block; text-decoration: none; color: white; background-color: #1A74B0; margin: 10px; padding: 10px;"
                        href='<?php echo Yii::app()->createAbsoluteUrl('bug/view', array('id'=>$model->number))?>'>
-                        View Ticket
+                        <?php echo Yii::t('main', 'View ticket'); ?>
                     </a>
                 </td>
                 <td style="margin:10px; color:#666; font-size:11px;">
-                     To view this ticket, visit this link:<br>
+                    <?php echo Yii::t('main', 'To view this ticket, visit this link'); ?>:<br>
                     <?php echo CHtml::link(
                         Yii::app()->createAbsoluteUrl('bug/view', array('id'=>$model->number)),
                         Yii::app()->createAbsoluteUrl('bug/view', array('id'=>$model->number))

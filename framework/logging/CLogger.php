@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLogger class file
  *
@@ -21,20 +22,23 @@
  */
 class CLogger extends CComponent
 {
-	const LEVEL_TRACE='trace';
-	const LEVEL_WARNING='warning';
-	const LEVEL_ERROR='error';
-	const LEVEL_INFO='info';
-	const LEVEL_PROFILE='profile';
+	const LEVEL_TRACE = 'trace';
+	const LEVEL_WARNING = 'warning';
+	const LEVEL_ERROR = 'error';
+	const LEVEL_INFO = 'info';
+	const LEVEL_PROFILE = 'profile';
 
 	/**
+	 *
 	 * @var integer how many messages should be logged before they are flushed to destinations.
 	 * Defaults to 10,000, meaning for every 10,000 messages, the {@link flush} method will be
 	 * automatically invoked once. If this is 0, it means messages will never be flushed automatically.
 	 * @since 1.1.0
 	 */
-	public $autoFlush=10000;
+	public $autoFlush = 10000;
+
 	/**
+	 *
 	 * @var boolean this property will be passed as the parameter to {@link flush()} when it is
 	 * called in {@link log()} due to the limit of {@link autoFlush} being reached.
 	 * By default, this property is false, meaning the filtered messages are still kept in the memory
@@ -42,24 +46,34 @@ class CLogger extends CComponent
 	 * will be written to the actual medium each time {@link flush()} is called within {@link log()}.
 	 * @since 1.1.8
 	 */
-	public $autoDump=false;
+	public $autoDump = false;
+
 	/**
+	 *
 	 * @var array log messages
 	 */
-	private $_logs=array();
+	private $_logs = array();
+
 	/**
+	 *
 	 * @var integer number of log messages
 	 */
-	private $_logCount=0;
+	private $_logCount = 0;
+
 	/**
+	 *
 	 * @var array log levels for filtering (used when filtering)
 	 */
 	private $_levels;
+
 	/**
+	 *
 	 * @var array log categories for filtering (used when filtering)
 	 */
 	private $_categories;
+
 	/**
+	 *
 	 * @var array the profiling results (category, token => time in seconds)
 	 * @since 1.0.6
 	 */
@@ -68,17 +82,24 @@ class CLogger extends CComponent
 	/**
 	 * Logs a message.
 	 * Messages logged by this method may be retrieved back via {@link getLogs}.
+	 *
 	 * @param string $message message to be logged
 	 * @param string $level level of the message (e.g. 'Trace', 'Warning', 'Error'). It is case-insensitive.
 	 * @param string $category category of the message (e.g. 'system.web'). It is case-insensitive.
 	 * @see getLogs
 	 */
-	public function log($message,$level='info',$category='application')
+	public function log($message, $level = 'info', $category = 'application')
 	{
-		$this->_logs[]=array($message,$level,$category,microtime(true));
+		$this->_logs[] = array(
+			$message,
+			$level,
+			$category,
+			microtime(true)
+		);
 		$this->_logCount++;
-		if($this->autoFlush>0 && $this->_logCount>=$this->autoFlush)
+		if ($this->autoFlush > 0 && $this->_logCount >= $this->autoFlush) {
 			$this->flush($this->autoDump);
+		}
 	}
 
 	/**
@@ -102,39 +123,52 @@ class CLogger extends CComponent
 	 * @return array list of messages. Each array elements represents one message
 	 * with the following structure:
 	 * array(
-	 *   [0] => message (string)
-	 *   [1] => level (string)
-	 *   [2] => category (string)
-	 *   [3] => timestamp (float, obtained by microtime(true));
+	 * [0] => message (string)
+	 * [1] => level (string)
+	 * [2] => category (string)
+	 * [3] => timestamp (float, obtained by microtime(true));
 	 */
-	public function getLogs($levels='',$categories='')
+	public function getLogs($levels = '', $categories = '')
 	{
-		$this->_levels=preg_split('/[\s,]+/',strtolower($levels),-1,PREG_SPLIT_NO_EMPTY);
-		$this->_categories=preg_split('/[\s,]+/',strtolower($categories),-1,PREG_SPLIT_NO_EMPTY);
-		if(empty($levels) && empty($categories))
+		$this->_levels = preg_split('/[\s,]+/', strtolower($levels), -1, PREG_SPLIT_NO_EMPTY);
+		$this->_categories = preg_split('/[\s,]+/', strtolower($categories), -1, PREG_SPLIT_NO_EMPTY);
+		if (empty($levels) && empty($categories))
 			return $this->_logs;
-		else if(empty($levels))
-			return array_values(array_filter(array_filter($this->_logs,array($this,'filterByCategory'))));
-		else if(empty($categories))
-			return array_values(array_filter(array_filter($this->_logs,array($this,'filterByLevel'))));
 		else
-		{
-			$ret=array_values(array_filter(array_filter($this->_logs,array($this,'filterByLevel'))));
-			return array_values(array_filter(array_filter($ret,array($this,'filterByCategory'))));
-		}
+			if (empty($levels))
+				return array_values(array_filter(array_filter($this->_logs, array(
+					$this,
+					'filterByCategory'
+				))));
+			else
+				if (empty($categories))
+					return array_values(array_filter(array_filter($this->_logs, array(
+						$this,
+						'filterByLevel'
+					))));
+				else {
+					$ret = array_values(array_filter(array_filter($this->_logs, array(
+						$this,
+						'filterByLevel'
+					))));
+					return array_values(array_filter(array_filter($ret, array(
+						$this,
+						'filterByCategory'
+					))));
+				}
 	}
 
 	/**
 	 * Filter function used by {@link getLogs}
+	 *
 	 * @param array $value element to be filtered
 	 * @return array valid log, false if not.
 	 */
 	private function filterByCategory($value)
 	{
-		foreach($this->_categories as $category)
-		{
-			$cat=strtolower($value[2]);
-			if($cat===$category || (($c=rtrim($category,'.*'))!==$category && strpos($cat,$c)===0))
+		foreach ($this->_categories as $category) {
+			$cat = strtolower($value[2]);
+			if ($cat === $category || (($c = rtrim($category, '.*')) !== $category && strpos($cat, $c) === 0))
 				return $value;
 		}
 		return false;
@@ -142,12 +176,13 @@ class CLogger extends CComponent
 
 	/**
 	 * Filter function used by {@link getLogs}
+	 *
 	 * @param array $value element to be filtered
 	 * @return array valid log, false if not.
 	 */
 	private function filterByLevel($value)
 	{
-		return in_array(strtolower($value[1]),$this->_levels)?$value:false;
+		return in_array(strtolower($value[1]), $this->_levels) ? $value : false;
 	}
 
 	/**
@@ -156,11 +191,12 @@ class CLogger extends CComponent
 	 * defined by constant YII_BEGIN_TIME.
 	 * To estimate the execution time more accurately, the constant should
 	 * be defined as early as possible (best at the beginning of the entry script.)
+	 *
 	 * @return float the total time for serving the current request.
 	 */
 	public function getExecutionTime()
 	{
-		return microtime(true)-YII_BEGIN_TIME;
+		return microtime(true) - YII_BEGIN_TIME;
 	}
 
 	/**
@@ -169,26 +205,24 @@ class CLogger extends CComponent
 	 * If it is not available, the method will attempt to use OS programs
 	 * to determine the memory usage. A value 0 will be returned if the
 	 * memory usage can still not be determined.
+	 *
 	 * @return integer memory usage of the application (in bytes).
 	 */
 	public function getMemoryUsage()
 	{
-		if(function_exists('memory_get_usage'))
+		if (function_exists('memory_get_usage'))
 			return memory_get_usage();
-		else
-		{
-			$output=array();
-			if(strncmp(PHP_OS,'WIN',3)===0)
-			{
-				exec('tasklist /FI "PID eq ' . getmypid() . '" /FO LIST',$output);
-				return isset($output[5])?preg_replace('/[\D]/','',$output[5])*1024 : 0;
+		else {
+			$output = array();
+			if (strncmp(PHP_OS, 'WIN', 3) === 0) {
+				exec('tasklist /FI "PID eq ' . getmypid() . '" /FO LIST', $output);
+				return isset($output[5]) ? preg_replace('/[\D]/', '', $output[5]) * 1024 : 0;
 			}
-			else
-			{
-				$pid=getmypid();
+			else {
+				$pid = getmypid();
 				exec("ps -eo%mem,rss,pid | grep $pid", $output);
-				$output=explode("  ",$output[0]);
-				return isset($output[1]) ? $output[1]*1024 : 0;
+				$output = explode("  ", $output[0]);
+				return isset($output[1]) ? $output[1] * 1024 : 0;
 			}
 		}
 	}
@@ -199,6 +233,7 @@ class CLogger extends CComponent
 	 * If no filter is specified, the returned results would be an array with each element
 	 * being array($token,$category,$time).
 	 * If a filter is specified, the results would be an array of timings.
+	 *
 	 * @param string $token token filter. Defaults to null, meaning not filtered by token.
 	 * @param string $category category filter. Defaults to null, meaning not filtered by category.
 	 * @param boolean $refresh whether to refresh the internal timing calculations. If false,
@@ -206,55 +241,59 @@ class CLogger extends CComponent
 	 * @return array the profiling results.
 	 * @since 1.0.6
 	 */
-	public function getProfilingResults($token=null,$category=null,$refresh=false)
+	public function getProfilingResults($token = null, $category = null, $refresh = false)
 	{
-		if($this->_timings===null || $refresh)
+		if ($this->_timings === null || $refresh)
 			$this->calculateTimings();
-		if($token===null && $category===null)
+		if ($token === null && $category === null)
 			return $this->_timings;
-		$results=array();
-		foreach($this->_timings as $timing)
-		{
-			if(($category===null || $timing[1]===$category) && ($token===null || $timing[0]===$token))
-				$results[]=$timing[2];
+		$results = array();
+		foreach ($this->_timings as $timing) {
+			if (($category === null || $timing[1] === $category) && ($token === null || $timing[0] === $token))
+				$results[] = $timing[2];
 		}
 		return $results;
 	}
 
 	private function calculateTimings()
 	{
-		$this->_timings=array();
+		$this->_timings = array();
 
-		$stack=array();
-		foreach($this->_logs as $log)
-		{
-			if($log[1]!==CLogger::LEVEL_PROFILE)
+		$stack = array();
+		foreach ($this->_logs as $log) {
+			if ($log[1] !== CLogger::LEVEL_PROFILE)
 				continue;
-			list($message,$level,$category,$timestamp)=$log;
-			if(!strncasecmp($message,'begin:',6))
-			{
-				$log[0]=substr($message,6);
-				$stack[]=$log;
+			list ($message, $level, $category, $timestamp) = $log;
+			if (!strncasecmp($message, 'begin:', 6)) {
+				$log[0] = substr($message, 6);
+				$stack[] = $log;
 			}
-			else if(!strncasecmp($message,'end:',4))
-			{
-				$token=substr($message,4);
-				if(($last=array_pop($stack))!==null && $last[0]===$token)
-				{
-					$delta=$log[3]-$last[3];
-					$this->_timings[]=array($message,$category,$delta);
+			else
+				if (!strncasecmp($message, 'end:', 4)) {
+					$token = substr($message, 4);
+					if (($last = array_pop($stack)) !== null && $last[0] === $token) {
+						$delta = $log[3] - $last[3];
+						$this->_timings[] = array(
+							$message,
+							$category,
+							$delta
+						);
+					}
+					else
+						throw new CException(Yii::t('yii', 'CProfileLogRoute found a mismatching code block "{token}". Make sure the calls to Yii::beginProfile() and Yii::endProfile() be properly nested.', array(
+							'{token}' => $token
+						)));
 				}
-				else
-					throw new CException(Yii::t('yii','CProfileLogRoute found a mismatching code block "{token}". Make sure the calls to Yii::beginProfile() and Yii::endProfile() be properly nested.',
-						array('{token}'=>$token)));
-			}
 		}
 
-		$now=microtime(true);
-		while(($last=array_pop($stack))!==null)
-		{
-			$delta=$now-$last[3];
-			$this->_timings[]=array($last[0],$last[2],$delta);
+		$now = microtime(true);
+		while (($last = array_pop($stack)) !== null) {
+			$delta = $now - $last[3];
+			$this->_timings[] = array(
+				$last[0],
+				$last[2],
+				$delta
+			);
 		}
 	}
 
@@ -262,18 +301,22 @@ class CLogger extends CComponent
 	 * Removes all recorded messages from the memory.
 	 * This method will raise an {@link onFlush} event.
 	 * The attached event handlers can process the log messages before they are removed.
+	 *
 	 * @param boolean $dumpLogs whether to process the logs
 	 * @since 1.1.0
 	 */
-	public function flush($dumpLogs=false)
+	public function flush($dumpLogs = false)
 	{
-		$this->onFlush(new CEvent($this, array('dumpLogs'=>$dumpLogs)));
-		$this->_logs=array();
-		$this->_logCount=0;
+		$this->onFlush(new CEvent($this, array(
+			'dumpLogs' => $dumpLogs
+		)));
+		$this->_logs = array();
+		$this->_logCount = 0;
 	}
 
 	/**
 	 * Raises an <code>onFlush</code> event.
+	 *
 	 * @param CEvent $event the event parameter
 	 * @since 1.1.0
 	 */

@@ -2,8 +2,7 @@
 
 class Notificator
 {
-
-	private static $emailSubject = 'Notification System Bugkick';
+	private static $emailSubject = 'Notification system';
 
 	private static $headers = "Content-type: text/html; charset=utf-8 \r\n";
 
@@ -13,7 +12,8 @@ class Notificator
 	 */
 	public static function newComment(Comment $comment)
 	{
-		$ticketUrl = Yii::app()->params['siteUrl'] . '/' . $comment->bug->project->project_id . '/' . $comment->bug->number;
+		$ticketUrl = Yii::app()->createAbsoluteUrl('/' . $comment->bug->project->project_id . '/' . $comment->bug->number);
+		//$ticketUrl = Yii::app()->params['siteUrl'] . '/' . $comment->bug->project->project_id . '/' . $comment->bug->number;
 
 		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.newComment') . '.php', array(
 			'comment' => $comment,
@@ -21,7 +21,6 @@ class Notificator
 		));
 		//$subject = 'Ticket #' . $comment->bug->number . ' Comment Added by ' . $comment->user->name . ' ' . $comment->user->lname;
 		$subject = Yii::t('main', 'New comment to ticket') . '#' . $comment->bug->number;
-		$replyToAddress = self::getReplyToAddress($comment->bug);
 		$users = User::model()->bugRelated($comment->bug)->findAll();
 		if (!empty($comment->bug->owner)) {
 			$users[] = $comment->bug->owner;
@@ -39,16 +38,19 @@ class Notificator
 				continue;
 			}
 			if (self::checkEmailPreferences($user->user_id, EmailPreference::NEW_COMMENT)) {
-				self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
+				self::sendEmail($user->email, '', $subject, $message, self::$headers);
 			}
 		}
 		//	replace end
 	}
 
+	/*
 	protected static function getReplyToAddress(BugBase $bug)
 	{
-		return 'notifications-' . $bug->id . '@bugkick.com';
+		$res = 'notifications-' . $bug->id . '@bugkick.com';
+		return $res;
 	}
+	*/
 
 	public static function newBug(BugBase $bug)
 	{
@@ -57,7 +59,6 @@ class Notificator
 			'bug' => $bug
 		));
 		$subject = Yii::t('main', 'New ticket') . '#' . $bug->number;
-		$replyToAddress = self::getReplyToAddress($bug);
 		$users = User::model()->bugRelated($bug)->findAll();
 		foreach ($users as $user) {
 			// Skip the notification sending to new bug initiator
@@ -74,7 +75,7 @@ class Notificator
 			// Otherwise send an e-mail message to this assigned user:
 			$sendResult = null;
 			if ((self::checkEmailPreferences($user->user_id, EmailPreference::NEW_TICKET))) {
-				$sendResult = self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
+				$sendResult = self::sendEmail($user->email, '', $subject, $message, self::$headers);
 			}
 			Yii::app()->logger->saveLog(0, 'mail::newBug', "Bug #{$bug->number}", $sendResult);
 		}
@@ -88,7 +89,7 @@ class Notificator
 			'p' => $invite->project_id,
 			'c' => $invite->company_id
 		));
-		self::$emailSubject = '[' . Yii::app()->name . '] ' . User::current()->getUserName() . ' invites you to join the team for "' . Yii::app()->user->company_name . '"';
+		self::$emailSubject = '[' . Yii::app()->name . '] ' . User::current()->getUserName() . ' ' . Yii::t('main', 'invites you to join the team for') . ' "' . Yii::app()->user->company_name . '"';
 	}
 
 	protected static function inviteNewUser(User $user)
@@ -96,7 +97,7 @@ class Notificator
 		self::inviteUser($user, array(
 			't' => $user->inviteToken
 		));
-		self::$emailSubject = 'Invite from ' . User::current()->getUserName() . ' to join Bugkick';
+		self::$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . Yii::app()->name;
 	}
 
 	protected static function inviteUser(User $user, $urlParams)
@@ -179,7 +180,6 @@ MSG;
 			'model' => $model,
 			'changes' => $changes
 		));
-		$replyToAddress = self::getReplyToAddress($model);
 		$users = User::model()->bugRelated($model)->findAll();
 		if (!empty($model->owner)) {
 			$users[] = $model->owner;
@@ -199,7 +199,7 @@ MSG;
 			//send an e-mail message if user is off-line and didn't got an instant notification:
 			$sendResult = null;
 			if (self::checkEmailPreferences($user->user_id, EmailPreference::TICKET_UPDATE)) {
-				$sendResult = self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
+				$sendResult = self::sendEmail($user->email, '', $subject, $message, self::$headers);
 			}
 		}
 		Yii::app()->logger->saveLog(Yii::app()->user->id, 'mail::updateBug', "Bug #{$model->number} '{$model->title}': " . serialize($changes), isset($sendResult) ? $sendResult : '');
@@ -284,7 +284,7 @@ MSG;
 				InstantMessage::instance()->send($key, MessageType::TICKET_DEADLINE_REACHED, $ticket, Yii::app()->params['siteUrl'] . '/' . $ticket->project->project_id . '/' . $ticket->number);
 			}
 
-			//Sending emails
+			// Sending emails
 			if (is_array($user->emailPreferences) && is_array($value)) {
 				foreach ($user->emailPreferences as $pref) {
 					if ($pref->email_preference_id == EmailPreference::DUE_DATE) {

@@ -40,7 +40,7 @@
 	};
 	function initSocket() {
 		//var baseUrl = window.location.protocol + '//' + window.location.host + ':27000';
-		var baseUrl = 'https:' + '//' + window.location.host + ':' + (window.notificationsPort || '27000');
+		var baseUrl = 'https:' + '//' + window.location.host + ':' + (window.notificationsPort || '27000')+window.baseUrl;
 		var userData=JSON.parse($('#user_data').text());
 		var user_id = parseInt(userData.user_id, 10);
 		var project_id = parseInt(userData.project_id, 10);

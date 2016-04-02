@@ -305,9 +305,12 @@ JS
     */ ?>
 	<?php if(Yii::app()->params['node']['notifications']['turned-on']) { ?>
 	<?php /*<!--<script type="text/javascript" src="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>:27000/socket.io/socket.io.js"></script>--> */ ?>
-    <script type="text/javascript">var notificationsPort = <?php echo Yii::app()->params['node']['notifications']['port']; ?>;</script>
-	<script type="text/javascript" src="https://<?php echo Yii::app()->request->serverName; ?>:<?php echo Yii::app()->params['node']['notifications']['port']; ?>/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/notifications.min.js"></script>
+    <script type="text/javascript">
+    	var notificationsPort = <?php echo Yii::app()->params['node']['notifications']['port']; ?>;
+    	var baseUrl = <?php echo Yii::app()->getBaseUrl(); ?>;
+    </script>
+	<script type="text/javascript" src="https://<?php echo Yii::app()->request->serverName; ?>:<?php echo Yii::app()->params['node']['notifications']['port'] . Yii::app()->getBaseUrl(); ?>/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; // notifications.min.js ?>/js/notifications.js"></script>
 	<?php } ?>
     <script type="text/javascript" src="<?php echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/chosen/chosen/chosen.jquery.min.js',

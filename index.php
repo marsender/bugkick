@@ -1,5 +1,5 @@
 <?php
-// change the following paths if necessary
+// Change the following paths if necessary
 $yii=dirname(__FILE__).'/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 $init=dirname(__FILE__).'/protected/config/init.php';
