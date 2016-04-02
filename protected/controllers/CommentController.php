@@ -43,10 +43,10 @@ class CommentController extends Controller
 			),
 		);
 	}
-	
+
 	/**
 	 * Called by comment email replies to notifications@bugkick.com
-	 * We need to extract 
+	 * We need to extract
 	 */
 	public function actionEmaillistener()
 	{
@@ -63,7 +63,7 @@ class CommentController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}*/
-	
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -123,7 +123,7 @@ die;*/
             $model->bug_id = (int) $bug->id;
 			if($model->save()) {
                 //send notifications
-				Notificator::newComment($model, array($model->user_id));
+				Notificator::newComment($model);
 
                 //check if user changed project during writing a comment
                 User::updateCurrentProject($bug->project_id);
@@ -229,5 +229,5 @@ die;*/
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-   
+
 }

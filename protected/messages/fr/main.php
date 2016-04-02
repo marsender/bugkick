@@ -174,5 +174,7 @@ return array(
 	// Sql: 'Ticket status changes'=>'Modification de statut',
 	// Sql: 'New ticket'=>'Nouveau ticket',
 	'Are you sure ?'=>'Etes-vous sûr ?',
+	'New comment to ticket'=>'Nouveau commentaire pour le ticket',
+	'Update to ticket'=>'Mise à jour du ticket',
 	''=>'',
 );

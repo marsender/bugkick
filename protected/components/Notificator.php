@@ -10,9 +10,8 @@ class Notificator
 	/**
 	 *
 	 * @param Comment $comment
-	 * @param array $skipUsers identifiers of users that DON'T have to receive email.
 	 */
-	public static function newComment(Comment $comment, $skipUsers = array())
+	public static function newComment(Comment $comment)
 	{
 		$ticketUrl = Yii::app()->params['siteUrl'] . '/' . $comment->bug->project->project_id . '/' . $comment->bug->number;
 
@@ -21,18 +20,20 @@ class Notificator
 			'viewBugUrl' => $ticketUrl
 		));
 		//$subject = 'Ticket #' . $comment->bug->number . ' Comment Added by ' . $comment->user->name . ' ' . $comment->user->lname;
-		$subject = 'Update to Ticket#' . $comment->bug->number;
+		$subject = Yii::t('main', 'New comment to ticket') . '#' . $comment->bug->number;
 		$replyToAddress = self::getReplyToAddress($comment->bug);
-		//$users=$comment->bug->user;
 		$users = User::model()->bugRelated($comment->bug)->findAll();
 		if (!empty($comment->bug->owner)) {
 			$users[] = $comment->bug->owner;
 		}
-		//	replace begin
 		foreach ($users as $user) {
-			if (in_array($user->user_id, $skipUsers)) {
-				continue;
+			// Skip the notification sending to comment initiator
+			if (Yii::app()->params['skipEmailIfUserInitiator']) {
+				if ($user->user_id == $comment->user_id) {
+					continue;
+				}
 			}
+			// Send instant notification
 			$instNotifRes = InstantMessage::instance()->send($user->user_id, MessageType::NEW_COMMENT, $comment->bug, $ticketUrl);
 			if ((is_array($instNotifRes) && !empty($instNotifRes['success'])) && Yii::app()->params['skipEmailIfNodeReceived']) {
 				continue;
@@ -44,49 +45,6 @@ class Notificator
 		//	replace end
 	}
 
-	/*
-	 * TO DELETE
-	 *
-	 *		Below the replaced code from Notificator::newComment method.
-	 *
-	 *
-	 //send message owner bug
-	 if(!empty($comment->bug->owner)
-	 && !in_array($comment->bug->owner->user_id, $skipUsers)) {
-	 $instNotifRes=InstantMessage::instance()->send(
-	 $comment->bug->owner->user_id,
-	 MessageType::NEW_COMMENT,
-	 $comment->bug->number,
-	 $ticketUrl
-	 );
-	 if(!is_array($instNotifRes) || !empty($instNotifRes['success'])) {
-	 $sendResult = self::checkEmailPreferences($comment->bug->owner->user_id, EmailPreference::NEW_COMMENT)
-	 ? self::sendEmail($comment->bug->owner->email, '', $subject, $message, self::$headers, $replyToAddress)
-	 : null;
-	 Yii::app()->logger->saveLog(0, 'mail::newComment', "Bug #{$comment->bug_id}, comment #{$comment->comment_id}", $sendResult);
-	 }
-	 }
-	 //send message assigned user
-	 if (is_array($comment->bug->user)) {
-	 foreach($comment->bug->user as $user){
-	 if(in_array($user->user_id, $skipUsers)) {
-	 continue;
-	 }
-	 $instNotifRes=InstantMessage::instance()->send(
-	 $user->user_id,
-	 MessageType::NEW_COMMENT,
-	 $comment->bug->number,
-	 $ticketUrl
-	 );
-	 if(is_array($instNotifRes) && !empty($instNotifRes['success'])) {
-	 continue;
-	 }
-	 if(self::checkEmailPreferences($user->user_id, EmailPreference::NEW_COMMENT)) {
-	 self::sendEmail($user->email, '', $subject, $message, self::$headers, $replyToAddress);
-	 }
-	 }
-	 }
-	 */
 	protected static function getReplyToAddress(BugBase $bug)
 	{
 		return 'notifications-' . $bug->id . '@bugkick.com';
@@ -94,16 +52,22 @@ class Notificator
 
 	public static function newBug(BugBase $bug)
 	{
+		$ticketUrl = Yii::app()->createAbsoluteUrl('bug/view', array('id' => $bug->number));
 		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.newBug') . '.php', array(
 			'bug' => $bug
 		));
-		$subject = 'New Ticket#' . $bug->number;
+		$subject = Yii::t('main', 'New ticket') . '#' . $bug->number;
 		$replyToAddress = self::getReplyToAddress($bug);
 		$users = User::model()->bugRelated($bug)->findAll();
 		foreach ($users as $user) {
-			$instNotifRes = InstantMessage::instance()->send($user->user_id, MessageType::NEW_TICKET, $bug, Yii::app()->createAbsoluteUrl('bug/view', array(
-				'id' => $bug->number
-			)));
+			// Skip the notification sending to new bug initiator
+			if (Yii::app()->params['skipEmailIfUserInitiator']) {
+				if ($user->user_id == Yii::app()->user->id) {
+					continue;
+				}
+			}
+			// Send instant notification
+			$instNotifRes = InstantMessage::instance()->send($user->user_id, MessageType::NEW_TICKET, $bug, $ticketUrl);
 			if ((is_array($instNotifRes) && !empty($instNotifRes['success'])) && Yii::app()->params['skipEmailIfNodeReceived']) {
 				continue;
 			}
@@ -208,7 +172,9 @@ MSG;
 	{
 		//        $ch = 'New ' . $changes[0]['name'] . ': ' .  $changes[0]['value'];
 		//        $subject = 'Ticket #' . $model->number . ' ' . $ch ;
-		$subject = 'Update to Ticket#' . $model->number;
+
+		$ticketUrl = Yii::app()->createAbsoluteUrl('bug/view', array('id' => $model->number));
+		$subject = Yii::t('main', 'Update to ticket') . '#' . $model->number;
 		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.updateBug') . '.php', array(
 			'model' => $model,
 			'changes' => $changes
@@ -219,14 +185,14 @@ MSG;
 			$users[] = $model->owner;
 		}
 		foreach ($users as $user) {
-			//	skip the notification sending to update initiator.
-			if ($user->user_id == Yii::app()->user->id) {
-				continue;
+			// Skip the notification sending to update initiator
+			if (Yii::app()->params['skipEmailIfUserInitiator']) {
+				if ($user->user_id == Yii::app()->user->id) {
+					continue;
+				}
 			}
-			//send instant notification:
-			$instNotifRes = InstantMessage::instance()->send($user->user_id, MessageType::TICKET_CHANGED, $model, Yii::app()->createAbsoluteUrl('bug/view', array(
-				'id' => $model->number
-			)));
+			// Send instant notification
+			$instNotifRes = InstantMessage::instance()->send($user->user_id, MessageType::TICKET_CHANGED, $model, $ticketUrl);
 			if ((is_array($instNotifRes) && !empty($instNotifRes['success'])) && Yii::app()->params['skipEmailIfNodeReceived']) {
 				continue;
 			}
@@ -287,6 +253,7 @@ MSG;
 		// Send notifications also for current user
 		$isNotCurrentUser = true;
 		//$isNotCurrentUser = (Yii::app() instanceof CConsoleApplication) || (Yii::app()->user->id != $userID);
+
 
 		if (($user->email_notify == 1) && $isNotCurrentUser && $isUserBelongsToProject) {
 			if ($notificationType) {

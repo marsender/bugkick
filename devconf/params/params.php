@@ -120,6 +120,9 @@ return array(
 	//else node message will be shown if user is online, email will be send if not.
 	'skipEmailIfNodeReceived'=>false,
 
+	// Skip email if action is initiated by this user
+	'skipEmailIfUserInitiator'=>false,
+
 	'bugkickApiSettings'=>require($currDir . 'bugkick-api-settings.php'),
 
 	//Files Storage: one of these options - 's3', 'local'

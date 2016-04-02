@@ -137,9 +137,7 @@ class BugController extends Controller
 			$model->bug_id = (int)$bug->id;
 			if ($model->save()) {
 				//send notifications
-				Notificator::newComment($model, array(
-					$model->user_id
-				));
+				Notificator::newComment($model);
 
 				//check if user changed project during writing a comment
 				User::updateCurrentProject($bug->project_id);
