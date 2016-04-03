@@ -52,7 +52,7 @@ $form = $this->beginWidget(
         'htmlOptions'=>array(
 			//'enctype'=>'multipart/form-data',
 			'name'=>'projectForm',
-			'style'=>'float:left;'
+			'style'=>'float:left; display:none;'
 		),
 	)
 );
