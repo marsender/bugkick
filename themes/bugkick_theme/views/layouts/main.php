@@ -18,7 +18,7 @@
         '/js/plug-in/jGrowl/jquery.jgrowl.css',
         '/js/bootstrap/css/bootstrap.css',
         '/css/colortip.css',
-        'themes/bugkick_theme/css/plug-in/imageset/imageset.css',
+        '/themes/bugkick_theme/css/plug-in/imageset/imageset.css',
     )); ?>" />
 	<?php
 	$lookAndFeel = $this->lookAndFeel();
