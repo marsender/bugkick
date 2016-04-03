@@ -147,19 +147,20 @@ class CWidgetFactory extends CApplicationComponent implements IWidgetFactory
 		$className=Yii::import($className,true);
 		$widget=new $className($owner);
 
-		if(isset($this->widgets[$className]))
+		if(isset($this->widgets[$className])) {
 			$properties=$properties===array() ? $this->widgets[$className] : CMap::mergeArray($this->widgets[$className],$properties);
-		if($this->enableSkin)
-		{
-			if($this->skinnableWidgets===null || in_array($className,$this->skinnableWidgets))
-			{
+		}
+		if($this->enableSkin) {
+			if($this->skinnableWidgets===null || in_array($className,$this->skinnableWidgets)) {
 				$skinName=isset($properties['skin']) ? $properties['skin'] : 'default';
 				if($skinName!==false && ($skin=$this->getSkin($className,$skinName))!==array())
 					$properties=$properties===array() ? $skin : CMap::mergeArray($skin,$properties);
 			}
 		}
-		foreach($properties as $name=>$value)
+		foreach($properties as $name=>$value) {
 			$widget->$name=$value;
+		}
+
 		return $widget;
 	}
 

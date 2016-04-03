@@ -12,7 +12,7 @@ $this->breadcrumbs = array(
     Yii::t('main', 'Updates'),
 );
 ?>
-<div id="containertop" style="min-height:500px;">
+<div id="containertop">
     <div id="container">
         <div class="timeline_container">
             <div class="timeline">

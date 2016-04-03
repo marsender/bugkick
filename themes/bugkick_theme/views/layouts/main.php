@@ -109,7 +109,8 @@ JS
 		<div class="wrapper">
 <?php
     //Yii::app()->cache->flush();
-    $currentCompanyID =  Company::current();
+		$isGlobalAdmin = User::current()->isGlobalAdmin();
+		$currentCompanyID =  Company::current();
     $project=Project::getCurrent();
     $projectID=empty($project) ? 0 : $project->project_id;
     $cacheSettings=array(
@@ -126,7 +127,12 @@ JS
         $this->endCache();
     }
 ?>
-<?php if(!Yii::app()->user->isGuest): ?>
+<?php if(!Yii::app()->user->isGuest):
+	if ($projectsData['selected']['project_id']>0) {
+		echo '<span id="project_title">' . Yii::t('main', 'Current project') . ': '. $projectsData['selected']['name'] . ' &nbsp; &nbsp; &nbsp; &nbsp; </span>';
+	}
+?>
+
     <div class="top_tab has_menu"><span class="hi"><?php echo Yii::t('main', 'Hi') ?>,</span> <span class="name"><?php echo Helper::truncateString(Yii::app()->user->name, 18); ?></span><span class="menu-arrow"></span>
         <ul class="sub_menu">
             <li><?php echo CHtml::link(Yii::t('main', 'Account'), Yii::app()->createAbsoluteUrl('/settings'), array('id'=>'view_profile')) ?></li>
@@ -146,7 +152,7 @@ JS
         <?php }?>
         */
         ?>
-        <?php if (User::current()->isGlobalAdmin()) { ?>
+        <?php if ($isGlobalAdmin) { ?>
             <li><?php echo CHtml::link(Yii::t('main', 'Admin panel'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
         <?php } ?>
             <li><?php echo CHtml::link(Yii::t('main', 'Help'), Yii::app()->createAbsoluteUrl('/help'), array('id'=>'show-help')) ?></li>
@@ -160,7 +166,10 @@ JS
 <!-- Projects dropdown-->
     <div class="top_tab has_menu">
         <a href="<?php echo Yii::app()->createUrl('/project')?>" class="project-link">
-            <?php echo ($projectsData['selected']['project_id']>0)? '<span id="view-project-link-'.$projectsData['selected']['project_id'] .'">'. Helper::truncateString($projectsData['selected']['name'], 20) . '</span>' : Yii::t('main', 'Projects'); ?>
+<?php
+		echo Yii::t('main', 'Projects');
+		//echo ($projectsData['selected']['project_id']>0)? '<span id="view-project-link-'.$projectsData['selected']['project_id'] .'">'. Helper::truncateString($projectsData['selected']['name'], 20) . '</span>' : Yii::t('main', 'Projects');
+?>
             <span class="menu-arrow"></span>
         </a>
         <ul class="sub_menu projects-container">
@@ -177,10 +186,11 @@ JS
         </ul>
     </div>
 
+<?php if ($isGlobalAdmin) { ?>
     <div class="top_tab summary_tickets">
     	<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>" title="<?php echo Yii::t('main', 'Summary tickets'); ?>"></a>
     </div>
-
+<?php } ?>
     <div class="top_tab t_separator"></div>
 
 <?php

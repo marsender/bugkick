@@ -242,7 +242,16 @@ div.flash-success a {
   margin-top: 12px;
   float: left;
 }
-/* Main wrapper remove additional elements */#content {
+#project_title {
+  display: block;
+  margin-left:30px;
+  margin-top: 22px;
+  float: left;
+  color: #fff;
+  font-weight: bold;
+}
+/* Main wrapper remove additional elements */
+#content {
   margin: 40px auto 0;
   width: 982px;
   padding-bottom: 121px;
@@ -400,7 +409,7 @@ div.flash-success a {
   padding: 21px;
   position: relative;
   width: 669px;
-  min-height: 297px;
+  /*min-height: 297px;*/
   /*    margin-bottom: 30px;*/
 
 }

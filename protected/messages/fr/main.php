@@ -198,5 +198,7 @@ return array(
 	'Description'=>'Description',
 	'Duedate'=>'Date prévue',
 	'Register'=>'S\'enregistrer',
+	'Edit'=>'Éditer',
+	'Current project'=>'Projet en cours',
 	''=>'',
 );

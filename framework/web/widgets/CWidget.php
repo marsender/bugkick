@@ -197,28 +197,32 @@ class CWidget extends CBaseController
 	 */
 	public function getViewFile($viewName)
 	{
-		if(($renderer=Yii::app()->getViewRenderer())!==null)
+		$extension='.php';
+		if(($renderer=Yii::app()->getViewRenderer())!==null) {
 			$extension=$renderer->fileExtension;
-		else
-			$extension='.php';
-		if(strpos($viewName,'.')) // a path alias
+		}
+
+		if(strpos($viewName,'.')) { // a path alias
 			$viewFile=Yii::getPathOfAlias($viewName);
-		else
-		{
+		}
+		else {
 			$viewFile=$this->getViewPath(true).DIRECTORY_SEPARATOR.$viewName;
-			if(is_file($viewFile.$extension))
+			if(is_file($viewFile.$extension)) {
 				return Yii::app()->findLocalizedFile($viewFile.$extension);
-			else if($extension!=='.php' && is_file($viewFile.'.php'))
+			}
+			if($extension!=='.php' && is_file($viewFile.'.php')) {
 				return Yii::app()->findLocalizedFile($viewFile.'.php');
+			}
 			$viewFile=$this->getViewPath(false).DIRECTORY_SEPARATOR.$viewName;
 		}
 
-		if(is_file($viewFile.$extension))
+		if(is_file($viewFile.$extension)) {
 			return Yii::app()->findLocalizedFile($viewFile.$extension);
-		else if($extension!=='.php' && is_file($viewFile.'.php'))
+		}
+		if($extension!=='.php' && is_file($viewFile.'.php')) {
 			return Yii::app()->findLocalizedFile($viewFile.'.php');
-		else
-			return false;
+		}
+		return false;
 	}
 
 	/**
@@ -238,10 +242,11 @@ class CWidget extends CBaseController
 	 */
 	public function render($view,$data=null,$return=false)
 	{
-		if(($viewFile=$this->getViewFile($view))!==false)
+		if(($viewFile=$this->getViewFile($view))!==false) {
 			return $this->renderFile($viewFile,$data,$return);
-		else
-			throw new CException(Yii::t('yii','{widget} cannot find the view "{view}".',
-				array('{widget}'=>get_class($this), '{view}'=>$view)));
+		}
+
+		throw new CException(Yii::t('yii','{widget} cannot find the view "{view}".',
+			array('{widget}'=>get_class($this), '{view}'=>$view)));
 	}
 }

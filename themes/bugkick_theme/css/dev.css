@@ -382,9 +382,6 @@ a#settings-tab{
 a#calendar-tab{
     background: url("../images/icons/calendar-i.png") no-repeat;
 }
-#content #tabed-nav ul li:nth-last-of-type(-n+2){
-    float: right;
-}
 #content #tabed-nav{
     margin-right:20px;
 }
@@ -1184,13 +1181,16 @@ background-clip: padding-box;
     margin-left: 40px;
 }
 
-#content #tabed-nav ul li:nth-last-of-type(-n+2) a{
-    padding: 6px 15px;    
-}
-
-#content #tabed-nav ul li:nth-last-of-type(-n+2){
+/*#content #tabed-nav ul li:nth-last-of-type(-n+2){*/
+#content #tabed-nav ul li.iconsright{
+    float: right;
     border-bottom: none;
     margin-left: 10px;
+}
+
+/*#content #tabed-nav ul li:nth-last-of-type(-n+2) a{*/
+#content #tabed-nav ul li.iconsright a{
+    padding: 6px 15px;    
 }
 
 a#settings-tab{

@@ -4,6 +4,9 @@
  * Date: 16.01.12
  * Time: 23:41
  */
+$userCurrent = User::current();
+$isGlobalAdmin = $userCurrent->isGlobalAdmin();
+$displayEditProjectLink = $isGlobalAdmin && ($userCurrent->isCompanyAdmin($data->company->company_id) || $userCurrent->isProjectAdmin($data->project_id));
 ?>
 <div class="project-container">
     <!-- <div class="project-top"></div> -->
@@ -20,9 +23,7 @@
                );*/
            ?>
             <?php
-                if(User::current()->isCompanyAdmin($data->company->company_id)
-//                        || User::current()->isProjectAdmin($data->project_id)
-                ) {
+                if ($displayEditProjectLink) {
                     echo CHtml::link(
                         Yii::t('main', 'Edit'),
                         array('project/edit', 'id'=>$data->project_id),

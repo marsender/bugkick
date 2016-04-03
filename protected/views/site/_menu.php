@@ -6,20 +6,11 @@
  */
 $module = (isset(Yii::app()->getController()->module)) ? Yii::app()->getController()->module->getName() : '';
 $controller = Yii::app()->getController()->getId();
-$action = Yii::app()->getController()
-	->getAction()
-	->getId();
+$action = Yii::app()->getController()->getAction()->getId();
 
 if (!Yii::app()->user->isGuest) {
-	if ($module != 'admin'
-		&& (
-			($controller == 'bug' && $action == 'index')
-			|| ($controller == 'notification')
-			|| ($controller == 'site' && $action == 'dashboard')
-			|| ($controller == 'project' && $action == 'people')
-			)
-		) {
-		$this->widget('MainTabs', array(
+	if ($module != 'admin' && (($controller == 'bug' && $action == 'index') || ($controller == 'notification') || ($controller == 'site' && $action == 'dashboard') || ($controller == 'project' && $action == 'people'))) {
+		$tabs = array(
 			'tabs' => array(
 				array(
 					'text' => 'Tickets',
@@ -62,14 +53,15 @@ if (!Yii::app()->user->isGuest) {
 					'title' => 'Calendar for this project',
 					'id' => 'calendar-tab'
 				),
-                /*array(
-                    'text'=>'Flow',
-                    'url'=>'#',
-                    'title'=>'Flow',
-                    'id'=>'flow-tab'
-                ),*/
-            )
-		));
+/*array(
+'text'=>'Flow',
+'url'=>'#',
+'title'=>'Flow',
+'id'=>'flow-tab'
+),*/
+)
+		);
+		$this->widget('MainTabs', $tabs);
 		//        Yii::app()->clientScript->registerScript('settings-tab', '
 		//            jQuery("a#settings-tab").live("click",function() {
 		//                $("#project-form-dialog").dialog("open");
@@ -112,7 +104,7 @@ if (!Yii::app()->user->isGuest) {
 		 */
 	}
 	elseif ($module == 'admin') {
-		$this->widget('MainTabs', array(
+		$tabs = array(
 			'tabs' => array(
 				array(
 					'text' => 'Users',
@@ -139,7 +131,8 @@ if (!Yii::app()->user->isGuest) {
 					'id' => 'coupon-tab'
 				)
 			)
-		));
+		);
+		$this->widget('MainTabs', $tabs);
 	}
 }
 
