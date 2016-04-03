@@ -5,7 +5,8 @@
     <meta name="language" content="en" />
 	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->minScript->generateUrl(array(
+    <link rel="stylesheet" type="text/css" href="<?php
+    	echo Yii::app()->minScript->generateUrl(array(
         '/css/form.css',
         '/js/plug-in/chosen/chosen/chosen.css',
         '/js/plug-in/iPhone-checkbox/style.css',
@@ -109,7 +110,7 @@ JS
 		<div class="wrapper">
 <?php
     //Yii::app()->cache->flush();
-		$isGlobalAdmin = User::current()->isGlobalAdmin();
+		$isGlobalAdmin = User::current() && User::current()->isGlobalAdmin();
 		$currentCompanyID =  Company::current();
     $project=Project::getCurrent();
     $projectID=empty($project) ? 0 : $project->project_id;
@@ -186,7 +187,7 @@ JS
         </ul>
     </div>
 
-<?php if ($isGlobalAdmin) { ?>
+<?php if (true || $isGlobalAdmin) { ?>
     <div class="top_tab summary_tickets">
     	<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>" title="<?php echo Yii::t('main', 'Summary tickets'); ?>"></a>
     </div>
@@ -295,7 +296,8 @@ JS
 <?php echo $this->renderPartial('application.views.account._shortcut'); ?>
 </div>
  <?php /* Scripts, moved from TOP: */ ?>
- <script type="text/javascript" src="<?php echo Yii::app()->minScript->generateUrl(array(
+ <script type="text/javascript" src="<?php
+ 			echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/store.js/store+json2.min.js',
         '/js/bugkick/base.min.js',
         '/js/plug-in/moment/moment.min.js',
@@ -307,7 +309,7 @@ JS
         '/js/console.min.js',
         '/js/plug-in/flash-message/js/flash-message.min.js',
         '/js/plug-in/jGrowl/jquery.jgrowl_minimized.js',
- 		'/js/jquery.caret.1.02.min.js'
+ 				'/js/jquery.caret.1.02.min.js'
     )); ?>"></script>
 	<?php /* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/console.min.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/flash-message/js/flash-message.min.js"></script>
@@ -322,7 +324,8 @@ JS
 	<script type="text/javascript" src="https://<?php echo Yii::app()->request->serverName; ?>:<?php echo Yii::app()->params['node']['notifications']['port'] . Yii::app()->getBaseUrl(); ?>/socket.io/socket.io.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; // notifications.min.js ?>/js/notifications.js"></script>
 	<?php } ?>
-    <script type="text/javascript" src="<?php echo Yii::app()->minScript->generateUrl(array(
+    <script type="text/javascript" src="<?php
+    	echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/chosen/chosen/chosen.jquery.min.js',
         '/js/plug-in/iPhone-checkbox/jquery/iphone-style-checkboxes.min.js',
         '/js/plug-in/jquery-form/jquery.form.min.js',

@@ -26,11 +26,11 @@
     );
 ?>
 
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/home/jquery-reveal.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/home/jquery-accordion.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/home/jquery-prettyphoto.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/home/jquery-form.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/home/jquery-enquire.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/home/jquery-reveal.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/home/jquery-accordion.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/home/jquery-prettyphoto.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/home/jquery-form.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/home/jquery-enquire.js"></script>
 </head>
 
 <body>

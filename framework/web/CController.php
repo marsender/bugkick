@@ -543,8 +543,9 @@ class CController extends CBaseController
 	 */
 	public function getViewPath()
 	{
-		if(($module=$this->getModule())===null)
+		if(($module=$this->getModule())===null) {
 			$module=Yii::app();
+		}
 		return $module->getViewPath().DIRECTORY_SEPARATOR.$this->getId();
 	}
 
@@ -579,11 +580,13 @@ class CController extends CBaseController
 	 */
 	public function getViewFile($viewName)
 	{
-		if(($theme=Yii::app()->getTheme())!==null && ($viewFile=$theme->getViewFile($this,$viewName))!==false)
+		if(($theme=Yii::app()->getTheme())!==null && ($viewFile=$theme->getViewFile($this,$viewName))!==false) {
 			return $viewFile;
+		}
 		$moduleViewPath=$basePath=Yii::app()->getViewPath();
-		if(($module=$this->getModule())!==null)
+		if(($module=$this->getModule())!==null) {
 			$moduleViewPath=$module->getViewPath();
+		}
 		return $this->resolveViewFile($viewName,$this->getViewPath(),$basePath,$moduleViewPath);
 	}
 

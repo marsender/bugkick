@@ -9,7 +9,8 @@
     $cssCoreUrl = Yii::app()->getClientScript()->getCoreScriptUrl();
     Yii::app()->getClientScript()->registerCssFile($cssCoreUrl . '/jui/css/base/jquery-ui.css');
 ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->minScript->generateUrl(array(
+    <link rel="stylesheet" type="text/css" href="<?php
+    	echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/chosen/chosen/chosen.css',
         '/themes/bugkick_theme/css/reset.css',
         '/themes/bugkick_theme/css/jqueryui-accordion-reset.css',
@@ -19,9 +20,9 @@
         '/themes/bugkick_theme/css/buttons.css',
     )); ?>" />
     <!--
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/landing.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/plug-in/prettyphoto/prettyphoto.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/css/landing.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/css/plug-in/prettyphoto/prettyphoto.css" />
     -->
 
     <?php
@@ -75,14 +76,15 @@ JS
         </div>
     </div>
 </div>
- <script type="text/javascript" src="<?php echo Yii::app()->minScript->generateUrl(array(
+ <script type="text/javascript" src="<?php
+ 			echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/chosen/chosen/chosen.jquery.min.js',
         '/themes/bugkick_theme/js/home/jquery-prettyphoto.js',
     )); ?>"></script>
 <!--
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
-<script type="text/javascript"  src="<?php echo Yii::app()->theme->baseUrl; ?>/js/home/jquery-prettyphoto.js"></script>
+<script type="text/javascript"  src="<?php echo Yii::app()->baseUrl; ?>/js/home/jquery-prettyphoto.js"></script>
 -->
 <script type="text/javascript">
     (function($){

@@ -23,8 +23,9 @@
 
 
 defined('YII_BEGIN_TIME') or define('YII_BEGIN_TIME',microtime(true));
-defined('YII_DEBUG') or define('YII_DEBUG',false);
-defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',0);
+defined('YII_TRACE') or define('YII_TRACE',false);
+defined('YII_DEBUG') or define('YII_DEBUG',true);
+defined('YII_DEBUG_LEVEL') or define('YII_DEBUG_LEVEL',0);
 defined('YII_ENABLE_EXCEPTION_HANDLER') or define('YII_ENABLE_EXCEPTION_HANDLER',true);
 defined('YII_ENABLE_ERROR_HANDLER') or define('YII_ENABLE_ERROR_HANDLER',true);
 defined('YII_PATH') or define('YII_PATH',dirname(__FILE__));
@@ -246,14 +247,14 @@ class YiiBase
 	}
 	public static function trace($msg,$category='application')
 	{
-		if(YII_DEBUG)
+		if(YII_TRACE)
 			self::log($msg,CLogger::LEVEL_TRACE,$category);
 	}
 	public static function log($msg,$level=CLogger::LEVEL_INFO,$category='application')
 	{
 		if(self::$_logger===null)
 			self::$_logger=new CLogger;
-		if(YII_DEBUG && YII_TRACE_LEVEL>0 && $level!==CLogger::LEVEL_PROFILE)
+		if(YII_DEBUG && YII_DEBUG_LEVEL>0 && $level!==CLogger::LEVEL_PROFILE)
 		{
 			$traces=debug_backtrace();
 			$count=0;
@@ -262,7 +263,7 @@ class YiiBase
 				if(isset($trace['file'],$trace['line']) && strpos($trace['file'],YII_PATH)!==0)
 				{
 					$msg.="\nin ".$trace['file'].' ('.$trace['line'].')';
-					if(++$count>=YII_TRACE_LEVEL)
+					if(++$count>=YII_DEBUG_LEVEL)
 						break;
 				}
 			}

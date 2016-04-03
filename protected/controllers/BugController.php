@@ -181,10 +181,12 @@ class BugController extends Controller
 		$project_id = null;
 		$currentProject = null;
 		$user = User::current();
-		if (!empty($user))
+		if (!empty($user)) {
 			$currentProject = $user->currentProject;
-		if (empty($currentProject))
+		}
+		if (empty($currentProject)) {
 			$this->redirect(Yii::app()->baseUrl . '/project/index');
+		}
 		Yii::app()->minScript->generateScriptMap(array(
 			'/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js',
 			'/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js',

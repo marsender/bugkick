@@ -15,6 +15,7 @@
 // fix for fcgi
 defined('STDIN') or define('STDIN', fopen('php://stdin', 'r'));
 
+defined('YII_TRACE') or define('YII_TRACE',false);
 defined('YII_DEBUG') or define('YII_DEBUG',true);
 
 require_once(dirname(__FILE__).'/yii.php');

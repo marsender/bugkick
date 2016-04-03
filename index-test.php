@@ -8,7 +8,8 @@
 $yii=dirname(__FILE__).'/../framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/test.php';
 
-// remove the following line when in production mode
+// Remove the following line when in production mode
+defined('YII_TRACE') or define('YII_TRACE',false);
 defined('YII_DEBUG') or define('YII_DEBUG',true);
 
 require_once($yii);
