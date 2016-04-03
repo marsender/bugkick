@@ -127,7 +127,7 @@
  *     $this->render('create',array('model'=>$model));
  * }
  *
- * protected function performAjaxValidation($model)
+ * protected function performAjaxValidation($model, $formID=null)
  * {
  *     if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
  *     {

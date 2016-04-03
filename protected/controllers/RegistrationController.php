@@ -322,10 +322,10 @@ class RegistrationController extends Controller
 		$this->redirect($this->createUrl('site/login'));
 	}
 
-	public function performAjaxValidation($user, $company)
+	public function performAjaxValidation($user, $formID=null)
 	{
 		//validate coupon
-		$this->validateCoupon($company);
+		$this->validateCoupon($formID);
 
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') {
 			//echo CActiveForm::validate(array($model, $model2));

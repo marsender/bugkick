@@ -123,7 +123,7 @@ class CouponController extends AdminController
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
 	 */
-	public function performAjaxValidation($model)
+	public function performAjaxValidation($model, $formID=null)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='coupon-form')
 		{

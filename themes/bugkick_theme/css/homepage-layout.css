@@ -408,7 +408,7 @@ div.flash-success a {
 .centered-form .form .row {
   clear: both;
   float: none;
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;*/
   overflow: hidden;
   padding: 0 15px;
 }

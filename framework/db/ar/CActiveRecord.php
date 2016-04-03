@@ -575,7 +575,6 @@ abstract class CActiveRecord extends CModel
 		$labels=$this->attributeLabels();
 		if(isset($labels[$attribute])) {
 			$label = $labels[$attribute];
-			$label = Yii::t('main', $label);
 		}
 		else if(strpos($attribute,'.')!==false) {
 			$segs=explode('.',$attribute);
@@ -593,6 +592,7 @@ abstract class CActiveRecord extends CModel
 		else {
 			$label = $this->generateAttributeLabel($attribute);
 		}
+		$label = Yii::t('main', $label);
 
 		return $label;
 	}

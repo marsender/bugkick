@@ -179,7 +179,7 @@ class <?php echo $controllerClass; ?> extends Controller
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
 	 */
-	protected function performAjaxValidation($model)
+	protected function performAjaxValidation($model, $formID=null)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='<?php echo $this->class2id($modelClass); ?>-form')
 		{

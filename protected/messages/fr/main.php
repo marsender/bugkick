@@ -197,5 +197,6 @@ return array(
 	'Title'=>'Titre',
 	'Description'=>'Description',
 	'Duedate'=>'Date prévue',
+	'Register'=>'S\'enregistrer',
 	''=>'',
 );

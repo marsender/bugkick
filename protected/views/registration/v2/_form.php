@@ -97,6 +97,6 @@ $form=$this->beginWidget('CActiveForm', array(
 </div>
  */ ?>
 <div class="row buttons">
-    <input type="submit" class="buttonLandingStyle green" value="Register" />
+    <input type="submit" class="buttonLandingStyle green" value="<?php echo Yii::t('main', 'Register'); ?> >>" />
 </div>
 <?php $this->endWidget(); ?>

@@ -1159,6 +1159,7 @@ EOD;
 			self::addErrorCss($htmlOptions);
 		}
 		$label = self::label($label,$for,$htmlOptions);
+
 		return $label;
 	}
 
