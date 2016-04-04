@@ -1248,7 +1248,8 @@ a.cancel-search{
 }
 
 .tickets-container{
-    padding: 0px;
+	min-height: 310px;
+  padding: 0px;
 }
 
 #content div#bug-list div.ticket-item{
