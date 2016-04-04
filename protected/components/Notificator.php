@@ -95,7 +95,7 @@ class Notificator
 
 	protected static function inviteExistingUser(User $user, Invite $invite)
 	{
-		self::$emailSubject = '[' . Yii::app()->name . '] ' . User::current()->getUserName() . ' ' . Yii::t('main', 'invites you to join the team for') . ' "' . Yii::app()->user->company_name . '"';
+		self::$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join the team for') . ' "' . Yii::app()->user->company_name . '"';
 		self::inviteUser($user, array(
 			't' => $invite->token,
 			'u' => $invite->user_id,
@@ -135,7 +135,7 @@ class Notificator
 
 	public static function newInviteInCompany(User $user)
 	{
-		$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . Yii::app()->name;
+		$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . ' ' . Yii::app()->name;
 
 		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.inviteInCompany') . '.php', array(
 			'acceptUrl' => Yii::app()->createAbsoluteUrl('/'),
@@ -364,7 +364,7 @@ MSG;
 
 	public static function invitePeople(User $user, $invitedUserEmail)
 	{
-		$subject = $user->getUserName() . ' invites you to join "' . Yii::app()->name . '"';
+		$subject = $user->getUserName() . ' invites you to join ' . Yii::app()->name;
 
 		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.invitePeople') . '.php', array(
 			'user' => $user,

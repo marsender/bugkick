@@ -519,7 +519,9 @@ abstract class CApplication extends CModule
 	 */
 	public function createUrl($route,$params=array(),$ampersand='&')
 	{
-		return $this->getUrlManager()->createUrl($route,$params,$ampersand);
+		$url = $this->getUrlManager()->createUrl($route,$params,$ampersand);
+
+		return $url;
 	}
 
 	/**
@@ -532,7 +534,7 @@ abstract class CApplication extends CModule
 	 */
 	public function createAbsoluteUrl($route,$params=array(),$schema='',$ampersand='&')
 	{
-		$url=$this->createUrl($route,$params,$ampersand);
+		$url = $this->createUrl($route,$params,$ampersand);
 		if(strpos($url,'http')===0) {
 			return $url;
 		}
