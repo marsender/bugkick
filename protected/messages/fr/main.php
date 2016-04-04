@@ -206,5 +206,6 @@ return array(
 	'%s has invited you to join a project on %s'=>'%s vous a invité à rejoindre un projet sur %s',
 	'Please click the following link to %s your account'=>'Veuillez cliquer sur le lien suivant pour %s votre compte',
 	'Yours'=>'Cordialement',
+	'User has been invited'=>'L\'utilisateur a été invité',
 	''=>'',
 );

@@ -125,11 +125,11 @@ class Notificator
 
 	public static function newInvite(User $user, Invite $invite = null)
 	{
-		if (!empty($invite)) {
-			self::inviteExistingUser($user, $invite);
+		if (empty($invite)) {
+			self::inviteNewUser($user);
 		}
 		else {
-			self::inviteNewUser($user);
+			self::inviteExistingUser($user, $invite);
 		}
 	}
 
