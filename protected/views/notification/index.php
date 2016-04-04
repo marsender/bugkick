@@ -11,6 +11,12 @@ $this->setPageTitle(Yii::t('main', 'Updates'));
 $this->breadcrumbs = array(
     Yii::t('main', 'Updates'),
 );
+// Get the number of updates from NotificationController
+$isNotifications = $this->isNotifications();
+if (!$isNotifications) {
+	echo '<div class="empty">' . Yii::t('main', 'No updates') . '</div>';
+}
+else {
 ?>
 <div id="containertop">
     <div id="container">
@@ -26,14 +32,6 @@ $this->breadcrumbs = array(
     </div>
 </div>
 
-<?php
-// Get the number of updates from NotificationController
-$isNotifications = $this->isNotifications();
-if (!$isNotifications) {
-	echo '<div class="empty">' . Yii::t('main', 'No updates') . '</div>';
-}
-else {
-?>
 <!-- Templates for Updates screen go here, these are loaded by doT.js -->
 <script id="notificationFn" type="text/TemplateFn">
     <div class="item">
