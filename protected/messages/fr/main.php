@@ -84,6 +84,7 @@ return array(
 	'No tickets'=>'Pas de tickets',
 	'No comments'=>'Pas de commentaires',
 	'No posts'=>'Pas de message',
+	'No updates'=>'Pas de mises à jour',
 	'Add new project'=>'Créer un nouveau projet',
 	'Groups'=>'Groupes',
 	'Profile'=>'Profile',

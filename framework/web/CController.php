@@ -780,17 +780,16 @@ class CController extends CBaseController
 		if($this->beforeRender($view))
 		{
 			$output=$this->renderPartial($view,$data,true);
-			if(($layoutFile=$this->getLayoutFile($this->layout))!==false)
+			if(($layoutFile=$this->getLayoutFile($this->layout))!==false) {
 				$output=$this->renderFile($layoutFile,array('content'=>$output),true);
-
+			}
 			$this->afterRender($view,$output);
-
 			$output=$this->processOutput($output);
 
-			if($return)
+			if($return) {
 				return $output;
-			else
-				echo $output;
+			}
+			echo $output;
 		}
 	}
 

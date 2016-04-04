@@ -26,6 +26,13 @@ $this->breadcrumbs = array(
     </div>
 </div>
 
+<?php
+// Get the number of updates from NotificationController
+$isNotifications = $this->isNotifications();
+if (!$isNotifications) {
+	echo '<div class="empty">' . Yii::t('main', 'No updates') . '</div>';
+}
+?>
 <!-- Templates for Updates screen go here, these are loaded by doT.js -->
 <script id="notificationFn" type="text/TemplateFn">
     <div class="item">
