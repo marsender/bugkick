@@ -29,7 +29,7 @@ $this->widget('zii.widgets.CListView', array(
 	'itemsCssClass' => 'b_tickets',
     'summaryText' => '',
 	'template'=>'{items}{pager}',
-    'emptyText' => Yii::t('main', 'You have no tickets.'),
+    'emptyText' => Yii::t('main', 'No tickets'),
     'pagerCssClass' => 'list-pager',
     'pager' =>array('header'=>''),
     'afterAjaxUpdate'=>'js:function(id, data) {
