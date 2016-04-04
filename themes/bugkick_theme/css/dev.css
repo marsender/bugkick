@@ -624,8 +624,8 @@ a#calendar-tab{
 
 #summary-tickets #b_project_list{
 	margin: 10px 15px 10px 15px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #AAAAAA;
+	/*padding-bottom: 20px;*/
+	/*border-bottom: 1px solid #AAAAAA;*/
 }
 
 #summary-tickets #b_project_list .b_project_name{

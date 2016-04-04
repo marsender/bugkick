@@ -39,7 +39,10 @@ $this->widget('zii.widgets.CListView', array(
      }',
 ));
 ?>
-
+<?php
+	$wantClosedTickets = false;
+	if ($wantClosedTickets) {
+?>
 	<div class="b_closed_tickets">
 		<div class="b_label"><?php echo Yii::t('main', 'Tickets closed per day'); ?>:</div>
 		<ul class="b_daily_score">
@@ -53,6 +56,10 @@ $this->widget('zii.widgets.CListView', array(
 			</li>
           <?php } ?>
 		</ul>
-	</div>
-</div>
 
+	</div>
+<?php
+	}
+?>
+
+</div>

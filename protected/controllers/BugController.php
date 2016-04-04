@@ -11,9 +11,9 @@ class BugController extends Controller
 	public $layout = '//layouts/column2';
 
 	public $currentView;
- // 'closed' when view closed tickets
+	// 'closed' when view closed tickets
 	public $textSearch;
- // For storing search keywords
+	// For storing search keywords
 	public function init()
 	{
 		if (Yii::app()->user->isGuest) {
@@ -198,8 +198,9 @@ class BugController extends Controller
 			//'/themes/bugkick_theme/js/comments-0.0.1.min.js',
 			'/js/bugkick/bug/view.js',
 			'/js/plug-in/autoresize/jquery.autoresize.js'
-			//'/js/plug-in/autoresize/jquery.autoresize.min.js'
-		));
+		)
+		//'/js/plug-in/autoresize/jquery.autoresize.min.js'
+		);
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shCore.js');
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushJScript.js');
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushCss.js');
@@ -207,20 +208,17 @@ class BugController extends Controller
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushSql.js');
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/scripts/shBrushXml.js');
 		Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/js/plug-in/jquery-syntaxhighlighter/styles/shCoreDefault.css');
-		Yii::app()->clientScript->registerScriptFile(
-			Yii::app()->theme->baseUrl . '/js/comments-0.0.1.js'
-			//Yii::app()->theme->baseUrl . '/js/comments-0.0.1.min.js'
-			);
+		Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/js/comments-0.0.1.js')
+		//Yii::app()->theme->baseUrl . '/js/comments-0.0.1.min.js'
+		;
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/bugkick/bug/view.js');
 		$baseUrl = Yii::app()->request->baseUrl;
 		Yii::app()->clientScript->registerScript(__CLASS__ . '#SyntaxHighlighter', "
 	SyntaxHighlighter.all({toolbar:'false'});
-"
-, CClientScript::POS_END);
+", CClientScript::POS_END);
 		Yii::app()->clientScript->registerScriptFile(
 			//Yii::app()->baseUrl . '/js/bugkick/task/common.min.js'
-			Yii::app()->baseUrl . '/js/bugkick/task/common.js'
-		);
+			Yii::app()->baseUrl . '/js/bugkick/task/common.js');
 
 		/*
 		 $relatedToBug = array(
@@ -246,8 +244,7 @@ class BugController extends Controller
     bugkick.viewData.bug = {
         id: {$bug->id}
     };
-"
-, CClientScript::POS_END);
+", CClientScript::POS_END);
 			if (empty($bug->owner)) {
 				$bug->owner = new User();
 			}
@@ -334,7 +331,7 @@ class BugController extends Controller
 					$_POST['BugForm']['user_id'] = $_POST['BugForm']['assignees'][0];
 				}
 
-					//set 'New' status by default
+				//set 'New' status by default
 				$openStatus = Status::model()->find('label=:label AND company_id=:company_id', array(
 					':label' => 'New',
 					'company_id' => Company::current()
@@ -508,18 +505,18 @@ class BugController extends Controller
 		$ticket = trim($ticket);
 		$titleLength = 60;
 		/*
-		if (strlen($ticket) > $titleLength) {
-			$title = Helper::neatTrim($ticket, $titleLength, '');
-			$newLineIndex = strpos($title, "\n\n");
-			if ($newLineIndex)
-				$title = substr($title, 0, $newLineIndex);
-			$model->description = str_replace($title, "", $ticket);
-			$model->title = $title . '&#133;';
-		}
-		else {
-			$model->title = $ticket;
-			$model->description = $ticket;
-		}
+		 if (strlen($ticket) > $titleLength) {
+		 $title = Helper::neatTrim($ticket, $titleLength, '');
+		 $newLineIndex = strpos($title, "\n\n");
+		 if ($newLineIndex)
+		 $title = substr($title, 0, $newLineIndex);
+		 $model->description = str_replace($title, "", $ticket);
+		 $model->title = $title . '&#133;';
+		 }
+		 else {
+		 $model->title = $ticket;
+		 $model->description = $ticket;
+		 }
 		 */
 		if (strlen($ticket) <= $titleLength) {
 			$trim = false;
@@ -544,14 +541,14 @@ class BugController extends Controller
 		}
 		$model->title = $title;
 		/*}
-		else {
-			$newLineIndex = strpos($title, "\n");
-			if ($newLineIndex) {
-				$title = substr($title, 0, $newLineIndex);
-			}
-			$model->title = $ticket;
-			$model->description = $ticket;
-		}*/
+		 else {
+		 $newLineIndex = strpos($title, "\n");
+		 if ($newLineIndex) {
+		 $title = substr($title, 0, $newLineIndex);
+		 }
+		 $model->title = $ticket;
+		 $model->description = $ticket;
+		 }*/
 	}
 
 	protected function onBugUpdateSuccess(Bug $model)
@@ -598,7 +595,7 @@ class BugController extends Controller
 						Notificator::updateBug($model, $changes);
 					}
 					//case when user changed project in another tab
-					//and then returned to previous tab and updated the ticket
+		//and then returned to previous tab and updated the ticket
 					User::updateCurrentProject($model->project_id);
 					$bugModel = $model;
 					if (!empty($onSuccess)) {
@@ -1130,7 +1127,6 @@ class BugController extends Controller
 		else {
 			$bugFinder = Bug::model()->resetScope(); //$bugFinder = Bug::model()->currentCompany();
 		}
-
 
 		$model = new CActiveDataProvider($bugFinder, array(
 			'criteria' => $criteria,
@@ -1763,42 +1759,44 @@ class BugController extends Controller
 		));
 
 		//Tickets closed per day
-		$iLastDaysCount = 30;
-		$criteria = new CDbCriteria();
-		$criteria->order = 'date DESC';
-		$criteria->addSearchCondition('t.change', 'closed the ticket at');
-		$criteria->with = array(
-			'user' => array(
-				'condition' => 'user.user_id=' . $user->id,
-				'together' => true
-			)
-		);
-		$last30Days = date('Y-m-d H:i:s', time() - 3600 * 24 * $iLastDaysCount);
-		$criteria->addCondition("t.date > '" . $last30Days . "'");
-
-		$bugChanges = new CActiveDataProvider('BugChangelog', array(
-			'criteria' => $criteria
-		));
-		$bugChanges->setPagination(false);
-
-		$arrClosedTickets = array();
+		$wantClosedTickets = false;
 		$iMaxClosed = 0;
-		for ($i = $iLastDaysCount; $i >= 1; $i--) {
-			$iCount = 0;
-			$dDate = date('Y-m-d', time() - 3600 * 24 * $i);
-			foreach ($bugChanges->getData() as $record) {
-				if (date('Y-m-d', strtotime($record->date)) == $dDate)
-					$iCount++;
-			}
-			if ($iMaxClosed < $iCount)
-				$iMaxClosed = $iCount;
-			array_push($arrClosedTickets, array(
-				'date' => Helper::formatDateSlash($dDate),
-				'count' => $iCount
-			));
-		}
-		////////////////////////////////////////////
+		$arrClosedTickets = array();
+		if ($wantClosedTickets) {
+			$iLastDaysCount = 30;
+			$criteria = new CDbCriteria();
+			$criteria->order = 'date DESC';
+			$criteria->addSearchCondition('t.change', 'closed the ticket at');
+			$criteria->with = array(
+				'user' => array(
+					'condition' => 'user.user_id=' . $user->id,
+					'together' => true
+				)
+			);
+			$last30Days = date('Y-m-d H:i:s', time() - 3600 * 24 * $iLastDaysCount);
+			$criteria->addCondition("t.date > '" . $last30Days . "'");
 
+			$bugChanges = new CActiveDataProvider('BugChangelog', array(
+				'criteria' => $criteria
+			));
+			$bugChanges->setPagination(false);
+
+			for ($i = $iLastDaysCount; $i >= 1; $i--) {
+				$iCount = 0;
+				$dDate = date('Y-m-d', time() - 3600 * 24 * $i);
+				foreach ($bugChanges->getData() as $record) {
+					if (date('Y-m-d', strtotime($record->date)) == $dDate)
+						$iCount++;
+				}
+				if ($iMaxClosed < $iCount)
+					$iMaxClosed = $iCount;
+				array_push($arrClosedTickets, array(
+					'date' => Helper::formatDateSlash($dDate),
+					'count' => $iCount
+				));
+			}
+			////////////////////////////////////////////
+		}
 
 		$this->render('summaryTickets', array(
 			'project' => $project,
