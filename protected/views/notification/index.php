@@ -32,6 +32,7 @@ $isNotifications = $this->isNotifications();
 if (!$isNotifications) {
 	echo '<div class="empty">' . Yii::t('main', 'No updates') . '</div>';
 }
+else {
 ?>
 <!-- Templates for Updates screen go here, these are loaded by doT.js -->
 <script id="notificationFn" type="text/TemplateFn">
@@ -87,6 +88,7 @@ if (!$isNotifications) {
 <!-- end templates -->
 
 <?php
+}
 $this->beginWidget(
     'zii.widgets.jui.CJuiDialog',
     array(
