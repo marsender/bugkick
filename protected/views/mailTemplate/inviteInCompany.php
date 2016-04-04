@@ -5,7 +5,7 @@
 		<p>&nbsp;</p>
 		<p>
 			<?php echo sprintf(Yii::t('main', '%s has invited you to join a project on %s'), User::current()->getUserName(), Yii::app()->name); ?>.<br />
-			<?php echo Yii::t('main', 'Please click the following link to confirm your account'); ?>.
+			<?php echo sprintf(Yii::t('main', 'Please click the following link to %s your account'), CHtml::link(Yii::t('main', 'Confirm'), $acceptUrl)); ?>.
 		<p>&nbsp;</p>
 		<p><?php echo Yii::t('main', 'Yours'); ?>,<br /><?php echo User::current()->getUserName(); ?></p>
 

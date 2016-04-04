@@ -202,10 +202,11 @@ return array(
 	'Edit'=>'Éditer',
 	'Current project'=>'Projet en cours',
 	'Confirm'=>'Confirmer',
-	'To Confirm your account, visit this link'=>'Pour confirmer votre compte, veuillez cliquer sur le lien suivant',
+	'To confirm your account, visit this link'=>'Pour confirmer votre compte, veuillez cliquer sur le lien suivant',
 	'%s has invited you to join a project on %s'=>'%s vous a invité à rejoindre un projet sur %s',
-	'Please click the following link to %s your account'=>'Veuillez cliquer sur le lien suivant pour %s votre compte',
+	'Please click the following link to confirm your account'=>'Veuillez cliquer sur le lien suivant pour confirmer votre compte',
 	'Yours'=>'Cordialement',
 	'User has been invited'=>'L\'utilisateur a été invité',
+	'Please login to your account'=>'Veuillez vous connecter à votre compte',
 	''=>'',
 );

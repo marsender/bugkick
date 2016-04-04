@@ -391,15 +391,14 @@ class UserController extends Controller
 				$isUserInvited = $this->inviteNewUser($project, $isAdmin);
 			}
 			elseif ($user->getStatusInCompany(Company::current()) != -1) {
-				//case when user was already invited to this company, resend an invitation email
+				// case when user was already invited to this company, resend an invitation email
 				if ($user->userStatus == User::STATUS_INVITED) {
 					Notificator::newInvite($user);
 					$isUserInvited = true;
 				}
 				else {
 					//user already a member of the company, add him to project
-					Notificator::newInvite($user);
-					Notificator::invitePeople($user, $user->email);
+					Notificator::newInviteInCompany($user, $project);
 					$isUserInvited = $user->addToProject($project, $isAdmin);
 				}
 			}

@@ -1,7 +1,8 @@
 <html>
     <body>
     <div style='border: 1px solid silver; margin: 10px; padding: 10px;'>
-        <h3> Hello, <?php echo $model->name ?> <?php echo $model->lname ?></h3>
+    <p><?php echo Yii::t('main', 'Hi') . ' ' . $model->name . ' ' . $model->lname; ?></p>
+		<p>&nbsp;</p>
       <p><b style="color:#666;">Your login:</b> <?php echo $model->email; ?></p>
        <br>
        <p style='border-bottom: 1px solid silver;'>&nbsp;</p>

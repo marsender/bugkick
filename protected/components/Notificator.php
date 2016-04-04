@@ -95,21 +95,21 @@ class Notificator
 
 	protected static function inviteExistingUser(User $user, Invite $invite)
 	{
+		self::$emailSubject = '[' . Yii::app()->name . '] ' . User::current()->getUserName() . ' ' . Yii::t('main', 'invites you to join the team for') . ' "' . Yii::app()->user->company_name . '"';
 		self::inviteUser($user, array(
 			't' => $invite->token,
 			'u' => $invite->user_id,
 			'p' => $invite->project_id,
 			'c' => $invite->company_id
 		));
-		self::$emailSubject = '[' . Yii::app()->name . '] ' . User::current()->getUserName() . ' ' . Yii::t('main', 'invites you to join the team for') . ' "' . Yii::app()->user->company_name . '"';
 	}
 
 	protected static function inviteNewUser(User $user)
 	{
+		self::$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . Yii::app()->name;
 		self::inviteUser($user, array(
 			't' => $user->inviteToken
 		));
-		self::$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . Yii::app()->name;
 	}
 
 	protected static function inviteUser(User $user, $urlParams)
@@ -131,6 +131,18 @@ class Notificator
 		else {
 			self::inviteExistingUser($user, $invite);
 		}
+	}
+
+	public static function newInviteInCompany(User $user)
+	{
+		$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . Yii::app()->name;
+
+		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.inviteInCompany') . '.php', array(
+			'acceptUrl' => Yii::app()->createAbsoluteUrl('', $urlParams),
+		));
+
+		$sendResult = self::sendEmail($user->email, '', $emailSubject, $message, self::$headers);
+		Yii::app()->logger->saveLog(Yii::app()->user->id, 'mail::newInvite', "Company - " . Yii::app()->user->company_name . ", user email - {$user->email}", $sendResult);
 	}
 
 	public static function newRegistration(User $user)
