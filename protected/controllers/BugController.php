@@ -213,9 +213,9 @@ class BugController extends Controller
 			);
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl . '/js/bugkick/bug/view.js');
 		$baseUrl = Yii::app()->request->baseUrl;
-		Yii::app()->clientScript->registerScript(__CLASS__ . '#SyntaxHighlighter', <<<JS
+		Yii::app()->clientScript->registerScript(__CLASS__ . '#SyntaxHighlighter', "
 	SyntaxHighlighter.all({toolbar:'false'});
-JS
+"
 , CClientScript::POS_END);
 		Yii::app()->clientScript->registerScriptFile(
 			//Yii::app()->baseUrl . '/js/bugkick/task/common.min.js'
@@ -242,11 +242,11 @@ JS
 			':project_id' => $currentProject->project_id
 		));
 		if (!empty($bug)) {
-			Yii::app()->clientScript->registerScript(__CLASS__ . '#bugkick.viewData', <<<JS
+			Yii::app()->clientScript->registerScript(__CLASS__ . '#bugkick.viewData', "
     bugkick.viewData.bug = {
         id: {$bug->id}
     };
-JS
+"
 , CClientScript::POS_END);
 			if (empty($bug->owner)) {
 				$bug->owner = new User();
@@ -327,10 +327,12 @@ JS
 					Yii::app()->user->setFlash('error', 'Please choose the project first.');
 					$this->redirect(Yii::app()->createUrl('bug/'));
 				}
-				if (!empty($_POST['BugForm']['labels']))
+				if (!empty($_POST['BugForm']['labels'])) {
 					$_POST['BugForm']['label_id'] = $_POST['BugForm']['labels'][0];
-				if (!empty($_POST['BugForm']['assignees']))
+				}
+				if (!empty($_POST['BugForm']['assignees'])) {
 					$_POST['BugForm']['user_id'] = $_POST['BugForm']['assignees'][0];
+				}
 
 					//set 'New' status by default
 				$openStatus = Status::model()->find('label=:label AND company_id=:company_id', array(
@@ -470,17 +472,20 @@ JS
 				if (!empty($prevBug)) {
 					$prevBug->next_id = $model->id;
 					$prevBug->next_number = $model->number;
-					if (!$prevBug->save())
+					if (!$prevBug->save()) {
 						throw new Exception('Previous bug has not been saved');
+					}
 				}
 				if (!empty($globalPrevBug)) {
 					$globalPrevBug->next_id = $model->id;
-					if (!$globalPrevBug->save())
+					if (!$globalPrevBug->save()) {
 						throw new Exception('Previous bug has not been saved');
+					}
 				}
 				$model->next_number = 0;
-				if (!$model->save())
+				if (!$model->save()) {
 					throw new Exception('Error while saving current ticket');
+				}
 				//Notificator::newBug($model); //send notification
 			}
 			else {
@@ -500,7 +505,9 @@ JS
 	{
 		$p = new CHtmlPurifier($this);
 		$ticket = $p->purify($_POST['BugForm']['description']);
+		$ticket = trim($ticket);
 		$titleLength = 60;
+		/*
 		if (strlen($ticket) > $titleLength) {
 			$title = Helper::neatTrim($ticket, $titleLength, '');
 			$newLineIndex = strpos($title, "\n\n");
@@ -513,6 +520,38 @@ JS
 			$model->title = $ticket;
 			$model->description = $ticket;
 		}
+		 */
+		if (strlen($ticket) <= $titleLength) {
+			$trim = false;
+			$title = $ticket;
+		}
+		else {
+			$trim = true;
+			$title = Helper::neatTrim($ticket, $titleLength, '');
+		}
+		$newLineIndex = strpos($title, "\n");
+		if ($newLineIndex) {
+			$title = substr($title, 0, $newLineIndex);
+		}
+		if ($title == $ticket) {
+			$model->description = $title;
+		}
+		else {
+			$model->description = str_replace($title, '', $ticket);
+		}
+		if ($trim) {
+			$title .= '&#133;';
+		}
+		$model->title = $title;
+		/*}
+		else {
+			$newLineIndex = strpos($title, "\n");
+			if ($newLineIndex) {
+				$title = substr($title, 0, $newLineIndex);
+			}
+			$model->title = $ticket;
+			$model->description = $ticket;
+		}*/
 	}
 
 	protected function onBugUpdateSuccess(Bug $model)
@@ -787,8 +826,9 @@ JS
 	public function actionIndex()
 	{
 		$project = Project::getCurrent();
-		if (empty($project))
+		if (empty($project)) {
 			$this->redirect($this->createUrl('/project/index'));
+		}
 
 		if (!Yii::app()->request->isAjaxRequest) {
 			$baseUrl = Yii::app()->assetManager->publish('protected/extensions/EAjaxUpload/assets');
@@ -1068,12 +1108,14 @@ JS
 		$criteria->together = false;
 
 		//create pagination
-		if (empty($archiveFilter))
+		if (empty($archiveFilter)) {
 			$pages = new CPagination(Bug::model()->currentCompany()->count($criteria));
-		else
+		}
+		else {
 			$pages = new CPagination(Bug::model()->resetScope()
 				->currentCompany()
 				->count($criteria));
+		}
 
 		$user = User::current();
 		//tickets per page is set on settings page, by default, it's 30
@@ -1082,10 +1124,12 @@ JS
 		$pages->applyLimit($criteria);
 
 		//create model
-		if (empty($archiveFilter))
+		if (empty($archiveFilter)) {
 			$bugFinder = Bug::model(); //$bugFinder = Bug::model()->currentCompany();
-		else
+		}
+		else {
 			$bugFinder = Bug::model()->resetScope(); //$bugFinder = Bug::model()->currentCompany();
+		}
 
 
 		$model = new CActiveDataProvider($bugFinder, array(
@@ -1691,10 +1735,10 @@ JS
 		$criteria = new CDbCriteria();
 		$criteria->with = array(
 			'label' => array(),
-			'user' => array(
+			/*'user' => array(
 				'condition' => 'user.user_id=' . $user->id,
 				'together' => true
-			),
+			),*/
 			'project' => array(
 				'condition' => 'project.archived=0',
 				'together' => true
@@ -1706,14 +1750,13 @@ JS
 		$criteria->together = false;
 		$criteria->order = 'project.name ASC';
 
-		$pages = new CPagination(Bug::model()->currentCompany()->count($criteria));
+		$bugFinder = Bug::model()->currentCompany()->resetScope();
+		$pages = new CPagination($bugFinder->count($criteria));
 		//tickets per page is set on settings page, by default, it's 30
 		$pages->pageSize = $user->tickets_per_page;
 		$pages->applyLimit($criteria);
 
 		//create model
-		$bugFinder = Bug::model()->currentCompany();
-
 		$model = new CActiveDataProvider($bugFinder, array(
 			'criteria' => $criteria,
 			'pagination' => $pages

@@ -17,7 +17,9 @@ fixProjectName();
 ?>
 
 <div id="summary-tickets">
-
+	<div>
+		<h2><?php echo Yii::t('main', 'Tickets list for all projects'); ?></h2>
+	</div>
 <?php
 $this->widget('zii.widgets.CListView', array(
     'id'=>'b_project_list',

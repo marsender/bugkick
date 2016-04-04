@@ -250,6 +250,13 @@ div.flash-success a {
   color: #fff;
   font-weight: bold;
 }
+#project_title a {
+  color: #fff;
+}
+#project_title a:hover {
+  color: #a9d7f6;
+  text-decoration: none;
+}
 /* Main wrapper remove additional elements */
 #content {
   margin: 40px auto 0;

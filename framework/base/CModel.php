@@ -144,17 +144,18 @@ abstract class CModel extends CComponent implements IteratorAggregate, ArrayAcce
 	 */
 	public function validate($attributes=null, $clearErrors=true)
 	{
-		if($clearErrors)
+		if($clearErrors) {
 			$this->clearErrors();
-		if($this->beforeValidate())
-		{
-			foreach($this->getValidators() as $validator)
+		}
+		if($this->beforeValidate()) {
+			foreach($this->getValidators() as $validator) {
 				$validator->validate($this,$attributes);
+			}
 			$this->afterValidate();
 			return !$this->hasErrors();
 		}
-		else
-			return false;
+
+		return false;
 	}
 
 	/**
@@ -165,8 +166,9 @@ abstract class CModel extends CComponent implements IteratorAggregate, ArrayAcce
 	 */
 	protected function afterConstruct()
 	{
-		if($this->hasEventHandler('onAfterConstruct'))
+		if($this->hasEventHandler('onAfterConstruct')) {
 			$this->onAfterConstruct(new CEvent($this));
+		}
 	}
 
 	/**
@@ -345,10 +347,12 @@ abstract class CModel extends CComponent implements IteratorAggregate, ArrayAcce
 	 */
 	public function hasErrors($attribute=null)
 	{
-		if($attribute===null)
+		if($attribute===null) {
 			return $this->_errors!==array();
-		else
+		}
+		else {
 			return isset($this->_errors[$attribute]);
+		}
 	}
 
 	/**
@@ -358,10 +362,12 @@ abstract class CModel extends CComponent implements IteratorAggregate, ArrayAcce
 	 */
 	public function getErrors($attribute=null)
 	{
-		if($attribute===null)
+		if($attribute===null) {
 			return $this->_errors;
-		else
+		}
+		else {
 			return isset($this->_errors[$attribute]) ? $this->_errors[$attribute] : array();
+		}
 	}
 
 	/**

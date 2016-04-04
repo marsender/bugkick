@@ -780,10 +780,11 @@ abstract class CActiveRecord extends CModel
 	 */
 	public function save($runValidation=true,$attributes=null)
 	{
-		if(!$runValidation || $this->validate($attributes))
+		if(!$runValidation || $this->validate($attributes)) {
 			return $this->getIsNewRecord() ? $this->insert($attributes) : $this->update($attributes);
-		else
-			return false;
+		}
+
+		return false;
 	}
 
 	/**
@@ -1799,17 +1800,19 @@ abstract class CActiveRecord extends CModel
 			$record->setScenario('update');
 			$record->init();
 			$md=$record->getMetaData();
-			foreach($attributes as $name=>$value)
-			{
-				if(property_exists($record,$name))
+			foreach($attributes as $name=>$value) {
+				if(property_exists($record,$name)) {
 					$record->$name=$value;
-				else if(isset($md->columns[$name]))
+				}
+				else if(isset($md->columns[$name])) {
 					$record->_attributes[$name]=$value;
+				}
 			}
 			$record->_pk=$record->getPrimaryKey();
 			$record->attachBehaviors($record->behaviors());
-			if($callAfterFind)
+			if($callAfterFind) {
 				$record->afterFind();
+			}
 			return $record;
 		}
 		else

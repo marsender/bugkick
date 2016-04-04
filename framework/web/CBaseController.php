@@ -200,9 +200,9 @@ abstract class CBaseController extends CComponent
 			$widget->run();
 			return $widget;
 		}
-		else
-			throw new CException(Yii::t('yii','{controller} has an extra endWidget({id}) call in its view.',
-				array('{controller}'=>get_class($this),'{id}'=>$id)));
+
+		throw new CException(Yii::t('yii','{controller} has an extra endWidget({id}) call in its view.',
+			array('{controller}'=>get_class($this),'{id}'=>$id)));
 	}
 
 	/**

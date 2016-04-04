@@ -522,7 +522,7 @@ class User extends CActiveRecord
 	public static function getDefaultPageOptions() {
         return array(
 			self::DEFAULT_PAGE_DASHBOARD => Yii::t('main', 'Dashboard'),
-			self::DEFAULT_PAGE_TICKETS_LIST => Yii::t('main', 'Tickets List'),
+			self::DEFAULT_PAGE_TICKETS_LIST => Yii::t('main', 'Tickets list'),
 			self::DEFAULT_PAGE_UPDATES => Yii::t('main', 'Updates'),
 		);
     }

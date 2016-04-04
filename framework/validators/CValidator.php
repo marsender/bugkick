@@ -182,14 +182,16 @@ abstract class CValidator extends CComponent
 	 */
 	public function validate($object,$attributes=null)
 	{
-		if(is_array($attributes))
+		if(is_array($attributes)) {
 			$attributes=array_intersect($this->attributes,$attributes);
-		else
+		}
+		else {
 			$attributes=$this->attributes;
-		foreach($attributes as $attribute)
-		{
-			if(!$this->skipOnError || !$object->hasErrors($attribute))
+		}
+		foreach($attributes as $attribute) {
+			if(!$this->skipOnError || !$object->hasErrors($attribute)) {
 				$this->validateAttribute($object,$attribute);
+			}
 		}
 	}
 

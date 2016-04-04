@@ -124,8 +124,9 @@ abstract class CDataProvider extends CComponent implements IDataProvider
 	 */
 	public function getData($refresh=false)
 	{
-		if($this->_data===null || $refresh)
+		if($this->_data===null || $refresh) {
 			$this->_data=$this->fetchData();
+		}
 		return $this->_data;
 	}
 

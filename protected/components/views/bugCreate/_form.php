@@ -22,7 +22,7 @@
     <?php echo $form->errorSummary($model); ?>
 
     <div class="form-container new-ticket-title" style="display:none;">
-        <label>Title:</label>&nbsp;<span id="createBug_bugTitle"></span>
+        <label><?php echo Yii::t('main', 'Title'); ?>:</label>&nbsp;<span id="createBug_bugTitle"></span>
     </div>
     <div class="form-container">
         <div class="row">

@@ -82,10 +82,10 @@ abstract class CModule extends CComponent
 	 */
 	public function __get($name)
 	{
-		if($this->hasComponent($name))
+		if($this->hasComponent($name)) {
 			return $this->getComponent($name);
-		else
-			return parent::__get($name);
+		}
+		return parent::__get($name);
 	}
 
 	/**
@@ -97,10 +97,10 @@ abstract class CModule extends CComponent
 	 */
 	public function __isset($name)
 	{
-		if($this->hasComponent($name))
+		if($this->hasComponent($name)) {
 			return $this->getComponent($name)!==null;
-		else
-			return parent::__isset($name);
+		}
+		return parent::__isset($name);
 	}
 
 	/**
@@ -359,13 +359,13 @@ abstract class CModule extends CComponent
 	 */
 	public function getComponent($id,$createIfNull=true)
 	{
-		if(isset($this->_components[$id]))
+		if(isset($this->_components[$id])) {
 			return $this->_components[$id];
-		else if(isset($this->_componentConfig[$id]) && $createIfNull)
-		{
+		}
+
+		if(isset($this->_componentConfig[$id]) && $createIfNull) {
 			$config=$this->_componentConfig[$id];
-			if(!isset($config['enabled']) || $config['enabled'])
-			{
+			if(!isset($config['enabled']) || $config['enabled']) {
 				Yii::trace("Loading \"$id\" application component",'system.CModule');
 				unset($config['enabled']);
 				$component=Yii::createComponent($config);
