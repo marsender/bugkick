@@ -201,5 +201,10 @@ return array(
 	'Register'=>'S\'enregistrer',
 	'Edit'=>'Éditer',
 	'Current project'=>'Projet en cours',
+	'Confirm'=>'Confirmer',
+	'To Confirm your account, visit this link'=>'Pour confirmer votre compte, veuillez cliquer sur le lien suivant',
+	'%s has invited you to join a project on %s'=>'%s vous a invité à rejoindre un projet sur %s',
+	'Please click the following link to %s your account'=>'Veuillez cliquer sur le lien suivant pour %s votre compte',
+	'Yours'=>'Cordialement',
 	''=>'',
 );
