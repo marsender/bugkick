@@ -239,10 +239,10 @@ JS
                     <li>
                         <span>
                         	<?php if (isset($this->currentView) && $this->currentView == 'closed') { ?>
-                            <a href="<?php echo Yii::app()->createUrl('/bug')?>" title="Open"><?php echo Yii::t('main', 'Display opened tickets'); ?></a>
+                            <a href="<?php echo Yii::app()->createUrl('/bug'); ?>" title="Open"><?php echo Yii::t('main', 'Display opened tickets'); ?></a>
                           <?php }
                           else { ?>
-                            <a href="<?php echo Yii::app()->createUrl('/bug/closed')?>" title="Closed"><?php echo Yii::t('main', 'Display closed tickets'); ?></a>
+                            <a href="<?php echo Yii::app()->createUrl('/bug/closed'); ?>" title="Closed"><?php echo Yii::t('main', 'Display closed tickets'); ?></a>
                           <?php } ?>
                             <!-- <span class="delimiter">|</span> -->
                         </span>
@@ -309,7 +309,7 @@ JS
         '/js/console.min.js',
         '/js/plug-in/flash-message/js/flash-message.min.js',
         '/js/plug-in/jGrowl/jquery.jgrowl_minimized.js',
- 				'/js/jquery.caret.1.02.min.js'
+ 				//'/js/jquery.caret.1.02.min.js'
     )); ?>"></script>
 	<?php /* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/console.min.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/flash-message/js/flash-message.min.js"></script>
@@ -335,7 +335,7 @@ JS
         '/js/colortip.min.js',
         '/js/plug-in/jquery-scroll/jquery.mousewheel.js',
         '/js/plug-in/jquery-scroll/jquery.jscrollpane.min.js',
-//        '/js/filter-scroll.js', //uncomment to have auto-resizing filters
+        '/js/filter-scroll.js', //uncomment to have auto-resizing filters
     )); ?>"></script>
 <?php /* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/chosen/chosen/chosen.jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/iPhone-checkbox/jquery/iphone-style-checkboxes.min.js"></script>

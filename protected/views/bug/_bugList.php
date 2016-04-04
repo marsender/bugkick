@@ -20,7 +20,7 @@ $this->widget('zii.widgets.CListView', array(
 	'enableSorting' => false,
 	'enablePagination' => true,
 	'summaryText' => '',
-	'emptyText' => ($currentView == 'closed') ? Yii::t('main', 'You have no closed tickets') : Yii::t('main', 'You have no open tickets'),
+	'emptyText' => ($currentView == 'closed') ? Yii::t('main', 'No closed tickets') : Yii::t('main', 'No open tickets'),
 	'pagerCssClass' => 'list-pager',
 	'pager' => array(
 		'header' => ''
@@ -60,12 +60,22 @@ $this->widget('zii.widgets.CListView', array(
  */
 );
 
-if ($currentView != 'closed' && !empty($textForSearch) && !is_array($this->request->getParam('filterText'))) {
-	?>
-<div class="search-archived">
-	<a
-		href="<?php echo $this->createUrl('/bug/closed/filterText/' . CHtml::encode($textForSearch)); ?>"><?php echo Yii::t('main', 'Show results for closed tickets'); ?></a>
-</div>
-<?php
+/*
+$filterText = $this->request->getParam('filterText');
+if (true) { //!empty($textForSearch) && !is_array($filterText)) {
+	if ($currentView == 'closed') {
+		$url = '/bug/';
+		$str = Yii::t('main', 'Show results for opened tickets');
+	}
+	else {
+		$url = '/bug/closed/';
+		$str = Yii::t('main', 'Show results for closed tickets');
+	}
+	$url = $this->createUrl($url);
+	if (!empty($textForSearch) && !is_array($filterText)) {
+		$url .= '/filterText/' . CHtml::encode($textForSearch);
+	}
+	echo sprintf('<div class="search-archived"><a href="%s">%s</a></div>', $url, $str);
 }
+*/
 ?>
