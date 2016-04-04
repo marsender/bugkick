@@ -1,13 +1,13 @@
 <html>
 <body>
 	<div style='border: 1px solid silver; margin: 10px; padding: 10px;'>
-		<p><?php echo Yii::t('main', 'Hi'); ?>,</p>
-		<p>&nbsp;</p>
-		<p>
-			<?php echo sprintf(Yii::t('main', '%s has invited you to join a project on %s'), User::current()->getUserName(), Yii::app()->name); ?>.<br />
-			<?php echo Yii::t('main', 'Please click the following link to confirm your account'); ?>.
-		<p>&nbsp;</p>
-		<p><?php echo Yii::t('main', 'Yours'); ?>,<br /><?php echo User::current()->getUserName(); ?></p>
+		<?php echo Yii::t('main', 'Hi'); ?>,<br />
+		<br />
+		<?php echo sprintf(Yii::t('main', '%s has invited you to join a project on %s'), User::current()->getUserName(), Yii::app()->name); ?>.<br />
+		<?php echo Yii::t('main', 'Please click the following link to confirm your account'); ?>.<br />
+		<br />
+		<?php echo Yii::t('main', 'Yours'); ?>,<br />
+		<?php echo User::current()->getUserName(); ?><br />
 
 		<p style='border-bottom: 1px solid silver;'>&nbsp;</p>
 		<table>

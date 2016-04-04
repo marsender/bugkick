@@ -138,7 +138,7 @@ class Notificator
 		$emailSubject = Yii::t('main', 'Invite from') . ' ' . User::current()->getUserName() . ' ' . Yii::t('main', 'to join') . Yii::app()->name;
 
 		$message = Renderer::renderInternal(Yii::getPathOfAlias('application.views.mailTemplate.inviteInCompany') . '.php', array(
-			'acceptUrl' => Yii::app()->createAbsoluteUrl(''),
+			'acceptUrl' => Yii::app()->createAbsoluteUrl('/'),
 		));
 
 		$sendResult = self::sendEmail($user->email, '', $emailSubject, $message, self::$headers);
