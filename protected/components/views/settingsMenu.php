@@ -33,7 +33,7 @@
     ) ?></li>
      */
     ?>
-    <li><?php echo CHtml::link(Yii::t('main','Company settings'), CHtml::normalizeUrl(array('settings/company')),
+    <li><?php echo CHtml::link(Yii::t('main','Company'), CHtml::normalizeUrl(array('settings/company')),
          ($controllerId == 'settings' && $actionId == 'company')? array('class'=>'active') : array()
     ) ?></li>
     <li><?php echo CHtml::link(Yii::t('main','Add ons'), CHtml::normalizeUrl(array('settings/addOns')),

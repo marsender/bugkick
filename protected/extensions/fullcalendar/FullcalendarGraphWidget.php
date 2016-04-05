@@ -12,13 +12,14 @@ class FullcalendarGraphWidget extends FullcalendarWidget{
 	 */
 	public function run(){
 		$id=$this->getId();
-		$this->htmlOptions['id']=$id;        
+		$this->htmlOptions['id']=$id;
+		$this->htmlOptions['weekends']=false;
 
 		echo CHtml::openTag($this->tagName,$this->htmlOptions);
 		echo CHtml::closeTag($this->tagName);
 
-		$encodeoptions=CJavaScript::encode($this->options+array('events'=>$this->data));     
-		
+		$encodeoptions=CJavaScript::encode($this->options+array('events'=>$this->data));
+
 		Yii::app()->getClientScript()->registerScript(__CLASS__.'#'.$id,"$('#$id').fullCalendar($encodeoptions);");
 	}
 

@@ -25,7 +25,7 @@ class Company extends CActiveRecord
 {
 
     private static $_current_company = null;
-	
+
 	const TYPE_FREE=0;
 	const TYPE_PAY=1;
 
@@ -81,7 +81,7 @@ class Company extends CActiveRecord
             array('created_at, show_ads', 'safe'),
             array('company_url', 'url', 'defaultScheme' => 'http'),
             array('company_logo', 'file', 'types' => 'jpg, gif, png', 'allowEmpty' => true),
-			array('api_key', 'default', 'value'=>null),
+						array('api_key', 'default', 'value'=>null),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('company_id, owner_id, created_at, company_name, company_url, company_logo, company_top_logo, company_color, api_key, account_plan, show_ads, coupon_id, coupon_expires_at', 'safe', 'on' => 'search'),
@@ -97,7 +97,7 @@ class Company extends CActiveRecord
                 $this->account_plan, $storageType);
         return $planConfig->getIsGithubIntegrationAvailable();
     }
-	
+
 	public function refreshApiKey($forceSave=false) {
 		$this->api_key=$this->generateApiKey();
 		if($forceSave && !$this->save()) {
@@ -105,7 +105,7 @@ class Company extends CActiveRecord
 		}
 		return $this;
 	}
-	
+
 	protected function generateApiKey() {
 		if($this->isNewRecord) {
 			throw new CDbException("Can't generate API key for new record");
@@ -158,13 +158,13 @@ class Company extends CActiveRecord
     {
         return array(
             'company_id' => 'ID',
-            'created_at' => 'Created At',
-            'company_name' => 'Company Name',
-            'company_url' => 'Company Url',
-            'company_logo' => 'Company Logo',
-            'company_top_logo' => 'Company Top Logo',
-            'company_color' => 'Company Color',
-            'show_ads'=>'Show Advertisements',
+            'created_at' => 'Created at',
+            'company_name' => 'Company name',
+            'company_url' => 'Company url',
+            'company_logo' => 'Company logo',
+            'company_top_logo' => 'Company top logo',
+            'company_color' => 'Company color',
+            'show_ads'=>'Show advertisements',
             'owner_id'=>'Owner',
             'coupon_id'=>'Coupon',
             'coupon_expires_at'=>'Coupon expires at',

@@ -7,11 +7,14 @@
 
 class CompanySettingsForm extends FormModel {
 
+	public $company_name;
+	public $company_url;
 	public $company_color;
-    public $show_ads;
+	public $show_ads;
 
 	public function rules() {
 		return array(
+			array('company_name, company_url', 'required'),
 			array('company_color', 'length', 'max'=>7),
 			array('company_color, show_ads', 'safe')
 		);
