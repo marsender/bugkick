@@ -46,9 +46,9 @@ class ProjectUrlRuleEx extends CBaseUrlRule {
             Yii::app()->user->setState('is_global_admin',
                 User::current()->is_global_admin);
             Yii::app()->user->setState('is_company_admin',
-                User::current()->isCompanyAdmin($project->company->company_id));
+                User::isCompanyAdmin($project->company->company_id));
             Yii::app()->user->setState('is_project_admin',
-                User::current()->isProjectAdmin($project->project_id));
+                User::isProjectAdmin($project->project_id));
         }
     }
 

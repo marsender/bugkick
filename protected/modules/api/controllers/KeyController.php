@@ -14,7 +14,7 @@ class KeyController extends ApiController {
         }
         if ($company->account_type == Company::TYPE_PAY){
 
-            if(User::current()->isCompanyAdmin(Company::current())) {
+            if(User::isCompanyAdmin(Company::current())) {
                 $refreshAPI = (int) $this->request->getParam('refresh');
                 if (empty($company->api_key) ){
                     $company->refreshApiKey()->save();

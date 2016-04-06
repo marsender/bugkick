@@ -109,7 +109,7 @@ echo "
 			<div class="wrapper">
 <?php
 //Yii::app()->cache->flush();
-$isGlobalAdmin = User::current() && User::current()->isGlobalAdmin();
+$isGlobalAdmin = User::isGlobalAdmin();
 $currentCompanyID = Company::current();
 $project = Project::getCurrent();
 $projectID = empty($project) ? 0 : $project->project_id;
@@ -141,7 +141,7 @@ if (!Yii::app()->user->isGuest) :
 						class="name"><?php echo Helper::truncateString(Yii::app()->user->name, 18); ?></span><span
 						class="menu-arrow"></span>
 					<ul class="sub_menu">
-						<li><?php echo CHtml::link(Yii::t('main', 'Account'), Yii::app()->createAbsoluteUrl('/settings'), array('id'=>'view_profile')) ?></li>
+						<li><?php echo CHtml::link(Yii::t('main', 'Admin panel'), Yii::app()->createAbsoluteUrl('/settings'), array('id'=>'view_profile')) ?></li>
             <?php
 	/*
 	 <li><?php echo CHtml::link(Yii::t('main', 'View Profile'), Yii::app()->createAbsoluteUrl('/user/view'), array('id'=>'view_profile')) ?></li>
@@ -159,7 +159,7 @@ if (!Yii::app()->user->isGuest) :
 	 */
 	?>
         <?php if ($isGlobalAdmin) { ?>
-            <li><?php echo CHtml::link(Yii::t('main', 'Admin panel'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
+            <li><?php echo CHtml::link(Yii::t('main', 'User admin'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
         <?php } ?>
             <li><?php echo CHtml::link(Yii::t('main', 'Help'), Yii::app()->createAbsoluteUrl('/help'), array('id'=>'show-help')) ?></li>
 						<li><?php

@@ -6,7 +6,7 @@ $this->breadcrumbs = array(
 <div class="settings">
     <div class="members-container">
         <div id="active-members">
-            <h2 class="listing-title"><?php echo Yii::t('main', 'Members'); ?></h2>
+            <h2 class="listing-title"><?php echo Yii::t('main', 'Edit members'); ?></h2>
 
             <?php $this->renderFlash(); ?>
 

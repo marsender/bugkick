@@ -45,7 +45,7 @@ JS
 
 
 <?php
-	$isGlobalAdmin = User::current()->isGlobalAdmin();
+	$isAdmin = User::isAdmin();
 	$groupList = Project::getUserGroups();
 	if (!empty($groupList)) {
 ?>
@@ -56,7 +56,7 @@ JS
                 <?php echo Yii::t('main', 'Groups') ?>
             </span>
                 <?php
-                	if ($isGlobalAdmin) {
+                	if ($isAdmin) {
                     echo CHtml::link('',
                         'settings/groups',
                         array(
@@ -91,7 +91,7 @@ JS
                     <?php echo Yii::t('main', 'Labels') ?>
                 </span>
                 <?php
-                if ($isGlobalAdmin) {
+                if ($isAdmin) {
                 	echo CHtml::link('',
                         'settings/labelListing',
                         array(
@@ -176,7 +176,7 @@ JS
                 <?php echo Yii::t('main', 'Status') ?>
             </span>
                 <?php
-                if ($isGlobalAdmin) {
+                if ($isAdmin) {
                 	echo CHtml::link('',
                         'settings/statusListing',
                         array(
@@ -210,9 +210,9 @@ JS
                 <?php echo Yii::t('main', 'People') ?>
             </span>
                 <?php
-                if ($isGlobalAdmin) {
+                if ($isAdmin) {
                     echo CHtml::link('',
-                        'settings/members',
+                        'projects/people', // settings/members
                         array(
                             'class'=>'filter-edit-link',
                         )
@@ -234,7 +234,7 @@ JS
                     <?php echo CHtml::hiddenField("filterText[user-negative][0]", '', array('class'=>'negative')) ?>
                 </li>
 <?php else: ?>
-         <a href="<?php echo Yii::app()->createUrl('settings/members'); ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','Invite user'); ?></a>
+         <a href="<?php echo Yii::app()->createUrl('projects/people'); // settings/members ?>" class="new-item"><?php echo '<span class="new-item-icon"></span>' . Yii::t('main','Invite user'); ?></a>
 <?php endif; ?>
                 </ul>
             </li>
@@ -257,7 +257,7 @@ JS
                 </li>
             <?php endforeach; ?>
 <?php endif; ?>
-                    <a href="#" id="saveFilter"><?php echo '<span class="save-search-icon"></span>' . Yii::t('main','Save filter state'); ?></a>
+                    <a href="#" id="saveFilter"><?php echo '<span class="save-search-icon"></span>' . Yii::t('main','Save filter'); ?></a>
                 </ul>
             </li>
         </ul>

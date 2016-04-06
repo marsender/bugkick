@@ -59,7 +59,7 @@ $form = $this->beginWidget('CActiveForm', array(
 <?php
     /*
 
-    if(User::current()->isCompanyAdmin(Company::current())):
+    if(User::isCompanyAdmin(Company::current())):
 ?>
     <div class="row">
         <?php $model->isadmin = (boolean)$model->isadmin; ?>

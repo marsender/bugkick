@@ -52,7 +52,7 @@ class EditAction extends Action {
         }
         else{
             //we doesn't allow non-admins to edit projects
-            if(!User::current()->isCompanyAdmin(Company::current()))
+            if(!User::isCompanyAdmin(Company::current()))
                 throw new CHttpException(403, 'Action forbidden.');
 
             foreach($project->users as $user)

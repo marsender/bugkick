@@ -31,7 +31,7 @@ $columns = array(
     ),
 );
 
-if(User::current()->isCompanyAdmin(Company::current())) {
+if(User::isCompanyAdmin(Company::current())) {
     $columns[] = array(
         'class' => 'CButtonColumn',
         'template' => '{update} &nbsp; {delete}',

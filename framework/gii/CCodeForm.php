@@ -29,13 +29,12 @@ class CCodeForm extends CActiveForm
 	 */
 	public function init()
 	{
-		echo <<<EOD
+		echo '
 <div class="form gii">
-	<p class="note">
-		Fields with <span class="required">*</span> are required.
-		Click on the <span class="sticky">highlighted fields</span> to edit them.
+	<p class="note">'
+		. Yii::t('main', 'Fields with <span class="required">*</span> are required') . '.
 	</p>
-EOD;
+';
 		parent::init();
 	}
 

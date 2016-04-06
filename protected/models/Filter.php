@@ -70,7 +70,7 @@ class Filter extends CActiveRecord
 		return array(
 			'filter_id' => 'FilterID',
 			'user_id' => 'User',
-			'name' => 'Filter Name',
+			'name' => 'Filter name',
 			'filter' => 'Filter',
 		);
 	}

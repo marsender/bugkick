@@ -27,7 +27,7 @@ $columns = array(
     'email',
 );
 
-if(User::current()->isCompanyAdmin(Company::current())) {
+if(User::isCompanyAdmin(Company::current())) {
     $columns[] = array(
         'htmlOptions' => array('style'=>'width:150px'),
         'type'=>'raw',

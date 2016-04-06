@@ -258,7 +258,7 @@ class ProjectController extends Controller
 
 	public function actionRemoveUser($id)
 	{
-		if (User::current()->isCompanyAdmin(Company::current())) {
+		if (User::isCompanyAdmin(Company::current())) {
 			$project = Project::getCurrent();
 			if (empty($project))
 				$this->redirect(Yii::app()->createUrl('/settings/projects'));
@@ -279,7 +279,7 @@ class ProjectController extends Controller
 	 if (empty($model))
 	 $this->redirect(Yii::app()->createUrl('/settings/projects'));
 
-	 if(!User::current()->isCompanyAdmin(Company::current()))
+	 if(!User::isCompanyAdmin(Company::current()))
 	 throw new CHttpException(403, 'You don\'t have permissions to access this area.' );
 
 	 $form = new ProjectPeopleForm;
@@ -367,7 +367,7 @@ class ProjectController extends Controller
 					$userByProject->user_id = (int)$_POST['InviteForm']['user'];
 					$userByProject->project_id = $project->project_id;
 					$isAdmin = 0;
-					if (User::current()->isCompanyAdmin(Company::current())) {
+					if (User::isCompanyAdmin(Company::current())) {
 						if (isset($_POST['InviteForm']['isadmin']) && $_POST['InviteForm']['isadmin'] == 1)
 							$isAdmin = 1;
 					}
@@ -398,7 +398,7 @@ class ProjectController extends Controller
 	//        if (empty($model))
 	//            $this->redirect(Yii::app()->createUrl('/settings/projects'));
 	//
-	//        if(!User::current()->isCompanyAdmin(Company::current()))
+	//        if(!User::isCompanyAdmin(Company::current()))
 	//            throw new CHttpException(403, 'You don\'t have permissions to access this area.' );
 	//
 	//        $form = new ProjectPeopleForm;

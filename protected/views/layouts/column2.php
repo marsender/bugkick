@@ -11,12 +11,13 @@
 </div>
 
 <?php
-	$userCurrent = User::current();
-	$isGlobalAdmin = isset($userCurrent) && $userCurrent->isGlobalAdmin();
-	$isCompany = !Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id);
-	$settingsMenu = $isCompany && (($this->getId() == 'settings') || (($this->getId() == 'user') && ($this->getAction()->getId() == 'view')));
-	$bugFilter = $isCompany && ($this->getId() == 'bug') && ($this->getAction()->getId() != 'view');
-	$createProject = $isGlobalAdmin && $isCompany && ($this->getId() == 'project') && ($this->getAction()->getId() != 'people');
+	$currentId = $this->getId();
+	$isAdmin = User::isAdmin();
+	$isCompanyAdmin = User::isCompanyAdmin();
+	//$isCompany = !Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id);
+	$settingsMenu = $isCompanyAdmin && (($currentId == 'settings') || (($currentId == 'user') && ($this->getAction()->getId() == 'view')));
+	$bugFilter = $isCompanyAdmin && ($currentId == 'bug') && ($this->getAction()->getId() != 'view');
+	$createProject = $isAdmin && $isCompanyAdmin && ($currentId == 'project') && ($this->getAction()->getId() != 'people');
 	if ($settingsMenu || $bugFilter || $createProject) {
 ?>
 <div id="sidebar"<?php if ($bugFilter) echo ' class="float-filters"';?>>

@@ -117,7 +117,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
     $model = new ContactUs();
     ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note"><?php echo Yii::t('main', 'Fields with <span class="required">*</span> are required'); ?>.</p>
     <?php echo $form->errorSummary($model); ?>
     <div class="row">
         <?php echo $form->labelEx($model, 'name'); ?>

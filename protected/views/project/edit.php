@@ -122,7 +122,7 @@ $form = $this->beginWidget('CActiveForm', array(
 						</div>
 						<div style="margin-top:10px;">
 							<?php
-						if (!$project->isNewRecord && User::current()->isCompanyAdmin($project->company->company_id) || User::current()->isProjectAdmin($project->project_id)) {
+						if (!$project->isNewRecord && User::isCompanyAdmin($project->company->company_id) || User::isProjectAdmin($project->project_id)) {
 							echo CHtml::link(Yii::t('main', 'Delete project'), array(
 								'project/deleteProject',
 								'id' => $project->project_id
@@ -165,7 +165,7 @@ $form = $this->beginWidget('CActiveForm', array(
 		</div>
 		<div class="tab-pane" id="project-labels">
 			<div class="row">
-                <?php echo $form->labelEx($projectForm, 'Project Labels'); ?>
+                <?php echo $form->labelEx($projectForm, 'Project labels'); ?>
                 <?php
 																$labels = ($project->isNewRecord) ? Company::getPreCreatedLabels() : Company::getLabels();
 																echo CHtml::activeDropDownList($projectForm, 'labels', CHtml::listData($labels, 'label_id', 'name'), array(

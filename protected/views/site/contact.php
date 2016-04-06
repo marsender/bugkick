@@ -29,7 +29,7 @@ If you have business inquiries or other questions, please fill out the following
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?php echo Yii::t('main', 'Fields with <span class="required">*</span> are required'); ?>.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -69,7 +69,7 @@ If you have business inquiries or other questions, please fill out the following
 		<?php echo $form->error($model,'verifyCode'); ?>
 	</div>
 	<?php endif; ?>
-    
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>

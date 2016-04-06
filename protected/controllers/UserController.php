@@ -180,7 +180,7 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		//only admin can update users info
-		if (!User::current()->isCompanyAdmin(Company::current()))
+		if (!User::isCompanyAdmin(Company::current()))
 			throw new CHttpException(400, 'Invalid request.');
 
 		$model = $this->loadModel($id);
@@ -382,7 +382,7 @@ class UserController extends Controller
 				'email' => $_POST['User']['email']
 			));
 			$isAdmin = 0;
-			if (User::current()->isCompanyAdmin(Company::current())) {
+			if (User::isCompanyAdmin(Company::current())) {
 				if (isset($_POST['User']['isadmin']) && $_POST['User']['isadmin'] == 1)
 					$isAdmin = 1;
 			}

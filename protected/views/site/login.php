@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
     echo Yii::app()->user->getFlash('success');
 ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><?php echo Yii::t('main', 'Fields with <span class="required">*</span> are required'); ?>.</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
