@@ -59,10 +59,10 @@ $form = $this->beginWidget('CActiveForm', array(
 		<li class="active"><a href="#project-common-info" data-toggle="tab"><?php echo Yii::t('main', 'Common info'); ?></a></li>
 		<li><a href="#project-users" data-toggle="tab"><?php echo Yii::t('main', 'People'); ?></a></li>
 		<li><a href="#project-labels" data-toggle="tab"><?php echo Yii::t('main', 'Labels'); ?></a></li>
-		<li><a href="#project-defaults" data-toggle="tab"><?php echo Yii::t('main', 'Defaults'); ?></a></li>
-        <?php if($projectForm->connectToGitHub) { ?>
-        <li><a href="#extra-features" data-toggle="tab"><?php echo Yii::t('main', 'Extra Features'); ?></a></li>
-        <?php } ?>
+		<li><a href="#project-defaults" data-toggle="tab"><?php echo Yii::t('main', 'Default actions'); ?></a></li>
+<?php if($projectForm->connectToGitHub) { ?>
+    <li><a href="#extra-features" data-toggle="tab"><?php echo Yii::t('main', 'Extra Features'); ?></a></li>
+<?php } ?>
     </ul>
 
 	<div class="tab-content">

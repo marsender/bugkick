@@ -53,7 +53,7 @@ return array(
 	'Statistics'=>'Statistiques',
 	'Users'=>'Utilisateurs',
 	'Common info'=>'Général',
-	'Defaults'=>'Réglages par défaut',
+	'Default actions'=>'Actions par défaut',
 	'Extra Features'=>'Fonctionnalités supplémentaires',
 	'Configure project'=>'Configuration du projet',
 	'Calendar for this project'=>'Calendrier du projet',

@@ -11,7 +11,7 @@ class LabelByProject extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return UserByProject the static model class
+	 * @return LabelByProject the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
