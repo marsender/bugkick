@@ -158,9 +158,9 @@ if (!Yii::app()->user->isGuest) :
 	 <?php }?>
 	 */
 	?>
-        <?php if ($isGlobalAdmin) { ?>
+<?php if ($isGlobalAdmin) { ?>
             <li><?php echo CHtml::link(Yii::t('main', 'User admin'), Yii::app()->createAbsoluteUrl('/admin'), array('id'=>'admin-panel')) ?></li>
-        <?php } ?>
+<?php } ?>
             <li><?php echo CHtml::link(Yii::t('main', 'Help'), Yii::app()->createAbsoluteUrl('/help'), array('id'=>'show-help')) ?></li>
 						<li><?php
 	echo CHtml::link(Yii::t('main', 'Logout'), Yii::app()->createUrl('site/logout', array(
@@ -197,12 +197,10 @@ if (!Yii::app()->user->isGuest) :
 					</ul>
 				</div>
 
-<?php if (true || $isGlobalAdmin) { ?>
-    <div class="top_tab summary_tickets">
-					<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>"
+    		<div class="top_tab summary_tickets">
+					<a href="<?php echo $this->createUrl('/bug/summaryTickets'); ?>"
 						title="<?php echo Yii::t('main', 'Summary tickets'); ?>"></a>
 				</div>
-<?php } ?>
     <div class="top_tab t_separator"></div>
 
 <?php

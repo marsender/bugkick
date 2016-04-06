@@ -4,10 +4,8 @@
  * Date: 16.01.12
  * Time: 23:41
  */
-$userCurrent = User::current();
-$isGlobalAdmin = $userCurrent->isGlobalAdmin();
-$isProjectAdmin = $userCurrent->isProjectAdmin($data->project_id);
-$displayEditProjectLink = $isGlobalAdmin && ($userCurrent->isCompanyAdmin($data->company->company_id) || $isProjectAdmin);
+$isGlobalAdmin = User::isGlobalAdmin();
+$isProjectAdmin = User::isProjectAdmin($data->project_id); // $isGlobalAdmin && ($userCurrent->isCompanyAdmin($data->company->company_id) || $isProjectAdmin);
 ?>
 <div class="project-container">
 	<!-- <div class="project-top"></div> -->
@@ -25,14 +23,14 @@ if (false) {
 	), array('class' => 'update'))
 	;
 }
-if ($displayEditProjectLink) {
+if ($isGlobalAdmin || $isProjectAdmin) {
 	echo CHtml::link(Yii::t('main', 'Edit'), array(
 		'project/edit',
 		'id' => $data->project_id
 	), array('class' => 'update'))
 	;
 }
-if (!$isProjectAdmin) {
+if (false) { // !$isProjectAdmin) {
 	echo CHtml::link(Yii::t('main', 'Unsuscribe'), array(
 		'project/hide',
 		'id' => $data->project_id
