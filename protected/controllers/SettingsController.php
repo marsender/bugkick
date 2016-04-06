@@ -297,7 +297,7 @@ class SettingsController extends Controller {
         $this->render('statusListing', array('statusProvider' => $statusProvider, 'statusModel' => $statusModel));
     }
 
-/*    public function actionUserListing() {
+    public function actionUserListing() {
 
         $users = Company::getUsers();
         $userProvider = null;
@@ -307,9 +307,9 @@ class SettingsController extends Controller {
         $userModel = new User;
 
         $this->render('userListing', array('userProvider' => $userProvider, 'userModel' => $userModel));
-    }*/
+    }
 
-/*    public function actionInviteMembers()
+    public function actionInviteMembers()
     {
         $userProvider = new CActiveDataProvider('User', array(
                     'criteria' => array(
@@ -323,9 +323,9 @@ class SettingsController extends Controller {
                 ));
 
         $this->render('inviteMembers', array('userProvider' => $userProvider));
-    }*/
+    }
 
-/*    public function actionPendingMembers()
+    public function actionPendingMembers()
     {
         $userProvider = new CActiveDataProvider('User', array(
                     'criteria' => array(
@@ -339,7 +339,7 @@ class SettingsController extends Controller {
                 ));
 
         $this->render('pendingMembers', array('userProvider' => $userProvider));
-    }*/
+    }
 
     public function actionMembers()
     {
@@ -420,7 +420,7 @@ class SettingsController extends Controller {
         );
     }
 
-/*    public function actionProjects()
+    public function actionProjects()
     {
         if(isset($_GET['archived']))
             $projectView = 'archived';
@@ -477,7 +477,7 @@ class SettingsController extends Controller {
             echo $this->renderPartial('projects', $viewData);
         else
             $this->render('projects', $viewData);
-    }*/
+    }
 
     public function actionExportTickets()
     {

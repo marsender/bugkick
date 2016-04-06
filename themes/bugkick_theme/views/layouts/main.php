@@ -1,13 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="language" content="en" />
-<link rel="shortcut icon"
-	href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" />
-
-<link rel="stylesheet" type="text/css"
-	href="<?php
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="<?php
 	echo Yii::app()->minScript->generateUrl(array(
 		'/css/form.css',
 		'/js/plug-in/chosen/chosen/chosen.css',
@@ -23,51 +20,48 @@
 		'/themes/bugkick_theme/css/plug-in/imageset/imageset.css'
 	));
 	?>" />
-	<?php
+<?php
 	$lookAndFeel = $this->lookAndFeel();
 	if (!empty($lookAndFeel)) {
-		?>
-	<link id="style_look_and_feel" rel="stylesheet" type="text/css"
-	href="<?php echo Yii::app()->request->baseUrl; ?>/css/body/<?php echo $lookAndFeel->css_file; ?>" />
-	<?php } ?>
-    <?php
+?>
+	<link id="style_look_and_feel" rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/body/<?php echo $lookAndFeel->css_file; ?>" />
+<?php } ?>
+<?php
 				/*
 				 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
 				 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.js"></script>
 				 */
-				?>
+?>
 <!-- FIX for most of unsuported css features in IE8 and bellow -->
-
 <!--[if lt IE 8]>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/bugkick_theme/js/ie-fixes/IE9.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/bugkick_theme/js/ie-fixes/ie7-squish.js"></script>
 <![endif]-->
 
 <!-- End of IE fix -->
-    <?php
-				$csrfToken = Yii::app()->request->csrfToken;
-				echo GoogleApi::init(null, true), CHtml::script(CGoogleApi::load('jquery') . CGoogleApi::load('jqueryui') . <<<JS
-var YII_CSRF_TOKEN='{$csrfToken}';
-var _gaq = _gaq || [];
-_gaq.push(
+<?php
+$wantGoogleApi = false;
+if ($wantGoogleApi) {
+	echo GoogleApi::init(null, true), CHtml::script(CGoogleApi::load('jquery') . CGoogleApi::load('jqueryui'));
+}
+else {
+	echo '<script type="text/javascript" src="' . Yii::app()->request->baseUrl . '/js/jquery.js"></script>' . "\n";
+	echo '<script type="text/javascript" src="' . Yii::app()->request->baseUrl . '/js/jquery-ui.js"></script>' . "\n";
+}
+$csrfToken = Yii::app()->request->csrfToken;
+echo "
+<script>
+	var YII_CSRF_TOKEN='{$csrfToken}';
+	var _gaq = _gaq || [];
+	_gaq.push(
     ['_setAccount', 'UA-30674401-1'],
     ['_trackPageview']
-);
-JS
-);
-				?>
-    <?php /* Scripts moved to bottom */ ?>
-    <?php
-/*<script type="text/javascript">
-				       var _gaq = _gaq || [];
-				       _gaq.push(
-				       ['_setAccount', 'UA-30674401-1'],
-				       ['_trackPageview']
-				       );
-				       </script>*/
-				?>
-    <title><?php echo html_entity_decode(CHtml::encode($this->pageTitle)); ?></title>
-    <?php if (Yii::app()->params['trackClickEvents']) { MixPanel::instance()->registerTracking(); } ?>
+	);
+</script>
+";
+?>
+	<title><?php echo html_entity_decode(CHtml::encode($this->pageTitle)); ?></title>
+	<?php if (Yii::app()->params['trackClickEvents']) { MixPanel::instance()->registerTracking(); } ?>
 </head>
 <body>
     <?php
@@ -134,7 +128,6 @@ if ($this->beginCache('site_header_cache', $cacheSettings)) {
 }
 ?>
 <?php
-
 
 if (!Yii::app()->user->isGuest) :
 	if ($projectsData['selected']['project_id'] > 0) {
@@ -225,13 +218,13 @@ if (!Yii::app()->user->isGuest) :
 <?php $this->endWidget(); ?>
 <!-- end of Projects dropdown-->
 <?php
-/*
-	       <div class="top_tab calendar-tab">
-	       <?php echo CHtml::link(
-	       CHtml::image(Yii::app()->theme->baseUrl.'/images/icons/cal.png'),
-	       Yii::app()->createUrl('/bug',array('show'=>'calendar')),array('title'=>'Calendar')) ?>
-	       </div>
-	       */
+	/*
+	 <div class="top_tab calendar-tab">
+	 <?php echo CHtml::link(
+	 CHtml::image(Yii::app()->theme->baseUrl.'/images/icons/cal.png'),
+	 Yii::app()->createUrl('/bug',array('show'=>'calendar')),array('title'=>'Calendar')) ?>
+	 </div>
+	 */
 	?>
 <?php if(isset($projectsData['selected']['archived']) && $projectsData['selected']['archived']!=1): ?>
     <div class="top_tab new_ticket"><?php echo CHtml::link(Yii::t('main', 'New ticket'), Yii::app()->createAbsoluteUrl('#'), array('id'=>'createBug')) ?></div>
@@ -249,7 +242,7 @@ if (!Yii::app()->user->isGuest) :
         <?php echo $content; ?>
         <?php
 
-if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
+								if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
 									$this->widget('BugCreate');
 									$this->widget('Help');
 								}
@@ -269,8 +262,7 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
                             <a
 							href="<?php echo Yii::app()->createUrl('/bug'); ?>" title="Open"><?php echo Yii::t('main', 'Display opened tickets'); ?></a>
                           <?php
-
-}
+	}
 	else {
 		?>
                             <a
@@ -296,13 +288,13 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
 							class="show_shortcuts fr"><?php echo Yii::t('main', 'Keyboard shortcuts')?></a>
 					</span></li>
                 <?php
-/*?>
-	       <li>
-	       <span>
-	       User: <a href="<?php echo Yii::app()->createUrl('user/view')?>" title="View Profile"><?php echo Yii::app()->user->name ?></a>
-	       </span>
-	       </li>
-	       <?php */
+	/*?>
+	 <li>
+	 <span>
+	 User: <a href="<?php echo Yii::app()->createUrl('user/view')?>" title="View Profile"><?php echo Yii::app()->user->name ?></a>
+	 </span>
+	 </li>
+	 <?php */
 	?>
                 <?php
 	/*
@@ -320,10 +312,10 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
  <!-- footer -->
 <?php
 /*
-       <!--	Ajax loading	-->
-       <!--<div id="ajaxLoading"><div></div></div>-->
-       <!--	Ajax loading END	-->
-       */
+ <!--	Ajax loading	-->
+ <!--<div id="ajaxLoading"><div></div></div>-->
+ <!--	Ajax loading END	-->
+ */
 ?>
 <?php echo $this->renderPartial('application.views.account._shortcut'); ?>
 </div>
@@ -342,15 +334,15 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
 			'/js/console.min.js',
 			'/js/plug-in/flash-message/js/flash-message.min.js',
 			'/js/plug-in/jGrowl/jquery.jgrowl_minimized.js'
-		)
+		))
 		//'/js/jquery.caret.1.02.min.js'
-		);
+		;
 		?>"></script>
 	<?php
-/* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/console.min.js"></script>
-		       <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/flash-message/js/flash-message.min.js"></script>
-		       <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/jGrowl/jquery.jgrowl_minimized.js"></script>
-		       */
+	/* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/console.min.js"></script>
+	 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/flash-message/js/flash-message.min.js"></script>
+	 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/jGrowl/jquery.jgrowl_minimized.js"></script>
+	 */
 	?>
 	<?php if(Yii::app()->params['node']['notifications']['turned-on']) { ?>
 	<?php /*<!--<script type="text/javascript" src="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>:27000/socket.io/socket.io.js"></script>--> */ ?>
@@ -376,13 +368,13 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
 			'/js/plug-in/jquery-scroll/jquery.mousewheel.js',
 			'/js/plug-in/jquery-scroll/jquery.jscrollpane.min.js',
 			'/js/filter-scroll.js'
-		) //uncomment to have auto-resizing filters
-);
+		)) //uncomment to have auto-resizing filters
+;
 		?>"></script>
 <?php
 /* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/chosen/chosen/chosen.jquery.min.js"></script>
-		       <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/iPhone-checkbox/jquery/iphone-style-checkboxes.min.js"></script>
-		       <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/jquery-form/jquery.form.min.js"></script> */
+ <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/iPhone-checkbox/jquery/iphone-style-checkboxes.min.js"></script>
+ <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/plug-in/jquery-form/jquery.form.min.js"></script> */
 ?>
 <?php /* <script type="text/javascript" src="--><?php echo Yii::app()->request->baseUrl; ?><!--/js/lib/bkscreen.min.js"></script>*/?>
 <?php /* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap/bootstrap.js"></script> */ ?>
@@ -390,8 +382,8 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
 <?php
 
 /* <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
-       <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/shortcut.min.js"></script>
-       <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/colortip.min.js"></script> */
+ <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/shortcut.min.js"></script>
+ <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/colortip.min.js"></script> */
 ?>
 <?php /*    <link type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/colortip.css" rel="stylesheet" /> */?>
 <?php /* End of scripts, moved from TOP */ ?>
@@ -410,12 +402,12 @@ if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {
 </script>
 <?php
 /*<script type="text/javascript">
-												       (function() {
-												       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-												       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-												       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-												       })();
-												       </script>*/
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+ </script>*/
 ?>
 
 </body>

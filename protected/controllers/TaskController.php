@@ -10,7 +10,7 @@ class TaskController extends Controller
     public function init()
     {
         if(Yii::app()->user->isGuest) {
-            Yii::app()->user->setFlash('error','Please log in to access this page.');
+            Yii::app()->user->setFlash('error', Yii::t('main', 'Please log in to access this page'));
             $this->redirect($this->createUrl('/site/login'));
         }
     }

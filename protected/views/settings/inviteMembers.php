@@ -3,7 +3,7 @@ $this->breadcrumbs = array(
     'Settings',
 );
 ?>
-<h1><?php echo Yii::t('main', 'Invite Members'); ?></h1>
+<h1><?php echo Yii::t('main', 'Invite members'); ?></h1>
 
 <?php $this->widget('InviteMember'); ?>
 
@@ -16,5 +16,5 @@ $this->breadcrumbs = array(
     ));
     ?>
 <?php else: ?>
-<?php echo Yii::t('main', 'No Users'); ?><br>
+<?php echo Yii::t('main', 'No users'); ?><br>
 <?php endif ?>

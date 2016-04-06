@@ -20,7 +20,7 @@ $this->breadcrumbs = array(
         echo CHtml::openTag('div', array('class'=>'al-left', 'style'=>'margin: 10px;'));
         if($this->request->getParam('archived')) {
             echo CHtml::link(
-                'Back to projects',
+                Yii::t('main', 'Back to projects'),
                 $this->createurl('/projects/index', array('archived'=>'0')),
                 array('id'=>'switch-view-btn')
             );

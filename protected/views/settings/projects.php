@@ -1,5 +1,5 @@
 <div class="settings">
-<h2 class="listing-title"><?php echo ($projectView != 'archived')? Yii::t('main', 'Projects') : Yii::t('main', 'Archived Projects'); ?></h2>
+<h2 class="listing-title"><?php echo ($projectView != 'archived')? Yii::t('main', 'Projects') : Yii::t('main', 'Archived projects'); ?></h2>
     <?php $this->renderFlash(); ?>
     <?php
     $this->renderPartial(
@@ -11,13 +11,13 @@
             'projectView'=>$projectView,
         )
     );
-    if ($projectView != 'archived' && Company::model()->findByPk(Company::current())->archivedProjectCount>0){
-        echo CHtml::link('View archived projects', '/settings/projects/archived');
+    if ($projectView != 'archived') { // && Company::model()->findByPk(Company::current())->archivedProjectCount>0){
+        echo CHtml::link(Yii::t('main', 'View archived projects'), $this->createUrl('/settings/projects/archived'));
     }
-    else{
-        echo CHtml::link('Back to projects', '/settings/projects');
+    else {
+        echo CHtml::link(Yii::t('main', 'Back to projects'), $this->createUrl('/settings/projects'));
     }
-    echo CHtml::link('New Project', '/project/edit',
+    echo CHtml::link(Yii::t('main', 'New project'), $this->createUrl('/project/edit'),
             array(
                 'id'=>'createProjectBtn',
                 'class'=>'bkButtonBlueSmall normal new-project',

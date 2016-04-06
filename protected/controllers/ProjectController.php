@@ -208,11 +208,11 @@ class ProjectController extends Controller
 		if ($model) {
 			if ($model->archived == 1) {
 				$model->archived = 0;
-				Yii::app()->user->setFlash('success', Yii::t('main', 'The project was restored.'));
+				Yii::app()->user->setFlash('success', Yii::t('main', 'The project was restored'));
 			}
 			else {
 				$model->archived = 1;
-				Yii::app()->user->setFlash('success', Yii::t('main', 'The project was archived.'));
+				Yii::app()->user->setFlash('success', Yii::t('main', 'The project was archived'));
 
 				$user = User::current();
 				if ($id == $user->current_project_id) {

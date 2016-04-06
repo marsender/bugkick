@@ -27,10 +27,12 @@ class CGoogleApi
 	 */
 	public static function init($apiKey=null)
 	{
-		if($apiKey===null)
+		if($apiKey===null) {
 			return CHtml::scriptFile(self::$bootstrapUrl);
-		else
+		}
+		else {
 			return CHtml::scriptFile(self::$bootstrapUrl.'?key='.$apiKey);
+		}
 	}
 
 	/**

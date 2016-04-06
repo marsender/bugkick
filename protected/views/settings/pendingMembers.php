@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'Settings',
 );?>
-<h1><?php echo Yii::t('main', 'Pending Members') ?></h1>
+<h1><?php echo Yii::t('main', 'Pending members') ?></h1>
 
 
 <?php if(!empty($userProvider)): ?>
@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
                 'type'=>'raw',
                 'name'=>'action',
                 'value'=>'CHtml::link("Reinvite", Yii::app()->createUrl("user/reinvite", array("id"=>$data->user_id)) ) . 
-                    " | " . CHtml::link("Revoke Invite", Yii::app()->createUrl("user/rejectInvite", array("id"=>$data->user_id)) )'
+                    " | " . CHtml::link("Revoke invite", Yii::app()->createUrl("user/rejectInvite", array("id"=>$data->user_id)) )'
             ),
     ),
 ));
