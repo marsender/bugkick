@@ -331,7 +331,7 @@ class BugController extends Controller
 					$_POST['BugForm']['user_id'] = $_POST['BugForm']['assignees'][0];
 				}
 
-				//set 'New' status by default
+				// Set "new" status by default
 				$openStatus = Status::model()->find('label=:label AND company_id=:company_id', array(
 					':label' => 'New',
 					'company_id' => Company::current()
