@@ -24,7 +24,7 @@ foreach ($changes as $change) {
 	elseif ($change['field'] == 'label_id' || $change['field'] == 'user_id') {
 		$paramChange = '';
 		$name = $change['name'];
-		$paramChange = '<p><b style="color:#666;">' . Yii::t('main', 'New') . ' "' . $name . '":</b> ';
+		$paramChange = '<p><b style="color:#666;">' . $name . ':</b> ';
 		foreach ($value as $val) {
 			$paramChange .= $val . ', ';
 		}
@@ -32,7 +32,7 @@ foreach ($changes as $change) {
 	}
 	else {
 		$name = $change['name'];
-		echo '<p><b style="color:#666;">' . Yii::t('main', 'New') . ' "' . $name . '":</b> ' . $value . '</p>';
+		echo '<p><b style="color:#666;">' . $name . ':</b> ' . $value . '</p>';
 	}
 }
 ?>
