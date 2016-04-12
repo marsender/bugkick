@@ -138,7 +138,7 @@ if (!Yii::app()->user->isGuest) :
 
     <div class="top_tab has_menu">
 					<span class="hi"><?php echo Yii::t('main', 'Hi') ?>,</span> <span
-						class="name"><?php echo Helper::truncateString(Yii::app()->user->name, 18); ?></span><span
+						class="name"><?php echo Helper::truncateString(Yii::app()->user->name, 20); ?></span><span
 						class="menu-arrow"></span>
 					<ul class="sub_menu">
 						<li><?php echo CHtml::link(Yii::t('main', 'Admin panel'), Yii::app()->createAbsoluteUrl('/settings'), array('id'=>'view_profile')) ?></li>
@@ -187,7 +187,7 @@ if (!Yii::app()->user->isGuest) :
 			?>
                 <li id="project-item-<?php echo $key?>"><a href="#"
 							onclick="return switchToProject(<?php echo $key; ?>);"
-							class="project-url"><?php echo Helper::truncateString($value, 17); ?></a>
+							class="project-url"><?php echo Helper::truncateString($value, 25); ?></a>
 						</li>
             <?php } ?>
             <li class="project-item"><a

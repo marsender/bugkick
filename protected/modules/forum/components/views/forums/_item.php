@@ -6,7 +6,7 @@
  */
 echo CHtml::tag('li', array(),
     CHtml::link(
-        CHtml::encode(BKHelper::truncateString($data->title)),
+        CHtml::encode(Helper::truncateString($data->title)),
         Yii::app()->createUrl('/forum/forum/view', array('id'=>$data->id))
     )
     //. CHtml::tag('span', array('class'=>'topics-count'), $data->topicsCount . ' topics')

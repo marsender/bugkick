@@ -74,7 +74,7 @@ class PostController extends BaseForumController
 			$model->attributes=$_POST['BKPost'];
 
             $this->sendNotifications($model, $topic);
-            $model->body = BKActivateLinks::perform($model->body);
+            $model->body = ActivateLinks::perform($model->body);
             $p = new CHtmlPurifier($this);
             $p->options=array(
                 'HTML.AllowedElements'=>

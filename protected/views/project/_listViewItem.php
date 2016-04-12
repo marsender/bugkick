@@ -14,7 +14,7 @@ $isProjectAdmin = User::isProjectAdmin($data->project_id); // $isGlobalAdmin && 
 		<div class="project-center">
 			<img src="<?php echo $data->getLogoSrc(70,70) ?>" />
 			<div class="project-description">
-				<h3><?php echo Helper::truncateString($data->name, 15); ?></h3>
+				<h3><?php echo Helper::truncateString($data->name, 25); ?></h3>
 <?php
 if (false) {
 	echo CHtml::link(Yii::t('main', 'Manage'), array(

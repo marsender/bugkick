@@ -4,7 +4,7 @@
 $this->breadcrumbs=array(
     Yii::app()->name=>array('/site'),
     'Forums'=>array('index'),
-    CHtml::encode(BKHelper::truncateString($model->title)),
+    CHtml::encode(Helper::truncateString($model->title)),
 );
 $this->menu=array(
     array('label'=>Yii::t('main', 'List forums'), 'url'=>array('index')),
@@ -39,7 +39,7 @@ $this->menu=array(
         'visible'=>Yii::app()->user->checkAccess('user')
     ),
 );
-$this->pageTitle = CHtml::encode(BKHelper::truncateString($model->title));
+$this->pageTitle = CHtml::encode(Helper::truncateString($model->title));
 ?>
 
 

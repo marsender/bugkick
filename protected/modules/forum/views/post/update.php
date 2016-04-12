@@ -5,11 +5,11 @@
 $this->breadcrumbs=array(
     Yii::app()->name=>array('/site'),
     'Forums'=>array('/forum'),
-    CHtml::encode(BKHelper::truncateString($model->topic->forum->title))=>
+    CHtml::encode(Helper::truncateString($model->topic->forum->title))=>
         array('forum/view/','id'=>$model->topic->forum->id),
-    CHtml::encode(BKHelper::truncateString($model->topic->title))=>
+    CHtml::encode(Helper::truncateString($model->topic->title))=>
             array('topic/view','id'=>$model->topic->id),
-    CHtml::encode(BKHelper::truncateString($model->body)),
+    CHtml::encode(Helper::truncateString($model->body)),
     Yii::t('main','Update')
 );
 

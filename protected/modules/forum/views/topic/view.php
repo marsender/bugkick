@@ -4,8 +4,8 @@
 $this->breadcrumbs = array(
     Yii::app()->name => array('/site'),
     'Forums' => array('forum/index'),
-    CHtml::encode(BKHelper::truncateString($model->forum->title)) => array('forum/view', 'id' => $model->forum->id),
-    CHtml::encode(BKHelper::truncateString($model->title))
+    CHtml::encode(Helper::truncateString($model->forum->title)) => array('forum/view', 'id' => $model->forum->id),
+    CHtml::encode(Helper::truncateString($model->title))
 );
 
 $this->menu = array(
@@ -48,7 +48,7 @@ $this->pageTitle = CHtml::encode($model->title);
 
 <div class="topic-header">
     <h3 class="topic-title"><?php echo $this->pageTitle; ?></h3>
-    <h4 class="topic-description"><?php echo BKHelper::truncateString(CHtml::encode($model->description)); ?></h4>
+    <h4 class="topic-description"><?php echo Helper::truncateString(CHtml::encode($model->description)); ?></h4>
     <ul class="topic-meta">
         <li class="topic-meta-item"><?php echo Yii::t('main', 'Created by') . ' ' . CHtml::encode($model->topicStarter->repr()); ?></li>
         <li class="topic-meta-item"><?php echo Time::timeAgoInWords($model->time); ?></li>
